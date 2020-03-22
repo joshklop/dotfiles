@@ -44,7 +44,7 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 RPROMPT='%F{red}'\$vcs_info_msg_0_'%f'
 zstyle ':vcs_info:git:*' formats '%b' enable git
-PROMPT='%F{white}%n%f %F{magenta}%~%f %F{white}%#%f '
+PROMPT='%F{7}%n%f %F{yellow}%~%f %F{7}%#%f '
 
 # Syntax highlighting!
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
