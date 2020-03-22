@@ -1,0 +1,7 @@
+[Desktop Entry]
+
+Type=Application
+Name=ranger
+Comment=The best file browser
+Exec=/bin/kitty ranger
+Terminal=true
