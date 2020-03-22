@@ -1,8 +1,11 @@
 " Python 3 (setting this makes startup faster)
 let g:python3_host_prog = '/bin/python3'
 
+" Add shortcut to nvim directory so we can access it quickly
+let $NVIM='/home/josh/.config/nvim'
+
 " Load plugins
-source /home/josh/.config/nvim/plugins/plugin.vim
+source $NVIM/plugin.vim
 
 """"""""""""""""""""
 " General Settings "
@@ -17,14 +20,14 @@ set nocompatible
 " Convert tabs to spaces
 set expandtab
 
+" Enable auto indent
+set autoindent
+
 " Enable filetype-specific indentation
 filetype plugin indent on
 
 " Enable syntax highlighting (should be specified after filetype plugin indent on)
 syntax on
-
-" Enable auto indent
-set autoindent
 
 " Enhanced tab completion in command mode
 set wildmenu
@@ -38,24 +41,19 @@ set noshowmode
 " Case insensitive searches
 set ignorecase
 
-" Use gruvbox8 colorscheme
-set background=dark
-colorscheme gruvbox8
-
 " Disable mouse support
 set mouse=""
 
-" Do not wrap lines
 set nowrap
 
 set relativenumber
+set number nu
 
 """"""""""""""""
 " Key Mappings "
 """"""""""""""""
 
-" Remap localleader
-let maplocalleader = ";" 
+let maplocalleader = ';' 
 
 " Turn recording off
 nnoremap q <Nop>
@@ -74,12 +72,24 @@ nnoremap <Right> xp
 nnoremap j gj
 nnoremap k gk
 
+" Easier window navigation
+nnoremap <C-h> <C-W><C-h>
+nnoremap <C-j> <C-W><C-j>
+nnoremap <C-k> <C-W><C-k>
+nnoremap <C-l> <C-W><C-l>
+nnoremap <C-q> <C-W><C-q>
+nnoremap <C-w>t :tabnew<CR>
+nnoremap <C-w><C-t> :tabnew<CR>
+nnoremap <C-w>s :split<CR>
+nnoremap <C-w><C-s> :split<CR>
+nnoremap <C-w>v :vsplit<CR>
+nnoremap <C-w><C-v> :vsplit<CR>
+
 " Maps Ctrl-C to redraw the screen
-nnoremap <c-c> :nohlsearch<CR>
+nnoremap <C-c> :nohlsearch<CR>
 
 " Spell-check set to F6
 nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
 
-" Inkscape shortcuts
-inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
-nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
+" Run pythontex
+nnoremap <LocalLeader>p :!pythontex %<CR>
