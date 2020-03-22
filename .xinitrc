@@ -1,4 +1,4 @@
 start-pulseaudio-x11
-/home/josh/xkeybinds.sh
-/home/josh/monitor.sh
+$HOME/scripts/xkeybinds.sh
+$HOME/scripts/monitor.sh
 exec i3
