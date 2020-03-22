@@ -52,5 +52,11 @@ config config --local status.showUntrackedFiles no
 Now you can version the `$HOME` directory like any other repository, just replace `git` with the `config` alias.
 
 ## tar (borg?)
+
 tar -czvpf {archive-name} {~josh} {/etc}
 
+## Other notes
+
+When installing on a brand-new Arch machine, symlink root's `init.vim` to your `init.vim`.
+
+You will also want to symlink `$HOME/.local/share/applications/mimeapps.list` to `$HOME/.config/mimeapps.list`.
