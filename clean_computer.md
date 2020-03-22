@@ -2,16 +2,17 @@
 
 ## Preparationn
 * Clean home directory
-* Delete programs
-* Delete python packages
-* Export Bitwarden
-  + Encrypt Bitwarden using GPG
+* Delete unnecessary programs and python packages
+* Export and encrypt Bitwarden
 
 ## Update
-* pacman -Syu
-* reboot
-* pacman -Qett > ~/pkglist.txt
-* pip list > python_pkglist.txt
+```
+pacman -Syu
+trizen -Syuq --aur
+reboot
+pacman -Qett > ~/pkglist.txt
+pip list > python_pkglist.txt
+```
 
 ## Dotfiles
 
@@ -51,9 +52,10 @@ config config --local status.showUntrackedFiles no
 ```
 Now you can version the `$HOME` directory like any other repository, just replace `git` with the `config` alias.
 
-## tar (borg?)
+## borg
 
-tar -czvpf {archive-name} {~josh} {/etc}
+Everything is automated:
+`$HOME/scripts/backup.sh`
 
 ## Other notes
 
