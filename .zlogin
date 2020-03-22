@@ -1,0 +1,1 @@
+$BROWSER=/usr/bin/brave
