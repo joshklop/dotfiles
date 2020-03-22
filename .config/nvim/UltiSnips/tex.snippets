@@ -20,20 +20,31 @@ def math():
 		return False
 endglobal
 
-snippet tbf "\textbf{}" w
+snippet tbf "\textbf" w
 \textbf{$1}$0
 endsnippet
 
-snippet ttt "\texttt{}" w
+snippet ttt "\texttt" w
 \texttt{$1}$0
 endsnippet
 
-snippet trm "\textrm{}" w
+snippet tit "\textit" w
+\textit{$1}$0
+endsnippet
+
+context "math()"
+snippet mrm "\mathrm" iA
 \textrm{$1}$0
 endsnippet
 
-snippet tit "\textit{}" w
-\textit{$1}$0
+context "math()"
+snippet src "\mathscr" iA
+\mathscr{$1}$0
+endsnippet
+
+context "math()"
+snippet mcal "mathcal" iA
+\mathcal{$1}$0
 endsnippet
 
 snippet template "Basic template" b
@@ -41,7 +52,8 @@ snippet template "Basic template" b
 
 \usepackage[margin=2cm]{geometry}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{enumitem}
 %\usepackage{graphicx}
 %\usepackage[colorlinks=true,
 %		linkcolor=,             
@@ -64,6 +76,12 @@ endsnippet
 priority 100
 snippet ... "ldots" iA
 \ldots
+endsnippet
+
+snippet thm "Theorem Environment" bA
+\\begin{theorem}[$1]
+	$0
+\\end{theorem}
 endsnippet
 
 snippet table "Table environment" b
@@ -300,16 +318,6 @@ snippet sq "\sqrt{}" iA
 endsnippet
 
 context "math()"
-snippet sr "^2" iA
-^2
-endsnippet
-
-context "math()"
-snippet cb "^3" iA
-^3
-endsnippet
-
-context "math()"
 snippet td "to the ... power" iA
 ^{$1}$0
 endsnippet
@@ -399,11 +407,6 @@ endsnippet
 #\node[$5] (${1/[^0-9a-zA-Z]//g}${2}) ${3:at (${4:0,0}) }{$${1}$};
 #$0
 #endsnippet
-
-context "math()"
-snippet mcal "mathcal" iA
-\mathcal{$1}$0
-endsnippet
 
 snippet lll "l" iA
 \ell
