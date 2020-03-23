@@ -43,4 +43,3 @@ else
 fi
 
 exit ${global_exit}
-
