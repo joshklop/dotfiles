@@ -14,6 +14,13 @@ pacman -Qett > ~/pkglist.txt
 pip list > python_pkglist.txt
 ```
 
+## Backup
+
+Everything is automated with `borg`:
+```bash
+$HOME/scripts/backup.sh
+```
+
 ## Dotfiles
 
 Click [here](https://www.atlassian.com/git/tutorials/dotfiles) if something goes wrong.
@@ -51,11 +58,6 @@ config checkout
 config config --local status.showUntrackedFiles no
 ```
 Now you can version the `$HOME` directory like any other repository, just replace `git` with the `config` alias.
-
-## borg
-
-Everything is automated:
-`$HOME/scripts/backup.sh`
 
 ## Other notes
 
