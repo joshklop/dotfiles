@@ -2,7 +2,7 @@
 
 export BORG_REPO=/mnt/backup
 
-export BORG_PASSCOMMAND="gpg --decrypt passphrase.txt.gpg"
+export BORG_PASSCOMMAND="gpg --decrypt $HOME/scripts/passphrase.txt.gpg"
 
 borg create                                                            \
         --stats --progress $2 $1                                       \
