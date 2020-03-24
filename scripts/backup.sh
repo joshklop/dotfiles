@@ -2,13 +2,14 @@
 
 export BORG_REPO=/mnt/backup
 
-export BORG_PASSCOMMAND="gpg --decrypt $HOME/scripts/passphrase.txt.gpg"
+export BORG_PASSCOMMAND="gpg --decrypt passphrase.txt.gpg"
 
 borg create                                                            \
         --stats --progress $2 $1                                       \
         -e '*/.*/*' -e '*/.*' -e '*.iso' -e '*/test' -e '*/R'          \
         -e '*/*.tar' -e '*/*.tar.gz' -e '*/*.tgz'                      \
         -e '*/tmp' -e '*/.cargo' -e '*/.config'                        \
+        -e '*/*.zip' -e '*/*/*.zip'                                    \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"                             \
         "$HOME"
 
@@ -27,7 +28,7 @@ borg prune                          \
     --show-rc                       \
     --keep-daily    7               \
     --keep-weekly   4               \
-    --keep-monthly  6               \
+    --keep-monthly  6
 
 prune_exit=$?
 
