@@ -9,9 +9,8 @@
 ```
 pacman -Syu
 trizen -Syuq --aur
-reboot
-pacman -Qett > ~/pkglist.txt
-pip list > python_pkglist.txt
+pacman -Qett > $HOME/pkglist.txt
+pip list > $HOME/python_pkglist.txt
 ```
 
 ## Backup
