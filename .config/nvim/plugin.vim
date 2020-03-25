@@ -3,6 +3,8 @@ set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.config/nvim/dein'))
 
+" vim-ipython-cell over intim?
+
 " Non-Lazy Loaded Plugins
 
 call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
@@ -107,7 +109,7 @@ let g:gruvbox_italics = 0
 let g:gruvbox_italicize_strings = 0
 
 " intim
-let g:intim_terminal = 'xfce4-terminal'
+let g:intim_terminal = "kitty -e <tmux>"
 
 " Nvim-R
 let R_nvimpager = 'tab'
