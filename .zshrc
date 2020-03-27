@@ -9,6 +9,7 @@ export EDITOR="$VISUAL"
 # Aliases
 alias ls='ls --color=auto --group-directories-first --sort=extension'
 alias pacman='sudo pacman'
+alias aurupdate='trizen -Syu --aur --noconfirm'
 alias rmorphan='pacman -Rns $(pacman -Qtdq)'
 alias shred='shred --remove --zero --iterations=4' # Overwrites a file with zeros, then removes it
 alias rm='rm -Iv'
