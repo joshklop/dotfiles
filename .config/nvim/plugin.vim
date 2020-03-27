@@ -3,8 +3,6 @@ set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.config/nvim/dein'))
 
-" vim-ipython-cell over intim?
-
 " Non-Lazy Loaded Plugins
 
 call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
@@ -31,12 +29,6 @@ call dein#add('Shougo/echodoc.vim',
 
 call dein#add('junegunn/fzf.vim',
         \{'on_cmd': ['Files', 'Buffers']}) " fuzzy finder
-
-call dein#add('junegunn/goyo.vim',
-        \{'on_cmd': 'Goyo'}) " Focus mode for writing
-
-call dein#add('iago-lito/intim',
-        \{'on_ft': 'python'}) " Interactively interface Vim with interpreters
 
 call dein#add('jalvesaq/nvim-r',
         \{'on_ft': ['r', 'Rmd']}) " R environment
@@ -108,22 +100,19 @@ colorscheme gruvbox8
 let g:gruvbox_italics = 0
 let g:gruvbox_italicize_strings = 0
 
-" intim
-let g:intim_terminal = "kitty -e <tmux>"
-
 " Nvim-R
 let R_nvimpager = 'tab'
 let R_assign = 2 
 let rout_follow_colorscheme = 1
 let Rout_more_colors = 1
 
-" vim-pandoc-markdown-preview
-let g:md_pdf_viewer = 'okular'
-
 " ranger.vim
 let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
 let g:ranger_map_keys = 0
 nnoremap <Leader>f :Ranger<CR>
+
+" vim-pandoc-markdown-preview
+let g:md_pdf_viewer = 'okular'
 
 " UltiSnips
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
