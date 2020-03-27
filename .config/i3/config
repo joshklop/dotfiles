@@ -182,3 +182,6 @@ bindsym $mod+p exec "physlock"
 
 # Monitor controls
 bindsym $mod+m exec $HOME/scripts/monitor.sh
+
+# Start compositor on launch
+exec picom
