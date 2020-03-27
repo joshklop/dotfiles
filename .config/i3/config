@@ -185,3 +185,8 @@ bindsym $mod+m exec $HOME/scripts/monitor.sh
 
 # Start compositor on launch
 exec picom
+# Make background black again (collateral damage from picom)
+exec hsetroot -solid '#000000'
+
+# Start redshift on launch
+exec --no-startup-id redshift
