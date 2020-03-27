@@ -1,14 +1,16 @@
 # Clean Computer Procedures
 
 ## Preparationn
+
 * Clean home directory
 * Delete unnecessary programs and python packages
 * Export and encrypt Bitwarden
 
 ## Update
+
 ```
 pacman -Syu
-trizen -Syuq --aur
+aurupdate # alias for trizen -Syu --aur --noconfirm
 pacman -Qett > $HOME/pkglist.txt
 pip list > $HOME/python_pkglist.txt
 ```
