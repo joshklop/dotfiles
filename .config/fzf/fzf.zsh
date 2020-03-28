@@ -4,4 +4,4 @@
 
 # Key bindings
 # ------------
-source $HOME/.config/fzf/key-bindings.zsh"
+source "$HOME/.config/fzf/key-bindings.zsh"
