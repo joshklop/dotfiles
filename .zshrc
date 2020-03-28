@@ -78,7 +78,3 @@ setopt interactivecomments       # Allow typing comments at an interactive promp
 bindkey "^[[3~" delete-char     # Make 'delete' actually delete
 # CTRL-U works as in bash
 bindkey \^U backward-kill-line  # CTRL-u works as in bash
-# CTRL-left moves left a word
-bindkey "^[[1;5D" backward-word # CTRL-left moves left a word#
-# CTRL-right moves right a word
-bindkey "^[[1;5C" forward-word  # CTRL-right moves right a word
