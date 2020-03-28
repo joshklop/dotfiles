@@ -1,6 +1,8 @@
 " Add dein.vim to path so we can find it
 set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim 
 
+let maplocalleader = ';' 
+
 call dein#begin(expand('~/.config/nvim/dein'))
 
 " Non-Lazy Loaded Plugins
@@ -33,10 +35,10 @@ call dein#add('junegunn/fzf.vim',
 call dein#add('jalvesaq/nvim-r',
         \{'on_ft': ['r', 'Rmd']}) " R environment
 
-call dein#add('francoiscabrol/ranger.vim',
-        \{'on_cmd': ['Ranger']}) " Ranger integration in vim and neovim
-call dein#add('rbgrouleff/bclose.vim') " ranger.vim dependency
-
+call dein#add('rhysd/reply.vim', {
+              \   'lazy' : 1,
+              \   'on_cmd' : ['Repl', 'ReplAuto']}) "REPLs play nicely with :terminal in Neovim
+  
 call dein#add('sirver/UltiSnips',
         \{'on_ft': ['tex', 'latex', 'python', 'java']}) " Snippet manager
 
@@ -56,7 +58,6 @@ call dein#add('liuchengxu/vista.vim',
 call map(dein#check_clean(), "delete(v:val, 'rf')")
 
 call dein#end()
-
 
 """"""""""""""""""
 " Plugin Options "
@@ -107,9 +108,17 @@ let rout_follow_colorscheme = 1
 let Rout_more_colors = 1
 
 " ranger.vim
-let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
+let g:ranger_replace_netrw = 1 
 let g:ranger_map_keys = 0
 nnoremap <Leader>f :Ranger<CR>
+
+" reply.vim
+nnoremap <LocalLeader>rf :Repl<CR>
+nnoremap <LocalLeader>l :ReplSend<CR>
+xnoremap <LocalLeader>ss :ReplSend<CR>
+nnoremap <LocalLeader>v :ReplRecv<CR>
+xnoremap <LocalLeader>v :ReplRecv<CR>
+nnoremap <LocalLeader>rq :ReplStop<CR>
 
 " vim-pandoc-markdown-preview
 let g:md_pdf_viewer = 'okular'
@@ -121,7 +130,7 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " Undotree
-nnoremap <C-u> :UndotreeToggle<CR>
+nnoremap <Leader>u :UndotreeToggle<CR>
 
 " vimtex
 let g:vimtex_enabled = 1
