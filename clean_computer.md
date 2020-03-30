@@ -11,7 +11,8 @@
 ```
 pacman -Syu
 aurupdate # alias for trizen -Syu --aur --noconfirm
-pacman -Qett > $HOME/pkglist.txt
+pacman -Qqen > pkglist.txt
+pacman -Qqem > foreignpkglist.txt
 pip list > $HOME/python_pkglist.txt
 ```
 
