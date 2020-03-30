@@ -1,131 +1,194 @@
-alsa-utils 1.2.2-1
-anki 2.1.15-1
-automake 1.16.1-2
-base 2-2
-bison 3.5.3-1
-bitwarden-bin 1.17.2-1
-boost 1.72.0-1
-borg 1.1.11-1
-brave-bin 1:1.5.115-1
-caffeine-ng 3.4.2-2
-cowsay 3.04-1
-ctags 1:r20200106+ga3c87ab5-1
-cups-pdf 3.0.1-4
-dhcpcd 8.1.6-1
-dialog 1:1.3_20200228-1
-discord 0.0.10-2
-dmenu 4.9-1
-efibootmgr 16-2
-firefox 74.0-2
-flameshot 0.6.0-3
-flex 2.6.4-3
-fzf 0.21.0.1-1
-gcc-fortran 9.3.0-1
-ghc 8.8.3-1
-google-chrome 80.0.3987.149-1
-grub 2:2.04-5
-gtkmm 1:2.24.5-3
-gtypist-single-space 2.9.5-3
-highlight 3.55-1
-hsetroot 1.0.5-1
-htop 2.2.0-3
-i3-gaps 4.18-1
-i3status 2.13-2
-jfsutils 1.1.15-7
-keybase-bin 5.3.1_20200320154633+3e235215b3-1
-kitty 0.17.2-1
-linux 5.5.13.arch1-1
-linux-firmware 20200224.efcfa03-1
-linux-headers 5.5.13.arch1-1
-logrotate 3.16.0-1
-man-pages 5.05-2
-nano 4.9-1
-neovim 0.4.3-2
-netctl 1.20-2
-noto-fonts-emoji 20191016-6
-nss-mdns 0.14.1-2
-ntfs-3g 2017.3.23-4
-okular 19.12.3-3
-openoffice 4.1.7-1
-pacman-contrib 1.3.0-1
-pandoc 2.9.2-76
-pavucontrol 1:4.0-1
-pepper-flash 32.0.0.344-1
-physlock 13-2
-picom 7.5-3
-pkgconf 1.6.3-3
-pygtk 2.24.0-8
-python-llfuse 1.3.6-2
-python-pip 20.0.2-1
-r 3.6.3-1
-ranger 1.9.3-1
-redshift 1.12-3
-reiserfsprogs 3.6.27-3
-rofi 1.5.4-1
-s-nail 14.9.17-1
-signal-desktop 1.32.3-1
-simplescreenrecorder 0.3.11-1
-sudo 1.8.31.p1-1
-texlive-bibtexextra 2019.52577-1
-texlive-fontsextra 2019.52580-1
-texlive-formatsextra 2019.51280-1
-texlive-games 2019.52525-1
-texlive-humanities 2019.52574-1
-texlive-music 2019.52275-1
-texlive-pictures 2019.52499-1
-texlive-pstricks 2019.52550-1
-texlive-publishers 2019.52538-1
-texlive-science 2019.52582-1
-tk 8.6.10-1
-tlp 1.3.1-2
-tmux 3.0_a-1
-tree 1.8.0-1
-trizen 1:1.63-1
-ttf-jetbrains-mono 1.0.4-1
-ufw 0.36-3
-vi 1:070224-4
-vlc 3.0.8-11
-vmware-workstation 15.5.2-1
-wpa_supplicant 2:2.9-7
-xclip 0.13-2
-xf86-video-vesa 2.4.0-2
-xorg-docs 1.7.1-2
-xorg-fonts-100dpi 1.0.3-4
-xorg-fonts-75dpi 1.0.3-4
-xorg-iceauth 1.0.8-1
-xorg-luit 1.1.1-3
-xorg-server 1.20.7-1
-xorg-server-devel 1.20.7-1
-xorg-server-xdmx 1.20.5-4
-xorg-server-xephyr 1.20.7-1
-xorg-server-xnest 1.20.7-1
-xorg-server-xvfb 1.20.7-1
-xorg-server-xwayland 1.20.7-1
-xorg-sessreg 1.1.2-1
-xorg-smproxy 1.0.6-2
-xorg-x11perf 1.6.1-1
-xorg-xbacklight 1.2.3-1
-xorg-xcmsdb 1.0.5-2
-xorg-xcursorgen 1.0.7-1
-xorg-xdpyinfo 1.3.2-3
-xorg-xdriinfo 1.0.6-1
-xorg-xev 1.2.3-1
-xorg-xgamma 1.0.6-2
-xorg-xhost 1.0.8-1
-xorg-xinit 1.4.1-1
-xorg-xinput 1.6.3-1
-xorg-xkbevd 1.1.4-2
-xorg-xkbutils 1.0.4-3
-xorg-xkill 1.0.5-1
-xorg-xlsatoms 1.1.3-1
-xorg-xlsclients 1.1.4-1
-xorg-xpr 1.0.5-1
-xorg-xrefresh 1.0.6-1
-xorg-xsetroot 1.1.2-1
-xorg-xvinfo 1.1.4-1
-xorg-xwd 1.0.7-1
-xorg-xwininfo 1.1.5-1
-xorg-xwud 1.0.5-1
-zoom 3.5.374815.0324-1
-zsh-completions 0.31.0-1
-zsh-syntax-highlighting 0.7.1-1
+alsa-utils
+anki
+autoconf
+automake
+avahi
+base
+bash
+binutils
+bison
+boost
+borg
+bzip2
+coreutils
+cowsay
+cryptsetup
+ctags
+cups
+cups-pdf
+device-mapper
+dhcpcd
+dialog
+diffutils
+discord
+dmenu
+e2fsprogs
+efibootmgr
+fakeroot
+file
+filesystem
+findutils
+firefox
+flameshot
+flex
+fzf
+gawk
+gcc
+gcc-fortran
+gcc-libs
+gettext
+ghc
+git
+glibc
+grep
+groff
+grub
+gtkmm
+gzip
+highlight
+hsetroot
+htop
+i3-gaps
+i3status
+inetutils
+iproute2
+iputils
+jfsutils
+kitty
+less
+libtool
+licenses
+linux
+linux-firmware
+linux-headers
+logrotate
+lsof
+lvm2
+m4
+make
+man-db
+man-pages
+mdadm
+nano
+neovim
+netctl
+noto-fonts-emoji
+nss-mdns
+ntfs-3g
+okular
+openssh
+pacman
+pacman-contrib
+pandoc
+patch
+pavucontrol
+pciutils
+pepper-flash
+perl
+physlock
+picom
+pkgconf
+procps-ng
+psmisc
+pulseaudio
+python
+python-dbus
+python-llfuse
+python-pip
+python2
+r
+ranger
+redshift
+reiserfsprogs
+rofi
+s-nail
+sed
+shadow
+signal-desktop
+simplescreenrecorder
+sudo
+sysfsutils
+systemd
+systemd-sysvcompat
+tar
+texinfo
+texlive-bibtexextra
+texlive-core
+texlive-fontsextra
+texlive-formatsextra
+texlive-games
+texlive-humanities
+texlive-latexextra
+texlive-music
+texlive-pictures
+texlive-pstricks
+texlive-publishers
+texlive-science
+tk
+tlp
+tmux
+tree
+ttf-jetbrains-mono
+ufw
+unzip
+usbutils
+util-linux
+vi
+vlc
+which
+wpa_supplicant
+xclip
+xf86-video-vesa
+xfsprogs
+xorg-bdftopcf
+xorg-docs
+xorg-font-util
+xorg-fonts-100dpi
+xorg-fonts-75dpi
+xorg-fonts-encodings
+xorg-iceauth
+xorg-luit
+xorg-mkfontscale
+xorg-server
+xorg-server-common
+xorg-server-devel
+xorg-server-xephyr
+xorg-server-xnest
+xorg-server-xvfb
+xorg-server-xwayland
+xorg-sessreg
+xorg-setxkbmap
+xorg-smproxy
+xorg-x11perf
+xorg-xauth
+xorg-xbacklight
+xorg-xcmsdb
+xorg-xcursorgen
+xorg-xdpyinfo
+xorg-xdriinfo
+xorg-xev
+xorg-xgamma
+xorg-xhost
+xorg-xinit
+xorg-xinput
+xorg-xkbcomp
+xorg-xkbevd
+xorg-xkbutils
+xorg-xkill
+xorg-xlsatoms
+xorg-xlsclients
+xorg-xmodmap
+xorg-xpr
+xorg-xprop
+xorg-xrandr
+xorg-xrdb
+xorg-xrefresh
+xorg-xset
+xorg-xsetroot
+xorg-xvinfo
+xorg-xwd
+xorg-xwininfo
+xorg-xwud
+zsh
+zsh-completions
+zsh-syntax-highlighting
