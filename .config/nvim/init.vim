@@ -1,5 +1,6 @@
-" Python 3 (setting this makes startup faster)
+" Start Python 3; Disable Python 2 support
 let g:python3_host_prog = '/bin/python3'
+let g:loaded_python_provider = 0
 
 " Load plugins
 source $HOME/.config/nvim/plugin.vim
