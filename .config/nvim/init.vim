@@ -102,7 +102,7 @@ nnoremap <A-w>v :vsplit<CR>
 nnoremap <A-w><A-v> :vsplit<CR>
 
 "Open $MYVIMRC in a vsplit
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>vv :vsplit $MYVIMRC<cr>
 
 "Source $MYVIMRC
 nnoremap <leader>sv :source $MYVIMRC<cr>
