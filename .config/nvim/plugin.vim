@@ -32,6 +32,7 @@ call dein#add('Shougo/echodoc.vim',
 call dein#add('junegunn/fzf.vim',
         \{'on_cmd': ['Files', 'Buffers']}) " fuzzy finder
 
+
 call dein#add('jalvesaq/nvim-r',
         \{'on_ft': ['r', 'Rmd']}) " R environment
 
@@ -120,9 +121,6 @@ nnoremap <LocalLeader>v :ReplRecv<CR>
 xnoremap <LocalLeader>v :ReplRecv<CR>
 nnoremap <LocalLeader>rq :ReplStop<CR>
 
-" vim-pandoc-markdown-preview
-let g:md_pdf_viewer = 'okular'
-
 " UltiSnips
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -131,6 +129,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " Undotree
 nnoremap <Leader>u :UndotreeToggle<CR>
+
+" vim-pandoc-markdown-preview
+let g:md_pdf_viewer = 'okular'
 
 " vimtex
 let g:vimtex_enabled = 1
