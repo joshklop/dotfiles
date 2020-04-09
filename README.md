@@ -12,7 +12,7 @@ Motivation came from [this Hacker News Post](https://news.ycombinator.com/item?i
 
 ## System Update
 
-```
+```bash
 pacman -Syu
 aurupdate # alias for trizen -Syu --aur --noconfirm
 pacman -Qqen > pkglist.txt
