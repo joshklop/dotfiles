@@ -181,7 +181,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec "physlock"
 
 # Monitor controls
-bindsym $mod+m exec $HOME/scripts/monitor.sh
+bindsym $mod+m exec monitor.sh
 
 # Start compositor on launch
 exec picom
