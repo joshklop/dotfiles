@@ -10,7 +10,7 @@ borg create                                                            \
         -e '*/*.tar' -e '*/*.tar.gz' -e '*/*.tgz'                      \
         -e '*/tmp' -e '*/.cargo' -e '*/.config'                        \
         -e '*/*.zip' -e '*/*/*.zip'                                    \
-        -e '*/Downloads'                                               \
+        -e '*/Downloads' -e '*/Documents/Zoom'                         \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"                             \
         "$HOME"
 
