@@ -2,7 +2,7 @@
 
 export BORG_REPO=/mnt/backup
 
-export BORG_PASSCOMMAND="gpg --decrypt $HOME/scripts/passphrase.txt.gpg"
+export BORG_PASSCOMMAND="gpg --decrypt $HOME/.local/bin/passphrase.txt.gpg"
 
 borg create                                                            \
         --stats --progress $2 $1                                       \
@@ -10,7 +10,7 @@ borg create                                                            \
         -e '*/*.tar' -e '*/*.tar.gz' -e '*/*.tgz'                      \
         -e '*/tmp' -e '*/.cargo' -e '*/.config'                        \
         -e '*/*.zip' -e '*/*/*.zip'                                    \
-        -e '*/Downloads' -e '*/Documents/Zoom'                         \
+        -e '*/Downloads' -e '*/Documents/Zoom' -e '*/README.md'        \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"                             \
         "$HOME"
 
