@@ -5,6 +5,7 @@ automake
 avahi
 base
 bash
+bat
 binutils
 bison
 boost
@@ -24,6 +25,7 @@ discord
 dmenu
 e2fsprogs
 efibootmgr
+exa
 fakeroot
 file
 filesystem
@@ -94,6 +96,7 @@ pulseaudio
 python
 python-dbus
 python-llfuse
+python-pillow
 python-pip
 python2
 r
