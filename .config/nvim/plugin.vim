@@ -15,11 +15,15 @@ call dein#add('mbbill/undotree') " The undo history visualizer for VIM
 
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
 
-call dein#add('psliwka/vim-smoothie') " Smooth scrolling for Vim done right
+"call dein#add('psliwka/vim-smoothie') " Smooth scrolling for Vim done right
 
 call dein#add('tpope/vim-surround') " Surround.vim
 
 call dein#add('chaoren/vim-wordmotion') " Enhanced word objects
+
+call dein#add('takac/vim-hardtime') " Stop repeating the basic movement keys
+
+call dein#add('caenrique/nvim-maximize-window-toggle') " Toggle to maximize the current buffer ina new tab and stack
 
 " Lazy Loaded Plugins
 
@@ -32,14 +36,14 @@ call dein#add('Shougo/echodoc.vim',
 call dein#add('junegunn/fzf.vim',
         \{'on_cmd': ['Files', 'Buffers']}) " fuzzy finder
 
-
 call dein#add('jalvesaq/nvim-r',
         \{'on_ft': ['r', 'Rmd']}) " R environment
 
 call dein#add('rhysd/reply.vim', {
-              \   'lazy' : 1,
-              \   'on_cmd' : ['Repl', 'ReplAuto']}) "REPLs play nicely with :terminal in Neovim
-  
+        \   'lazy' : 1,
+        \   'on_cmd' : ['Repl', 'ReplAuto']}) "REPLs play nicely with :terminal in Neovim
+
+
 call dein#add('sirver/UltiSnips',
         \{'on_ft': ['tex', 'latex', 'python', 'java']}) " Snippet manager
 
@@ -102,16 +106,14 @@ colorscheme gruvbox8
 let g:gruvbox_italics = 0
 let g:gruvbox_italicize_strings = 0
 
+" nvim-maximize-window-toggle
+nnoremap <leader>f :ToggleOnly<CR>
+
 " Nvim-R
 let R_nvimpager = 'tab'
 let R_assign = 2 
 let rout_follow_colorscheme = 1
 let Rout_more_colors = 1
-
-" ranger.vim
-let g:ranger_replace_netrw = 1 
-let g:ranger_map_keys = 0
-nnoremap <Leader>f :Ranger<CR>
 
 " reply.vim
 nnoremap <LocalLeader>rf :Repl<CR>
@@ -129,6 +131,11 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 " Undotree
 nnoremap <Leader>u :UndotreeToggle<CR>
+
+" vim-hardtime
+let g:hardtime_default_on = 1
+let g:hardtime_showmsg = 1
+let g:hardtime_allow_different_key = 1
 
 " vim-pandoc-markdown-preview
 let g:md_pdf_viewer = 'okular'
