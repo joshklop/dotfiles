@@ -6,11 +6,9 @@ export BORG_PASSCOMMAND="gpg --decrypt $HOME/.local/bin/passphrase.txt.gpg"
 
 borg create                                                            \
         --stats --progress $2 $1                                       \
-        -e '*/.*/*' -e '*/.*' -e '*.iso' -e '*/test' -e '*/R'          \
-        -e '*/*.tar' -e '*/*.tar.gz' -e '*/*.tgz'                      \
-        -e '*/tmp' -e '*/.cargo' -e '*/.config'                        \
-        -e '*/*.zip' -e '*/*/*.zip'                                    \
-        -e '*/Downloads' -e '*/Documents/Zoom' -e '*/README.md'        \
+        -e '*/.*' -e '*/*.iso' -e '*/R' -e '*/*.tar' -e '*/*.tar.gz'   \
+        -e '*/*.tgz' -e '*/*.zip' -e '*/Downloads'                     \
+        -e '*/Documents/Zoom' -e '*/README.md' -e '*/*.db'             \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"                             \
         "$HOME"
 
