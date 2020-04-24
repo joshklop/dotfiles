@@ -45,7 +45,7 @@ set mouse=""
 set nowrap
 
 set relativenumber
-set number nu
+set nu
 
 """"""""""""""""
 " Key Mappings "
