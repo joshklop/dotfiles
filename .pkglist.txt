@@ -134,7 +134,7 @@ tk
 tlp
 tmux
 tree
-ttf-jetbrains-mono
+ttf-fira-code
 ufw
 unzip
 usbutils
