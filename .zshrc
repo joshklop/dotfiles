@@ -10,6 +10,7 @@ export EDITOR="$VISUAL"
 alias ls='ls --color=auto --group-directories-first --sort=extension'
 alias pacman='sudo pacman'
 alias aurupdate='trizen -Syu --aur --noconfirm'
+alias pip-update='pip install --upgrade --user $(pip list --outdated --user --format=freeze | cut -d'
 alias rmorphan='pacman -Rns $(pacman -Qtdq)'
 alias shred='shred --remove --zero --iterations=4' # Overwrites a file with zeros, then removes it
 alias rm='rm -Iv'
