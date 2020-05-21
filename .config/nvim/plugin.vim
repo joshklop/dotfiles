@@ -11,11 +11,8 @@ call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
 
 call dein#add('Shougo/deoplete.nvim') " Framework for autocompletion plugins
 
-call dein#add('mbbill/undotree') " The undo history visualizer for VIM
-
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
 
-"call dein#add('psliwka/vim-smoothie') " Smooth scrolling for Vim done right
 
 call dein#add('tpope/vim-surround') " Surround.vim
 
@@ -30,9 +27,6 @@ call dein#add('caenrique/nvim-maximize-window-toggle') " Toggle to maximize the 
 call dein#add('chrisbra/csv.vim',
         \{'on_ft': 'csv'}) " Ease handling of csv files
 
-call dein#add('Shougo/echodoc.vim', 
-        \{'on_ft': ['python', 'r', 'java']}) " Echodoc. Dispalys function signatures.
-
 call dein#add('junegunn/fzf.vim',
         \{'on_cmd': ['Files', 'Buffers']}) " fuzzy finder
 
@@ -42,7 +36,6 @@ call dein#add('jalvesaq/nvim-r',
 call dein#add('rhysd/reply.vim', {
         \   'lazy' : 1,
         \   'on_cmd' : ['Repl', 'ReplAuto']}) "REPLs play nicely with :terminal in Neovim
-
 
 call dein#add('sirver/UltiSnips',
         \{'on_ft': ['tex', 'latex', 'python', 'java']}) " Snippet manager
@@ -79,8 +72,6 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#enable_smart_case = 1
 
-" echodoc.vim
-let g:echodoc#enable_at_startup = 1
 
 " fzf.vim
 nnoremap <C-p> :Files<CR>
