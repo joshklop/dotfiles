@@ -14,7 +14,6 @@ alias pip-update='pip install --upgrade --user $(pip list --outdated --user --fo
 alias rmorphan='pacman -Rns $(pacman -Qtdq)'
 alias shred='shred --remove --zero --iterations=4' # Overwrites a file with zeros, then removes it
 alias rm='rm -Iv'
-alias dotdrop='/usr/bin/dotdrop --cfg=~/dotdrop/config.yaml'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias wifi-menu='sudo wifi-menu -o' # Hide passwords with asterisks
 alias info='info --vi'
