@@ -73,9 +73,8 @@ let g:dein#auto_recache = 1
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_smart_case = 1
-
+call deoplete#custom#option({'camel_case': v:true,
+                        \ 'smart_case': v:true})
 
 " fzf.vim
 nnoremap <C-p> :Files<CR>
