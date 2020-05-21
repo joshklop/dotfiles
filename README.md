@@ -13,8 +13,9 @@ Motivation came from [this Hacker News Post](https://news.ycombinator.com/item?i
 ## System Update
 
 ```bash
+pip-update # alias for: pip install --upgrade --user $(pip list --outdated --user --format=freeze | cut -d
 pacman -Syu
-aurupdate # alias for trizen -Syu --aur --noconfirm
+aurupdate # alias for: trizen -Syu --aur --noconfirm
 pacman -Qqen > pkglist.txt
 pacman -Qqem > foreignpkglist.txt
 pip list > $HOME/python_pkglist.txt
