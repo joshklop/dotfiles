@@ -96,7 +96,7 @@ let g:fzf_colors =
 
 " gruvbox8
 set background=dark
-colorscheme gruvbox8
+colorscheme gruvbox8_soft
 let g:gruvbox_italics = 0
 let g:gruvbox_italicize_strings = 0
 
