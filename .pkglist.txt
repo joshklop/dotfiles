@@ -19,6 +19,7 @@ cups
 cups-pdf
 device-mapper
 dhcpcd
+dia
 dialog
 diffutils
 discord
@@ -109,6 +110,8 @@ sed
 shadow
 signal-desktop
 simplescreenrecorder
+sqlitebrowser
+strace
 sudo
 sysfsutils
 systemd
