@@ -33,9 +33,6 @@ set wildmenu
 " Keeps cursor off the edges of the screen
 set so=3
 
-" Do not show mode changes in x-mode
-set noshowmode
-
 " Case insensitive searches
 set ignorecase
 
