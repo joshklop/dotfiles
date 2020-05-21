@@ -76,7 +76,7 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt interactivecomments       # Allow typing comments at an interactive prompt
 
-# Make 'delete' actually delete
 bindkey "^[[3~" delete-char     # Make 'delete' actually delete
-# CTRL-U works as in bash
 bindkey \^U backward-kill-line  # CTRL-u works as in bash
+bindkey "^[[1;5C" forward-word  # Ctrl-right moves right a word
+bindkey "^[[1;5D" backward-word # Ctrl-left moves left a word
