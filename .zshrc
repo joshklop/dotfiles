@@ -8,7 +8,7 @@ export EDITOR="$VISUAL"
 
 # Aliases
 #alias ls='ls --color=auto --group-directories-first --sort=extension'
-alias ls='exa --icons --git --classify --group-directories-first --color-scale'
+alias ls='exa --git --classify --group-directories-first --color-scale'
 alias cat='bat'
 alias pacman='sudo pacman'
 alias aurupdate='trizen -Syu --aur --noconfirm'
