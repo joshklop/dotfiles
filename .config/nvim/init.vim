@@ -47,6 +47,8 @@ set nowrap
 set relativenumber
 set nu
 
+set tildeop
+
 """"""""""""""""
 " Key Mappings "
 """"""""""""""""
