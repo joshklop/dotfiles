@@ -2,7 +2,6 @@ bitwarden-bin
 brave-bin
 caffeine-ng
 google-chrome
-gtypist-single-space
 keybase-bin
 openoffice
 pygtk
