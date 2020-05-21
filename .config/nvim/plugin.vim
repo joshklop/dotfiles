@@ -13,6 +13,7 @@ call dein#add('Shougo/deoplete.nvim') " Framework for autocompletion plugins
 
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
 
+call dein#add('tpope/vim-repeat') " Allows the 'dot' command to repeat plugin actions
 
 call dein#add('tpope/vim-surround') " Surround.vim
 
@@ -52,6 +53,9 @@ call dein#add('lervag/vimtex',
 call dein#add('liuchengxu/vista.vim', 
         \{'on_ft': ['tex', 'latex', 'python', 'java', 'r']}) " tagbar for vim
 
+call dein#add('wellle/visual-split.vim',
+        \{'on_cmd': ['VSSplit', 'VSSplitAbove', 'VSSplitBelow']}) " Open a selection in a split for reference
+
 " Remove disabled plugins
 call map(dein#check_clean(), "delete(v:val, 'rf')")
 
@@ -75,7 +79,7 @@ let g:deoplete#enable_smart_case = 1
 
 " fzf.vim
 nnoremap <C-p> :Files<CR>
-nnoremap <C-b> :Buffers<CR>
+"nnoremap <C-b> :Buffers<CR>
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
