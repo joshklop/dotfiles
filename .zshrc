@@ -30,12 +30,12 @@ alias mergepdf='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/def
 ####################
 
 # Autocompletion
-zstyle :compinstall filename 'home/josh/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit && compinit
 autoload edit-command-line # Prevent weird things from happening with entering text on the command line
 zle -N edit-command-line 
 setopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
-zstyle ':completion:*:*:*:default' menu search yes # arrow-key driven interface
+zstyle ':completion:*:*:*:default' menu yes select search yes # arrow-key driven interface
 
 # fzf defaults
 export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
