@@ -12,7 +12,7 @@ alias ls='exa --git --classify --group-directories-first --sort=extension --colo
 alias cat='bat'
 alias pacman='sudo pacman'
 alias aurupdate='trizen -Syu --aur --noconfirm'
-alias pip-update='pip install --upgrade --user $(pip list --outdated --user --format=freeze | cut -d'
+alias pip-update='pip install --upgrade --user $(pip list --outdated --user --format=freeze | cut -f 1 -d =)'
 alias rmorphan='pacman -Rns $(pacman -Qtdq)'
 alias shred='shred --remove --zero --iterations=4' # Overwrites a file with zeros, then removes it
 alias rm='rm -Iv'
