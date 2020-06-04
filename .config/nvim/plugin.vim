@@ -5,11 +5,10 @@ let maplocalleader = "\<Tab>"
 
 call dein#begin(expand('~/.config/nvim/dein'))
 
-" Non-Lazy Loaded Plugins
-
 call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
 
-call dein#add('Shougo/deoplete.nvim') " Framework for autocompletion plugins
+call dein#add('Shougo/deoplete.nvim',
+        \{'on_ft': ['python', 'java', 'tex', 'latex', 'r']}) " Framework for autocompletion plugins
 
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
 
