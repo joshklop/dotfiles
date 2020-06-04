@@ -15,11 +15,11 @@ set nomodeline
 " Don't try to emulate vi, use all neovim features
 set nocompatible
 
-" Convert tabs to spaces
+set tabstop=4 softtabstop=4
+set shiftwidth=4
 set expandtab
-
-" Enable auto indent
 set autoindent
+set smartindent
 
 " Enable filetype-specific indentation
 filetype plugin indent on
