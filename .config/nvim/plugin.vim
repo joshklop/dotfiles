@@ -35,6 +35,8 @@ call dein#add('jalvesaq/nvim-r',
 call dein#add('sirver/UltiSnips',
         \{'on_ft': ['tex', 'latex', 'python', 'java']}) " Snippet manager
 
+call dein#add('justinmk/vim-sneak') " Improved f/F/t/T
+
 call dein#add('ludovicchabant/vim-gutentags',
         \{'on_ft': ['tex', 'latex', 'python', 'java', 'r']}) " A Vim plugin that manages your tag files
 
