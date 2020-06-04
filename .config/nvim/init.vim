@@ -33,10 +33,9 @@ set wildmenu
 " Keeps cursor off the edges of the screen
 set so=3
 
-" Case insensitive searches
 set ignorecase
+set incsearch
 
-" Disable mouse support
 set mouse=""
 
 set nowrap
