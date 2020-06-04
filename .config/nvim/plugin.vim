@@ -46,12 +46,6 @@ call dein#add('conornewton/vim-pandoc-markdown-preview',
 call dein#add('lervag/vimtex',
         \{'on_ft': ['tex', 'latex']}) " Amazing LaTex tool
 
-call dein#add('liuchengxu/vista.vim', 
-        \{'on_ft': ['tex', 'latex', 'python', 'java', 'r']}) " tagbar for vim
-
-call dein#add('wellle/visual-split.vim',
-        \{'on_cmd': ['VSSplit', 'VSSplitAbove', 'VSSplitBelow']}) " Open a selection in a split for reference
-
 " Remove disabled plugins
 call map(dein#check_clean(), "delete(v:val, 'rf')")
 
