@@ -54,9 +54,9 @@ set tildeop
 nnoremap <Up> ddkP
 "Move a line down
 nnoremap <Down> ddp
-"Move a character left in normal mode
+"Move a character left
 nnoremap <Left> xhP
-"Move a character right in normal mode
+"Move a character right
 nnoremap <Right> xp
 
 " Allows easier navigation on broken lines
