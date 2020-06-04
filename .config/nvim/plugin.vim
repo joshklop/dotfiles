@@ -20,9 +20,8 @@ call dein#add('chaoren/vim-wordmotion') " Enhanced word objects
 
 call dein#add('takac/vim-hardtime') " Stop repeating the basic movement keys
 
-call dein#add('caenrique/nvim-maximize-window-toggle') " Toggle to maximize the current buffer ina new tab and stack
-
-" Lazy Loaded Plugins
+call dein#add('dense-analysis/ale',
+        \{'on_ft': 'python'}) " Asynchronous Lint Engine
 
 call dein#add('chrisbra/csv.vim',
         \{'on_ft': 'csv'}) " Ease handling of csv files
