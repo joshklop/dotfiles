@@ -9,6 +9,7 @@ borg create                                                            \
         -e 'sh:**/.*' -e 'sh:**/*.iso' -e 'sh:**/*.db' -e 'sh:**/*.tar'\
         -e 'sh:**/*.tar.gz' -e 'sh:**/*.tgz' -e 'sh:**/*.zip' -e '*/R' \
         -e '*/Downloads' -e '*/Documents/Zoom' -e '*/README.md'        \
+        -e '*/code/ccxt'                                               \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"                             \
         "$HOME"
 
