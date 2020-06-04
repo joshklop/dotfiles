@@ -32,10 +32,6 @@ call dein#add('junegunn/fzf.vim',
 call dein#add('jalvesaq/nvim-r',
         \{'on_ft': ['r', 'Rmd']}) " R environment
 
-call dein#add('rhysd/reply.vim', {
-        \   'lazy' : 1,
-        \   'on_cmd' : ['Repl', 'ReplAuto']}) "REPLs play nicely with :terminal in Neovim
-
 call dein#add('sirver/UltiSnips',
         \{'on_ft': ['tex', 'latex', 'python', 'java']}) " Snippet manager
 
