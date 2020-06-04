@@ -49,9 +49,6 @@ set tildeop
 " Key Mappings "
 """"""""""""""""
 
-" Turn recording off
-nnoremap q <Nop>
-
 " Remap the arrow keys
 "Move a line up
 nnoremap <Up> ddkP
