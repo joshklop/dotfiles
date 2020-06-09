@@ -69,9 +69,6 @@ nnoremap <C-c> :nohlsearch<CR>
 " Spell-check set to F6
 nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
 
-" Run pythontex
-nnoremap <LocalLeader>p :!pythontex %<CR>
-
 " Terminal Mode Keybindings "
 tnoremap <Esc> <C-\><C-n>
 tnoremap <expr> <C-R> '<C-\><C-n>"'.nr2char(getchar()).'pi' " Simlulate CTRL-R
@@ -97,8 +94,6 @@ nnoremap <A-w><A-s> :split<CR>
 nnoremap <A-w>v :vsplit<CR>
 nnoremap <A-w><A-v> :vsplit<CR>
 
-"Open $MYVIMRC in a vsplit
-nnoremap <leader>vv :vsplit $MYVIMRC<cr>
-
-"Source $MYVIMRC
-nnoremap <leader>sv :source $MYVIMRC<cr>
+" Completion settings
+set complete=".,w,b,u,t"
+set completeopt="menuone,preview,noinsert"
