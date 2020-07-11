@@ -5,6 +5,9 @@ export PRINTER=M70
 export PATH=$PATH:/home/josh/.local/bin
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export FCEDIT="$VISUAL"
+# Python virtual environments
+source /home/josh/.local/bin/virtualenvwrapper.sh
 
 # Aliases
 #alias ls='ls --color=auto --group-directories-first --sort=extension'
