@@ -7,8 +7,8 @@ call dein#begin(expand('~/.config/nvim/dein'))
 
 call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
 
-call dein#add('Shougo/deoplete.nvim',
-        \{'on_ft': ['python', 'java', 'tex', 'latex', 'r']}) " Framework for autocompletion plugins
+call dein#add('Shougo/deoplete.nvim', 
+        \{'on_ft': ['python', 'r', 'tex', 'latex', 'java']})
 
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
 
@@ -47,7 +47,7 @@ call dein#add('lervag/vimtex',
         \{'on_ft': ['tex', 'latex']}) " Amazing LaTex tool
 
 " Remove disabled plugins
-call map(dein#check_clean(), "delete(v:val, 'rf')")
+"call map(dein#check_clean(), "delete(v:val, 'rf')")
 
 call dein#end()
 
@@ -119,8 +119,6 @@ let Rout_more_colors = 1
 
 " vim-sneak
 let g:sneak#label = 1
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger = '<tab>'
