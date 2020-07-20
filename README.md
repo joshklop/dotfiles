@@ -1,14 +1,16 @@
 # Dotfiles
 
-I am now managing my dotfiles with a bare git repository. 
+I manage my dotfiles with a bare git repository. 
+Motivation came from [this Hacker News Post](https://news.ycombinator.com/item?id=11070797) and 
+[this blog post](https://www.atlassian.com/git/tutorials/dotfiles).
 
-Motivation came from [this Hacker News Post](https://news.ycombinator.com/item?id=11070797) and [this blog post](https://www.atlassian.com/git/tutorials/dotfiles).
+Most of my configs come from [brokenbyte's dotfile repo](https://gitlab.com/brokenbyte/dotdrop). 
+Definitely take a look!
 
 ## Simple Clean-Up
 
 * Clean home directory
 * Delete unnecessary programs and python packages
-* Export and encrypt Bitwarden
 
 ## System Update
 
@@ -30,7 +32,8 @@ $HOME/.local/bin/backup.sh
 
 ## Dotfiles
 
-Click [here](https://www.atlassian.com/git/tutorials/dotfiles) if something goes wrong.
+Read [this tutorial](https://www.atlassian.com/git/tutorials/dotfiles).
+Below is a summary. Nearly all of the steps are directly copied from the tutorial.
 
 ### Starting from scratch
 
@@ -69,5 +72,5 @@ Now you can version the `$HOME` directory like any other repository, just replac
 A few other things you need to do:
 
 * Symlink root's `init.vim` to your `init.vim`.
-* Change Pacman's settings in `/etc`
+* Change pacman's settings in `/etc` (I use Arch Linux)
 * Symlink `$HOME/.local/share/applications/mimeapps.list` to `$HOME/.config/mimeapps.list`.
