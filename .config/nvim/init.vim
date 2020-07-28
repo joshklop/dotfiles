@@ -67,10 +67,10 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 nnoremap <C-w>t :tabnew<CR>
-nnoremap <A-w>s :split<CR>
-nnoremap <A-w><A-s> :split<CR>
-nnoremap <A-w>v :vsplit<CR>
-nnoremap <A-w><A-v> :vsplit<CR>
+nnoremap <C-w>s :split<CR>
+nnoremap <C-w><A-s> :split<CR>
+nnoremap <C-w>v :vsplit<CR>
+nnoremap <C-w><A-v> :vsplit<CR>
 
 " Completion settings
 set complete=".,w,b,u,t"
