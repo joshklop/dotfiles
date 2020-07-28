@@ -43,6 +43,8 @@ call dein#add('ludovicchabant/vim-gutentags',
 call dein#add('conornewton/vim-pandoc-markdown-preview',
         \{'on_cmd': 'StartMdPreview'}) " Preview Pandoc markdown
 
+call dein#add('airblade/vim-gitgutter') " VCS added, modified, and removed lines helper
+
 call dein#add('lervag/vimtex',
         \{'on_ft': ['tex', 'latex']}) " Amazing LaTex tool
 
@@ -134,6 +136,16 @@ let g:list_of_normal_keys = ['h', 'j', 'k', 'l']
 
 " vim-pandoc-markdown-preview
 let g:md_pdf_viewer = 'okular'
+
+" vim-gitgutter
+set updatetime=100
+let g:gitgutter_git_executable = '/usr/bin/git'
+nnoremap <LocalLeader>gn :GitGutterNextHunk<CR>
+nnoremap <LocalLeader>gN :GitGutterPrevHunk<CR>
+nnoremap <LocalLeader>gq :GitGutterQuickFix<CR>
+nnoremap <LocalLeader>ga :GitGutterStageHunk<CR>
+nnoremap <LocalLeader>gu :GitGutterUndoHunk<CR>
+nnoremap <LocalLeader>gp :GitGutterPreviewHunk<CR>
 
 " vimtex
 let g:vimtex_enabled = 1
