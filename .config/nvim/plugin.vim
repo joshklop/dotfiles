@@ -49,7 +49,7 @@ call dein#add('lervag/vimtex',
         \{'on_ft': ['tex', 'latex']}) " Amazing LaTex tool
 
 " Remove disabled plugins
-"call map(dein#check_clean(), "delete(v:val, 'rf')")
+call map(dein#check_clean(), "delete(v:val, 'rf')")
 
 call dein#end()
 
