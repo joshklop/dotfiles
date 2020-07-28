@@ -1,8 +1,6 @@
 " Add dein.vim to path so we can find it
 set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim 
 
-let maplocalleader = "\<Tab>"
-
 call dein#begin(expand('~/.config/nvim/dein'))
 
 call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
