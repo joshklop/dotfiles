@@ -5,53 +5,31 @@ let g:loaded_python_provider = 0
 " Load plugins
 source $HOME/.config/nvim/plugin.vim
 
-""""""""""""""""""""
-" General Settings "
-""""""""""""""""""""
+" General Settings
 
-" Disable modelines (security vulneratibility)
 set nomodeline
-
-" Don't try to emulate vi, use all neovim features
 set nocompatible
-
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
-
-" Enable filetype-specific indentation
 filetype plugin indent on
-
-" Enable syntax highlighting (should be specified after filetype plugin indent on)
 syntax on
-
-" Enhanced tab completion in command mode
 set wildmenu
-
-" Keeps cursor off the edges of the screen
 set so=3
-
 set ignorecase
 set incsearch
-
 set mouse=""
-
 set nowrap
-
 set relativenumber
 set nu
-
 set tildeop
 
-""""""""""""""""
-" Key Mappings "
-""""""""""""""""
+" Key Mappings
 
-" Remap the arrow keys
 "Move a line up
-nnoremap <Up> ddkP
+nnoremap <Up> ddkP 
 "Move a line down
 nnoremap <Down> ddp
 "Move a character left
@@ -59,11 +37,11 @@ nnoremap <Left> xhP
 "Move a character right
 nnoremap <Right> xp
 
-" Allows easier navigation on broken lines
+" Allow easier navigation on broken lines
 nnoremap j gj
 nnoremap k gk
 
-" Maps Ctrl-C to redraw the screen
+" Map Ctrl-C to redraw the screen
 nnoremap <C-c> :nohlsearch<CR>
 
 " Spell-check set to F6
