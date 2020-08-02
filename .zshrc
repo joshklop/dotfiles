@@ -21,9 +21,9 @@ alias shred='shred --remove --zero --iterations=4' # Overwrites a file with zero
 alias rm='rm -Iv'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias wifi-menu='sudo wifi-menu -o' # Hide passwords with asterisks
+alias wifi-off='sudo rfkill block all'
+alias wifi-on='sudo rfkill unblock all'
 alias info='info --vi'
-alias R='R --quiet'
-alias check-desktop='desktop-file-validate ~/.local/share/applications/*.desktop'
 # the following is from [this](https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf) Stack Overflow answer.
 # add '-sOutputFile=output.pdf input1.pdf input2.pdf' to make it work.
 alias mergepdf='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150'
@@ -77,6 +77,7 @@ setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+
 setopt interactivecomments       # Allow typing comments at an interactive prompt
 
 bindkey "^[[3~" delete-char     # Make 'delete' actually delete
