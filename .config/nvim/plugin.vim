@@ -33,6 +33,8 @@ call dein#add('jalvesaq/nvim-r',
 call dein#add('sirver/UltiSnips',
         \{'on_ft': ['tex', 'latex', 'python', 'java']}) " Snippet manager
 
+call dein#add('jreybert/vimagit') " Ease git workflow.
+
 call dein#add('justinmk/vim-sneak') " Improved f/F/t/T
 
 call dein#add('ludovicchabant/vim-gutentags',
@@ -40,8 +42,6 @@ call dein#add('ludovicchabant/vim-gutentags',
 
 call dein#add('conornewton/vim-pandoc-markdown-preview',
         \{'on_cmd': 'StartMdPreview'}) " Preview Pandoc markdown
-
-call dein#add('airblade/vim-gitgutter') " VCS added, modified, and removed lines helper
 
 call dein#add('lervag/vimtex',
         \{'on_ft': ['tex', 'latex']}) " Amazing LaTex tool
