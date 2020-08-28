@@ -5,16 +5,27 @@ let g:loaded_python_provider = 0
 " Load plugins
 source $HOME/.config/nvim/plugin.vim
 
+augroup omnifuncs
+  autocmd BufNew,BufNewFile,BufRead,BufEnter *.snippets :setfiletype snippets
+  autocmd BufNew,BufNewFile,BufRead,BufEnter *.js :setfiletype javascript
+  autocmd BufNew,BufNewFile,BufRead,BufEnter *.md :setfiletype markdown
+augroup end
+
 " General Settings
 
+set termguicolors
+set inccommand=nosplit
 set nomodeline
 set nocompatible
-set tabstop=4 softtabstop=4
-set shiftwidth=4
 set expandtab
+set tabstop=2
+set shiftwidth=2
 set autoindent
 set smartindent
-filetype plugin indent on
+set smarttab
+filetype on
+filetype plugin on
+filetype indent on
 syntax on
 set wildmenu
 set so=3
@@ -41,8 +52,8 @@ nnoremap <Right> xp
 nnoremap j gj
 nnoremap k gk
 
-" Map Ctrl-C to redraw the screen
-nnoremap <C-c> :nohlsearch<CR>
+" Map ESC to redraw the screen
+nnoremap <ESC> :noh<CR>
 
 " Spell-check set to F6
 nnoremap <F6> :setlocal spell! spelllang=en_us<CR>
