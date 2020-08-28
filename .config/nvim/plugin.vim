@@ -6,7 +6,7 @@ call dein#begin(expand('~/.config/nvim/dein'))
 call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
 
 call dein#add('Shougo/deoplete.nvim', 
-        \{'on_ft': ['python', 'r', 'tex', 'latex', 'java']})
+        \{'on_ft': ['python', 'javascript', 'r', 'tex', 'latex', 'java', 'sh', 'bash', 'zsh']})
 
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
 
