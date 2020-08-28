@@ -96,6 +96,15 @@ bindkey \^U backward-kill-line  # CTRL-u works as in bash
 bindkey "^[[1;5C" forward-word  # Ctrl-right moves right a word
 bindkey "^[[1;5D" backward-word # Ctrl-left moves left a word
 
+# https://wiki.archlinux.org/index.php/SSH_keys#SSH_agents
+# Start ssh-agent automatically and ensure only one process runs at a time
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/josh/code/google-cloud-sdk/path.zsh.inc' ]; then . '/home/josh/code/google-cloud-sdk/path.zsh.inc'; fi
 
