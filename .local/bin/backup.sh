@@ -4,13 +4,25 @@ export BORG_REPO=/mnt/backup
 
 export BORG_PASSCOMMAND="gpg --decrypt $HOME/.local/bin/passphrase.txt.gpg"
 
-borg create                                                            \
-        --stats --progress $2 $1                                       \
-        -e 'sh:**/.*' -e 'sh:**/*.iso' -e 'sh:**/*.db' -e 'sh:**/*.tar'\
-        -e 'sh:**/*.tar.gz' -e 'sh:**/*.tgz' -e 'sh:**/*.zip' -e '*/R' \
-        -e '*/Downloads' -e '*/Documents/Zoom' -e '*/README.md'        \
-        -e '*/code/ccxt' -e '*/nltk_data'                              \
-        ::"$HOSTNAME--$(date +%+4Y-%m-%d)"                             \
+borg create                                      \
+        --stats --progress $2 $1                 \
+        -e 'sh:**/.*'                            \
+        -e 'sh:**/*.iso'                         \
+        -e 'sh:**/*.db'                          \
+        -e 'sh:**/*.tar'                         \
+        -e 'sh:**/*.tar.gz'                      \
+        -e 'sh:**/*.tgz'                         \
+        -e 'sh:**/*.zip'                         \
+        -e '*/Downloads'                         \
+        -e '*/Documents/Zoom'                    \
+        -e '*/R/x86_64-pc-linux-gnu-library'     \
+        -e '*/code/google-cloud-sdk'             \
+        -e '*/code/gcloud'                       \
+        -e '*/code/python-virtual-evironments'   \
+        -e '*/README.md'                         \
+        -e '*/LICENSE'                           \
+        --exclude-if-present '.git'              \
+        ::"$HOSTNAME--$(date +%+4Y-%m-%d)"       \
         "$HOME"
 
 backup_exit=$?
