@@ -23,6 +23,8 @@ dialog
 diffutils
 discord
 dmenu
+docker
+docker-compose
 e2fsprogs
 efibootmgr
 exa
@@ -40,6 +42,7 @@ gcc-fortran
 gcc-libs
 gettext
 ghc
+ghex
 git
 glibc
 grep
@@ -70,7 +73,9 @@ m4
 make
 man-db
 man-pages
+mariadb
 mdadm
+most
 nano
 neovim
 netctl
@@ -105,6 +110,7 @@ r
 ranger
 redshift
 reiserfsprogs
+rhino
 ripgrep
 rofi
 s-nail
@@ -112,6 +118,7 @@ sed
 shadow
 signal-desktop
 simplescreenrecorder
+sleuthkit
 sqlitebrowser
 strace
 sudo
