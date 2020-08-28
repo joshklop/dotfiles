@@ -96,6 +96,9 @@ bindkey \^U backward-kill-line  # CTRL-u works as in bash
 bindkey "^[[1;5C" forward-word  # Ctrl-right moves right a word
 bindkey "^[[1;5D" backward-word # Ctrl-left moves left a word
 
+# Automatically manage ssh keys
+eval $(keychain --eval --quiet $HOME/.ssh/github)
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/josh/code/google-cloud-sdk/path.zsh.inc' ]; then . '/home/josh/code/google-cloud-sdk/path.zsh.inc'; fi
 
