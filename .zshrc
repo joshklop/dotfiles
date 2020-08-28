@@ -33,6 +33,8 @@ alias wifi-menu='sudo wifi-menu -o' # Hide passwords with asterisks
 alias wifi-off='sudo rfkill block all'
 alias wifi-on='sudo rfkill unblock all'
 alias info='info --vi'
+alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
+alias disable-touchpad="xinput disable 'SynPS/2 Synaptics TouchPad'"
 # the following is from [this](https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf) Stack Overflow answer.
 # add '-sOutputFile=output.pdf input1.pdf input2.pdf' to make it work.
 alias mergepdf='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150'
