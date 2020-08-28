@@ -29,6 +29,9 @@ call dein#add('chrisbra/csv.vim',
 call dein#add('junegunn/fzf.vim',
         \{'on_cmd': ['Files', 'Buffers']}) " fuzzy finder
 
+call dein#add('jiangmiao/auto-pairs',
+        \{'on_ft': ['javascript']}) " Automaically create matching brace/paren/quote/etc.
+
 call dein#add('jalvesaq/nvim-r',
         \{'on_ft': ['r', 'Rmd']}) " R environment
 
