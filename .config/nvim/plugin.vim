@@ -10,6 +10,8 @@ call dein#add('Shougo/deoplete.nvim',
 
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
 
+call dein#add('pangloss/vim-javascript') " Javascript syntax highlighting
+
 call dein#add('tpope/vim-repeat') " Allows the 'dot' command to repeat plugin actions
 
 call dein#add('tpope/vim-surround') " Surround.vim
@@ -19,7 +21,7 @@ call dein#add('chaoren/vim-wordmotion') " Enhanced word objects
 call dein#add('takac/vim-hardtime') " Stop repeating the basic movement keys
 
 call dein#add('dense-analysis/ale',
-        \{'on_ft': 'python'}) " Asynchronous Lint Engine
+        \{'on_ft': ['python', 'javascript']}) " Asynchronous Lint Engine
 
 call dein#add('chrisbra/csv.vim',
         \{'on_ft': 'csv'}) " Ease handling of csv files
@@ -116,6 +118,10 @@ let R_nvimpager = 'tab'
 let R_assign = 2 
 let rout_follow_colorscheme = 1
 let Rout_more_colors = 1
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
 
 " vim-sneak
 let g:sneak#label = 1
