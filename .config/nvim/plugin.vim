@@ -1,5 +1,5 @@
 " Add dein.vim to path so we can find it
-set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim 
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.config/nvim/dein'))
 
@@ -7,7 +7,7 @@ call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
 
 call dein#add('Shougo/deoplete.nvim') " Autocomplete framework
 
-call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
+call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant
 
 call dein#add('pangloss/vim-javascript',
       \{'on_ft': ['javascript']}) " Javascript syntax highlighting
@@ -23,8 +23,14 @@ call dein#add('chaoren/vim-wordmotion') " Enhanced word objects
 
 call dein#add('takac/vim-hardtime') " Stop repeating the basic movement keys
 
+call dein#add('mhartington/nvim-typescript',
+      \{'build': './install.sh'},
+      \{'on_ft': ['typescript']}) " TypeScript plugin
+call dein#add('HerringtonDarkholme/yats.vim',
+      \{'on_ft': ['typescript']}) " Syntax file for TypeScript (nvim-typescript dependency)
+
 call dein#add('dense-analysis/ale',
-        \{'on_ft': ['python', 'javascript']}) " Asynchronous Lint Engine
+        \{'on_ft': ['python', 'javascript', 'typescript']}) " Asynchronous Lint Engine
 
 call dein#add('chrisbra/csv.vim',
         \{'on_ft': 'csv'}) " Ease handling of csv files
@@ -33,7 +39,7 @@ call dein#add('junegunn/fzf.vim',
         \{'on_cmd': ['Files', 'Buffers']}) " fuzzy finder
 
 call dein#add('jiangmiao/auto-pairs',
-        \{'on_ft': ['javascript']}) " Automaically create matching brace/paren/quote/etc.
+        \{'on_ft': ['javascript', 'typescript']}) " Automaically create matching brace/paren/quote/etc.
 
 call dein#add('jalvesaq/nvim-r',
         \{'on_ft': ['r', 'Rmd']}) " R environment
@@ -121,7 +127,7 @@ let g:netrw_winsize = 15
 
 " Nvim-R
 let R_nvimpager = 'tab'
-let R_assign = 2 
+let R_assign = 2
 let rout_follow_colorscheme = 1
 let Rout_more_colors = 1
 
