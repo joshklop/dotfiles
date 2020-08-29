@@ -1,0 +1,12 @@
+[user]
+	name = Josh Klopfenstein
+	email = joshklop10@gmail.com
+[alias]
+	cgraph = log --all --decorate --oneline --graph
+	st = status
+[pull]
+	rebase = false
+[merge]
+	tool = nvim
+	conflictstyle = diff3
+	prompt = false
