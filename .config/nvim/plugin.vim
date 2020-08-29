@@ -9,7 +9,11 @@ call dein#add('Shougo/deoplete.nvim') " Autocomplete framework
 
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant 
 
-call dein#add('pangloss/vim-javascript') " Javascript syntax highlighting
+call dein#add('pangloss/vim-javascript',
+      \{'on_ft': ['javascript']}) " Javascript syntax highlighting
+
+call dein#add('othree/javascript-libraries-syntax.vim',
+      \{'on_ft': ['javascript']})  " Syntax highlighting for JS libraries/frameworks
 
 call dein#add('tpope/vim-repeat') " Allows the 'dot' command to repeat plugin actions
 
