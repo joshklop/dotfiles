@@ -7,35 +7,23 @@ Motivation came from [this Hacker News Post](https://news.ycombinator.com/item?i
 Most of my configs come from [brokenbyte's dotfile repo](https://gitlab.com/brokenbyte/dotdrop). 
 Definitely take a look!
 
-## Simple Clean-Up
+## Manage
+
+To manage my dotfiles, I usually follow something close to the steps outlined below:
 
 * Clean home directory
-* Delete unnecessary programs and python packages
+* Delete unnecessary programs and Python packages
+* Run the `$HOME/.local/bin/cleanup.sh` script to update packages.
+  + Note that this is tailored to my directory structure. 
+  You may want to change the script before using.
+* Run the `$HOME/.local/bin/cleanup.sh` script to backup packages.
+  + Note that this is tailored to my directory structure. 
+  You may want to change the script before using.
 
-## System Update
-
-```bash
-pip-update # alias for: pip install --upgrade --user $(pip list --outdated --user --format=freeze | cut -d
-pacman -Syu
-aurupdate # alias for: trizen -Syu --aur --noconfirm
-pacman -Qqen > $HOME/.pkglist.txt
-pacman -Qqem > $HOME/.foreignpkglist.txt
-pip list > $HOME/.python_pkglist.txt
-```
-
-## Backup
-
-Everything is automated with `borg`:
-```bash
-$HOME/.local/bin/backup.sh
-```
-
-## Dotfiles
+## Install
 
 Read [this tutorial](https://www.atlassian.com/git/tutorials/dotfiles).
 Below is a summary. Nearly all of the steps are directly copied from the tutorial.
-
-### Starting from scratch
 
 ```bash
 # Create a bare git repo to track our files
@@ -49,7 +37,7 @@ echo "alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" 
 ```
 Now you can version the `$HOME` directory like any other repository, just replace `git` with the `config` alias.
 
-### Installing dotfiles on a new system
+## Import
 
 ```bash
 # Add the alias definition to your .zshrc
