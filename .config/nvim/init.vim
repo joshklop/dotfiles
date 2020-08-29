@@ -8,7 +8,11 @@ source $HOME/.config/nvim/plugin.vim
 augroup omnifuncs
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.snippets :setfiletype snippets
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.js :setfiletype javascript
+  autocmd BufNew,BufNewFile,BufRead,BufEnter *.ts :setfiletype typescript
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.md :setfiletype markdown
+  autocmd FileType magit setlocal nowrap
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 augroup end
 
 " General Settings
