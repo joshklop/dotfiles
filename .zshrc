@@ -104,3 +104,9 @@ if [ -f '/home/josh/code/google-cloud-sdk/path.zsh.inc' ]; then . '/home/josh/co
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/josh/code/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/josh/code/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Enable NVM on startup
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
