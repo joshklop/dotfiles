@@ -3,6 +3,7 @@ brave-bin
 caffeine-ng
 google-chrome
 keybase-bin
+nvm
 openoffice
 pygtk
 safeeyes

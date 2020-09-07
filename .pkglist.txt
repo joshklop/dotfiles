@@ -19,6 +19,7 @@ cups
 cups-pdf
 device-mapper
 dhcpcd
+dia
 dialog
 diffutils
 discord
@@ -54,11 +55,13 @@ highlight
 hsetroot
 htop
 i3-gaps
+i3lock-color
 i3status
 inetutils
 iproute2
 iputils
 jfsutils
+keychain
 kitty
 less
 libtool
@@ -79,7 +82,9 @@ most
 nano
 neovim
 netctl
+nodejs
 noto-fonts-emoji
+npm
 nss-mdns
 ntfs-3g
 okular
@@ -110,7 +115,6 @@ r
 ranger
 redshift
 reiserfsprogs
-rhino
 ripgrep
 rofi
 s-nail
@@ -144,6 +148,7 @@ tlp
 tmux
 tree
 ttf-fira-code
+typescript
 ufw
 unzip
 usbutils
