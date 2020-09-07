@@ -5,6 +5,7 @@ let g:loaded_python_provider = 0
 " Load plugins
 source $HOME/.config/nvim/plugin.vim
 
+" Filetype-specific settings
 augroup omnifuncs
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.snippets :setfiletype snippets
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.js :setfiletype javascript
