@@ -178,8 +178,8 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# physlock
-bindsym $mod+p exec "physlock"
+# Lock screen
+bindsym $mod+p exec "lock.sh"
 
 # Monitor controls
 bindsym $mod+m exec monitor.sh
