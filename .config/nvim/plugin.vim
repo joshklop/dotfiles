@@ -36,6 +36,9 @@ call dein#add('mhartington/nvim-typescript',
 call dein#add('HerringtonDarkholme/yats.vim',
       \{'on_ft': ['typescript']}) " Syntax file for TypeScript (nvim-typescript dependency)
 
+call dein#add('prettier/vim-prettier',
+      \{'on_ft': ['javascript', 'typescript', 'json', 'css', 'markdown']})
+
 call dein#add('dense-analysis/ale',
         \{'on_ft': ['python', 'javascript', 'typescript']}) " Asynchronous Lint Engine
 
