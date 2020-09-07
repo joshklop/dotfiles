@@ -49,7 +49,9 @@ call dein#add('junegunn/fzf.vim',
         \{'on_cmd': ['Files', 'Buffers']}) " fuzzy finder
 
 call dein#add('jiangmiao/auto-pairs',
-        \{'on_ft': ['javascript', 'typescript']}) " Automaically create matching brace/paren/quote/etc.
+        \{'on_ft': ['javascript', 'typescript',
+                    \'bash', 'sh', 'zsh',
+                    \'python']}) " Automaically create matching brace/paren/quote/etc.
 
 call dein#add('jalvesaq/nvim-r',
         \{'on_ft': ['r', 'Rmd']}) " R environment
