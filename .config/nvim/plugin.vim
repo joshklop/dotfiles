@@ -62,7 +62,7 @@ call dein#add('jreybert/vimagit') " Ease git workflow
 call dein#add('justinmk/vim-sneak') " Improved f/F/t/T
 
 call dein#add('ludovicchabant/vim-gutentags',
-        \{'on_ft': ['tex', 'latex', 'python', 'java', 'r']}) " A Vim plugin that manages your tag files
+        \{'on_ft': ['tex', 'latex', 'python', 'java', 'r', 'javascript', 'typescript']}) " A Vim plugin that manages your tag files
 
 call dein#add('conornewton/vim-pandoc-markdown-preview',
         \{'on_cmd': 'StartMdPreview'}) " Preview Pandoc markdown
@@ -84,8 +84,20 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
-let g:ale_linters = {'python': ['flake8']}
-let g:ale_lsp_root = {'python': ['flake8']}
+let g:ale_linters = {
+      \'python': ['flake8'],
+      \'typescript': ['eslint'],
+      \'javascript': ['eslint']
+      \}
+let g:ale_lsp_root = {
+      \'python': ['flake8']
+      \}
+let g:ale_fixers = {
+      \'html':['prettier'],
+      \'css': ['prettier'],
+      \'javascript': ['prettier'],
+      \'typescript' : ['prettier']
+      \}
 nnoremap <LocalLeader>gd :ALEGoToDefinition<CR>
 nnoremap <LocalLeader>gr :ALEFindReferences<CR>
 
