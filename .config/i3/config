@@ -18,7 +18,7 @@ font pango:Monospace 8
 # Window focus follows mouse movements
 focus_follows_mouse  yes
 
-# When switching focus to a window on a different output, do not warp the 
+# When switching focus to a window on a different output, do not warp the
 # cursor to the center of that window
 #mouse_warping none
 
