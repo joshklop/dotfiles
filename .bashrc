@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# http://ezprompt.net/
 PS1='[\u@\h \W]\$ '
 
 export PRINTER=M70
