@@ -10,6 +10,8 @@ call dein#add('Shougo/dein.vim') " Keep dein.vim up to date
 
 call dein#add('Shougo/deoplete.nvim') " Autocomplete framework
 
+call dein#add('csexton/trailertrash.vim') " Delete trailing whitespace
+
 call dein#add('lifepillar/vim-gruvbox8') " Gruvbox colorscheme variant
 
 call dein#add('pangloss/vim-javascript',
