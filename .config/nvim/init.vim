@@ -9,6 +9,7 @@ augroup omnifuncs
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.ts :setfiletype typescript
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.md :setfiletype markdown
   autocmd FileType python setlocal colorcolumn=79
+  autocmd FileType python let g:keywordprog='pydoc'
   autocmd FileType magit setlocal nowrap
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
