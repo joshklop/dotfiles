@@ -60,24 +60,24 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-surround')
   call dein#add('chaoren/vim-wordmotion')
   call dein#add('prettier/vim-prettier',
-        \{'on_ft': ['javascript', 'typescript', 'json', 'css', 'markdown']})
+      \{'on_ft': ['javascript', 'typescript', 'json', 'css', 'markdown']})
   call dein#add('dense-analysis/ale',
-        \{'on_ft': ['python', 'javascript', 'typescript']})
+      \{'on_ft': ['python', 'javascript', 'typescript']})
   call dein#add('chrisbra/csv.vim',
-        \{'on_ft': 'csv'})
+      \{'on_ft': 'csv'})
   call dein#add('jiangmiao/auto-pairs',
-        \{'on_ft': ['javascript', 'typescript', 'bash', 'sh', 'zsh',
-                    \'python']})
+    \{'on_ft': ['javascript', 'typescript', 'bash', 'sh', 'zsh', 'python']})
   call dein#add('jalvesaq/nvim-r',
-        \{'on_ft': ['r', 'Rmd']})
+    \{'on_ft': ['r', 'Rmd']})
   call dein#add('sirver/UltiSnips',
-        \{'on_ft': ['tex', 'latex', 'python', 'java']})
+    \{'on_ft': ['tex', 'python', 'java']})
   call dein#add('jreybert/vimagit')
   call dein#add('justinmk/vim-sneak')
   call dein#add('ludovicchabant/vim-gutentags',
-        \{'on_ft': ['tex', 'latex', 'python', 'java', 'r', 'javascript', 'typescript']})
+    \{'on_ft': ['tex', '', 'python', 'java', 'r', 'javascript',
+                \'typescript']})
   call dein#add('lervag/vimtex',
-        \{'on_ft': ['tex', 'latex']})
+    \{'on_ft': ['tex']})
   " Remove disabled plugins
   call map(dein#check_clean(), "delete(v:val, 'rf')")
   call dein#end()
@@ -91,19 +91,15 @@ endif
 let g:ale_lint_on_text_changed = 1
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
-      \'python': ['flake8'],
-      \'typescript': ['eslint'],
-      \'javascript': ['eslint']
-      \}
-let g:ale_lsp_root = {
-      \'python': ['flake8']
-      \}
+  \'python': ['flake8'],
+  \'typescript': ['eslint'],
+  \'javascript': ['eslint'] }
+let g:ale_lsp_root = {'python': ['flake8']}
 let g:ale_fixers = {
-      \'html':['prettier'],
-      \'css': ['prettier'],
-      \'javascript': ['prettier'],
-      \'typescript' : ['prettier']
-      \}
+  \'html':['prettier'],
+  \'css': ['prettier'],
+  \'javascript': ['prettier'],
+  \'typescript' : ['prettier'] }
 nnoremap <LocalLeader>gd :ALEGoToDefinition<CR>
 nnoremap <LocalLeader>gr :ALEFindReferences<CR>
 
@@ -131,24 +127,24 @@ tnoremap   <silent>   <F10>   <C-\><C-n>:FloatermToggle<CR>
 
 " fzf.vim
 let g:fzf_preview_window = ''
-let g:fzf_colors =
-      \ { 'fg':      ['fg', 'Normal'],
-      \ 'bg':      ['bg', 'Normal'],
-      \ 'hl':      ['fg', 'Comment'],
-      \ 'fg+':     ['fg', 'CursorLine'],
-      \ 'bg+':     ['bg', 'Normal'],
-      \ 'hl+':     ['fg', 'Statement'],
-      \ 'info':    ['fg', 'PreProc'],
-      \ 'border':  ['fg', 'CursorLine'],
-      \ 'prompt':  ['fg', 'Conditional'],
-      \ 'pointer': ['fg', 'Exception'],
-      \ 'marker':  ['fg', 'Keyword'],
-      \ 'spinner': ['fg', 'Label'],
-      \ 'header':  ['fg', 'Comment'] }
+let g:fzf_colors = {
+  \'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine'],
+  \ 'bg+':     ['bg', 'Normal'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'CursorLine'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 command! -bang -nargs=* Rg
-          \ call fzf#vim#grep(
-          \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-          \   fzf#vim#with_preview(), <bang>0)
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 nnoremap <C-s> :Rg<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-t> :Buffers<CR>
