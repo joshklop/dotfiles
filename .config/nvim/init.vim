@@ -34,6 +34,9 @@ set nu
 filetype on
 filetype plugin on
 filetype indent on
+" Searching
+set ignorecase
+set smartcase
 " Other
 set completeopt="menuone,noselect,preview,noinsert"
 set tildeop
