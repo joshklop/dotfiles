@@ -153,7 +153,7 @@ syntax enable
 set termguicolors
 set background=dark
 " vim-polyglot
-let g:polyglot_disabled = ['jsx']  " Started giving me errors and I don't even use React.
+let g:polyglot_disabled = ['jsx']  " I don't use React and it gave me errors.
 " Nvim-R
 let R_nvimpager = 'tab'
 let R_assign = 2
