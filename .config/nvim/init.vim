@@ -43,7 +43,7 @@ set tildeop
 set hidden
 set inccommand=nosplit
 set scrolloff=3
-set updatetime=50 " Numerous plugins require this
+set updatetime=100  " Numerous plugins require this
 set nomodeline
 set mouse=""
 set nowrap
