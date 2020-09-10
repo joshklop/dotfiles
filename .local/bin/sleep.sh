@@ -1,3 +1,3 @@
 #!/bin/bash
-systemctl suspend && physlock
+systemctl suspend && lock.sh
 clear
