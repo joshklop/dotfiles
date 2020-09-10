@@ -107,6 +107,11 @@ let b:csv_arrange_use_all_rows = 1
 let g:dein#auto_recache = 1
 " deoplete
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('enable_camel_case', 1 )
+call deoplete#custom#var('around', {
+	\ 'mark_above': '[↑]',
+	\ 'mark_below': '[↓]',
+	\ 'mark_changes': '[*]' })
 " vim-floaterm
 let g:floaterm_height = 0.7
 let g:floaterm_width = 0.7
