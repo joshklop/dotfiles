@@ -23,7 +23,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 alias ls='exa --git --classify --group-directories-first --sort=extension --color-scale'
 alias cat='bat'
 alias pacman='sudo pacman'
-alias aurupdate='trizen -Syu --aur --noconfirm'
+alias aurupdate='yay -Syu --aur --noconfirm --needed -c'
 alias pip-update='pip install --upgrade --user $(pip list --outdated --user --format=freeze | cut -f 1 -d =)'
 alias rmorphan='pacman -Rns $(pacman -Qtdq)'
 alias shred='shred --remove --zero --iterations=4' # Overwrites a file with zeros, then removes it
