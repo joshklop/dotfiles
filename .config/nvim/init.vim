@@ -61,6 +61,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('voldikss/vim-floaterm')
   call dein#add('csexton/trailertrash.vim', {'on_cmd': 'TrailerTrim'})
   call dein#add('lifepillar/vim-gruvbox8')
+  " vim-polyglot (must come before the plugin is loaded)
+  let g:polyglot_disabled = ['jsx']  " I don't use React and it gave me errors.
   call dein#add('sheerun/vim-polyglot')
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
@@ -158,8 +160,6 @@ let g:gruvbox_italicize_strings = 0
 syntax enable
 set termguicolors
 set background=dark
-" vim-polyglot
-let g:polyglot_disabled = ['jsx']  " I don't use React and it gave me errors.
 " Nvim-R
 let R_nvimpager = 'tab'
 let R_assign = 2
