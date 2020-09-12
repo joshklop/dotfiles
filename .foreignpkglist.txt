@@ -1,4 +1,5 @@
 bitwarden-bin
+bitwarden-cli
 brave-bin
 caffeine-ng
 google-chrome
@@ -8,8 +9,8 @@ openoffice
 pygtk
 safeeyes
 slack-desktop
-trizen
 vmware-keymaps
 vmware-workstation
 xorg-server-xdmx
+yay
 zoom
