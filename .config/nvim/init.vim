@@ -160,6 +160,8 @@ let g:gruvbox_italicize_strings = 0
 syntax enable
 set termguicolors
 set background=dark
+" gutentags
+let g:gutentags_ctags_exclude = ['node_modules']
 " Nvim-R
 let R_nvimpager = 'tab'
 let R_assign = 2
