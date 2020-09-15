@@ -3,7 +3,7 @@
 
 export PRINTER=M70
 
-export PATH=$PATH:/home/josh/.local/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.node_modules/bin
 
 # Editor exports
 export VISUAL=nvim
