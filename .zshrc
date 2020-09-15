@@ -2,7 +2,10 @@
 [[ $- != *i* ]] && return
 
 export PRINTER=M70
+
 export PATH=$PATH:/home/josh/.local/bin
+
+# Editor exports
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export FCEDIT="$VISUAL"
