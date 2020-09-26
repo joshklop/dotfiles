@@ -73,7 +73,7 @@ if dein#load_state('~/.cache/dein')
     \{'on_ft': ['python', 'javascript', 'typescript']})
   call dein#add('chrisbra/csv.vim', {'on_ft': 'csv'})
   call dein#add('jiangmiao/auto-pairs',
-    \{'on_ft': ['javascript', 'typescript', 'bash', 'sh', 'zsh', 'python']})
+    \{'on_ft': ['python', 'javascript', 'typescript', 'json', 'tex', 'vim', 'sh']})
   call dein#add('jalvesaq/nvim-r', {'on_ft': ['r', 'Rmd']})
   call dein#add('sirver/UltiSnips', {'on_ft': ['tex', 'python', 'java']})
   call dein#add('jreybert/vimagit')
