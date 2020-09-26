@@ -52,7 +52,6 @@ grub
 gtkmm
 gzip
 highlight
-hsetroot
 htop
 i3-gaps
 i3lock-color
@@ -98,7 +97,6 @@ pciutils
 pepper-flash
 perl
 physlock
-picom
 pkgconf
 procps-ng
 psmisc
@@ -123,6 +121,7 @@ shadow
 signal-desktop
 simplescreenrecorder
 sleuthkit
+solidity
 sqlitebrowser
 strace
 sudo
