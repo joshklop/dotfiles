@@ -62,7 +62,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('csexton/trailertrash.vim', {'on_cmd': 'TrailerTrim'})
   call dein#add('lifepillar/vim-gruvbox8')
   " vim-polyglot (must come before the plugin is loaded)
-  let g:polyglot_disabled = ['jsx']  " I don't use React and it gave me errors.
+  let g:polyglot_disabled = ['jsx', 'tex']
   call dein#add('sheerun/vim-polyglot')
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
