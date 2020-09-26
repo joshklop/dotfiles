@@ -16,6 +16,9 @@ To manage my dotfiles, I usually follow something close to the steps outlined be
 * Run the `$HOME/.local/bin/cleanup.sh` script to update packages.
   + Note that this is tailored to my directory structure. 
   You may want to change the script before using.
+* Run the `$HOME/.local/bin/git_unsaved_changes.sh` script to check for untracked,
+  unadded, uncommited, and/or unpushed changes in git repos.
+  + Note that this is tailored to my directory structure (repos are hardcoded).
 * Run the `$HOME/.local/bin/backup.sh` script to backup packages.
   + Note that this is tailored to my directory structure. 
   You may want to change the script before using.
