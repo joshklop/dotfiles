@@ -76,6 +76,7 @@ if dein#load_state('~/.cache/dein')
     \{'on_ft': ['python', 'javascript', 'typescript', 'json', 'tex', 'vim', 'sh']})
   call dein#add('jalvesaq/nvim-r', {'on_ft': ['r', 'Rmd']})
   call dein#add('sirver/UltiSnips', {'on_ft': ['tex', 'python', 'java']})
+  call dein#add('dmdque/solidity.vim', {'on_ft': ['sol']})
   call dein#add('jreybert/vimagit')
   call dein#add('justinmk/vim-sneak')
   call dein#add('ludovicchabant/vim-gutentags',
