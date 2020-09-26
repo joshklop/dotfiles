@@ -201,8 +201,6 @@ nnoremap <Right> xp
 " Allow easier navigation on broken lines
 nnoremap j gj
 nnoremap k gk
-nnoremap 0 g0
-nnoremap $ g$
 " Redraw screen
 nnoremap <ESC> :nohlsearch<CR>
 " Spell-check
