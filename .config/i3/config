@@ -161,6 +161,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+popup_during_fullscreen leave_fullscreen
+
 bar {
         status_command i3status
 }
