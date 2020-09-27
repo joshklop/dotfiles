@@ -60,9 +60,19 @@ if dein#load_state('~/.cache/dein')
   call dein#add('junegunn/fzf.vim')
   call dein#add('csexton/trailertrash.vim', {'on_cmd': 'TrailerTrim'})
   call dein#add('lifepillar/vim-gruvbox8')
-  " vim-polyglot (must come before the plugin is loaded)
-  let g:polyglot_disabled = ['jsx', 'tex']
-  call dein#add('sheerun/vim-polyglot')
+  " Syntax plugins
+  call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': 'python'})
+  call dein#add('vim-python/python-syntax', {'on_ft': 'python'})
+  call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript'})
+  call dein#add('othree/javascript-libraries-syntax.vim',
+    \{'on_ft': 'javascript'})
+  call dein#add('mhartington/nvim-typescript',
+    \{'build': './install.sh'},
+    \{'on_ft': 'typescript'})
+  call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
+  call dein#add('ekalinin/Dockerfile.vim', {'on_ft': 'Dockerfile'}) " Is dockerfile recognized?
+  call dein#add('arzg/vim-sh', {'on_ft': ['zsh', 'bash', 'sh']})
+  "
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
   call dein#add('chaoren/vim-wordmotion')
