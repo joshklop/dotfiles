@@ -238,4 +238,4 @@ bindsym $mod+m exec monitor.sh
 bindsym $mod+b exec bwmenu
 
 # Start redshift on launch
-exec --no-startup-id redshift
+exec --no-startup-id "redshift -P -O 2500 -b 0.8:0.8"
