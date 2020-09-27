@@ -208,6 +208,9 @@ bar {
   }
 }
 
+# Use gruvbox-like static color for wallpaper
+exec --no-startup-id xsetroot -solid "#32302f"
+
 # Volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -c 1 -- sset Master playback 5%+"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -c 1 -- sset Master playback 5%-"
