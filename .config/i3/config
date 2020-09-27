@@ -234,5 +234,8 @@ bindsym $mod+p exec "lock.sh"
 # Monitor controls
 bindsym $mod+m exec monitor.sh
 
+# Bitwarden rofi menu
+bindsym $mod+b exec bwmenu
+
 # Start redshift on launch
 exec --no-startup-id redshift
