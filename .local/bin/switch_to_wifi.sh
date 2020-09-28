@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 sudo systemctl stop dhcpcd.service
 sudo systemctl disable dhcpcd.service

@@ -10,10 +10,10 @@ NC='\033[0m'  # No color
 
 echo
 for i in "${repos[@]}"; do
-  if [ -d $i/.git ]; then
+  if [[ -d $i/.git ]]; then
     echo -e "${MAIN}$i${NC}"
-    behind=`git -C $i rev-list --left-right --count origin/master...master | cut -f 1`
-    ahead=`git -C $i rev-list --left-right --count origin/master...master | cut -f 2`
+    behind=$(git -C $i rev-list --left-right --count origin/master...master | cut -f 1)
+    ahead=$(git -C $i rev-list --left-right --count origin/master...master | cut -f 2)
     echo -e "master is ${RED}$ahead${NC} commits ahead and ${RED}$behind${NC} commits behind origin/master."
     git -C $i st -s
     echo
