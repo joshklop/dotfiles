@@ -1,6 +1,6 @@
 Package             Version
 ------------------- -----------
-aiodns              1.1.1
+aiodns              2.0.0
 aiohttp             3.6.2
 aiolimiter          1.0.0b1
 algorithms          0.1.3
@@ -27,7 +27,7 @@ btrfsutil           1.2.0
 CacheControl        0.12.6
 cached-property     1.5.1
 caffeine-ng         3.4.2
-ccxt                1.34.54
+ccxt                1.34.59
 certifi             2020.6.20
 cffi                1.14.3
 chardet             3.0.4
@@ -111,7 +111,7 @@ nbclient            0.5.0
 nbconvert           6.0.6
 nbformat            5.0.7
 neovim-remote       2.4.0
-nest-asyncio        1.4.0
+nest-asyncio        1.4.1
 netaddr             0.8.0
 networkx            2.5
 newspaper3k         0.2.8
@@ -174,7 +174,7 @@ queuelib            1.5.0
 qutebrowser         1.13.1
 ranger-fm           1.9.3
 readme-renderer     26.0
-regex               2020.7.14
+regex               2020.9.27
 requests            2.24.0
 requests-file       1.5.1
 requests-toolbelt   0.9.1
@@ -203,7 +203,7 @@ tldextract          2.2.3
 toml                0.10.1
 toolz               0.11.1
 tornado             6.0.4
-tqdm                4.49.0
+tqdm                4.50.0
 traitlets           5.0.4
 twine               3.2.0
 Twisted             20.3.0
@@ -223,6 +223,6 @@ webencodings        0.5.1
 websocket-client    0.57.0
 websockets          8.1
 wheel               0.35.1
-yarl                1.6.0
+yarl                1.1.0
 zipp                3.1.0
 zope.interface      5.1.0
