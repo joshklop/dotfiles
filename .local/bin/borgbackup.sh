@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 export BORG_REPO=/mnt/backup
 
