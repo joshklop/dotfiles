@@ -6,4 +6,7 @@ while [[ $mounted =~ [^yY] ]]; do
   mounted=$resp
 done
 
-bwbackup.sh && backup.sh
+bwbackup.sh && borgbackup.sh
+
+echo
+echo 'Make sure you umount!'
