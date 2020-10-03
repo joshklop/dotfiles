@@ -68,6 +68,14 @@ alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
 alias disable-touchpad="xinput disable 'SynPS/2 Synaptics TouchPad'"
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
 
+# https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
+function mergepdf() {
+  outputfile=$1
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default \
+    -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true \
+    -r150 -sOutputFile=$outputfile ${@:1}
+}
+
 ####################
 # zsh-only configs #
 ####################
