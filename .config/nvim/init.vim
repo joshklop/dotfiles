@@ -87,8 +87,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('dense-analysis/ale',
     \{'on_ft': ['python', 'javascript', 'typescript', 'solidity']})
   call dein#add('chrisbra/csv.vim', {'on_ft': 'csv'})
-  call dein#add('jiangmiao/auto-pairs',
-    \{'on_ft': ['python', 'javascript', 'typescript', 'json', 'tex', 'vim', 'sh']})
+  call dein#add('jiangmiao/auto-pairs')
   call dein#add('jalvesaq/nvim-r', {'on_ft': ['r', 'Rmd']})
   call dein#add('sirver/UltiSnips', {'on_ft': ['tex', 'python', 'java']})
   call dein#add('dmdque/solidity.vim', {'on_ft': 'sol'})
