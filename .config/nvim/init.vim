@@ -9,7 +9,12 @@ augroup omnifuncs
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.js :setfiletype javascript
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.ts :setfiletype typescript
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.md :setfiletype markdown
+  autocmd BufNew,BufNewFile,BufRead,BufEnter *.sol :setfiletype solidity
   autocmd FileType python setlocal colorcolumn=79
+  autocmd FileType javascript setlocal colorcolumn=79
+  autocmd FileType solidity setlocal colorcolumn=79
+  autocmd FileType solidity setlocal tabstop=4
+  autocmd FileType solidity setlocal shiftwidth=4
   autocmd FileType python let g:keywordprog='pydoc'
   autocmd FileType magit setlocal nowrap
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
