@@ -237,6 +237,9 @@ bindsym $mod+m exec monitor.sh
 # Bitwarden rofi menu
 bindsym $mod+b exec bwmenu
 
+# Screenshot tool
+bindsym $mod+t exec "flameshot gui"
+
 # Start redshift on launch
 exec --no-startup-id "redshift -P -O 2500 -b 0.8:0.8"
 
