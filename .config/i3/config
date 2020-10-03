@@ -166,8 +166,8 @@ popup_during_fullscreen leave_fullscreen
 # Window colors
 client.background       #32302f
 # class                 border  backgr. text    indicator child_border
-client.focused          #504945 #504945 #fbf1c7 #504945   #504945
-client.focused_inactive #32302f #32302f #fbf1c7 #32302f   #32302f
+client.focused          #98971a #98971a #fbf1c7 #98971a   #98971a
+client.focused_inactive #504945 #504945 #fbf1c7 #504945   #504945
 client.unfocused        #32302f #32302f #fbf1c7 #32302f   #32302f
 client.urgent           #cc241d #cc241d #fbf1c7 #cc241d   #cc241d
 client.placeholder      #32302f #32302f #fbf1c7 #32302f   #32302f
@@ -183,8 +183,8 @@ bar {
     statusline #fbf1c7
     separator #fbf1c7
     # <colorclass> <border> <background> <text>
-    focused_workspace #504945 #504945 #fbf1c7
-    active_workspace #32302f #32302f #fbf1c7
+    focused_workspace #98971a #98971a #fbf1c7
+    active_workspace #504945 #504945 #fbf1c7
     inactive_workspace #32302f #3230sf #fbf1c7
     urgent_workspace #cc241d #cc241d #fbf1c7
   }
@@ -201,8 +201,8 @@ bar {
     statusline #fbf1c7
     separator #fbf1c7
     # <colorclass> <border> <background> <text>
-    focused_workspace #504945 #504945 #fbf1c7
-    active_workspace #32302f #32302f #fbf1c7
+    focused_workspace #98971a #98971a #fbf1c7
+    active_workspace #504945 #504945 #fbf1c7
     inactive_workspace #32302f #3230sf #fbf1c7
     urgent_workspace #cc241d #cc241d #fbf1c7
   }
