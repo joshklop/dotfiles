@@ -75,7 +75,7 @@ if dein#load_state('~/.cache/dein')
     \{'build': './install.sh'},
     \{'on_ft': 'typescript'})
   call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
-  call dein#add('ekalinin/Dockerfile.vim', {'on_ft': 'Dockerfile'}) " Is dockerfile recognized?
+  call dein#add('ekalinin/Dockerfile.vim', {'on_ft': 'Dockerfile'})
   call dein#add('arzg/vim-sh', {'on_ft': ['zsh', 'bash', 'sh']})
   "
   call dein#add('tpope/vim-repeat')
