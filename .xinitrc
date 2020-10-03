@@ -1,4 +1,4 @@
 start-pulseaudio-x11
 monitor.sh
 xkeybinds.sh
-exec i3
+exec dbus-launch i3
