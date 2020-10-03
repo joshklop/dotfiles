@@ -175,7 +175,7 @@ client.placeholder      #32302f #32302f #fbf1c7 #32302f   #32302f
 bar {
   output eDP-1
   tray_output none
-  font pango:Fira Code 8
+  font pango:Fira Code 9
   status_command i3status -c ~/.i3status.conf
   mode hide
   colors {
@@ -194,7 +194,7 @@ bar {
   output HDMI-1
   tray_output none
   status_command i3status -c ~/.i3status-blank.conf # blank config
-  font pango:Fira Code 8
+  font pango:Fira Code 9
   mode hide
   colors {
     background #32302f
