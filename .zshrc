@@ -54,26 +54,18 @@ source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
 
-# Aliases
+# Aliases and Functions
 #alias ls='ls --color=auto --group-directories-first --sort=extension'
 alias ls='exa --git --classify --group-directories-first --sort=extension --color-scale'
 alias cat='bat'
 alias pacman='sudo pacman'
-alias aurupdate='yay -Syu --aur --noconfirm --needed -c'
-alias pip-update='pip install --upgrade --user $(pip list --outdated --user --format=freeze | cut -f 1 -d =)'
-alias rmorphan='pacman -Rns $(pacman -Qtdq)'
-alias shred='shred --remove --zero --iterations=4' # Overwrites a file with zeros, then removes it
+alias shred='shred --remove --zero --iterations=4'
 alias rm='rm -Iv'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias wifi-menu='sudo wifi-menu -o' # Hide passwords with asterisks
-alias wifi-off='sudo rfkill block all'
-alias wifi-on='sudo rfkill unblock all'
+alias wifi-menu='sudo wifi-menu -o'
 alias info='info --vi'
 alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
 alias disable-touchpad="xinput disable 'SynPS/2 Synaptics TouchPad'"
-# the following is from [this](https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf) Stack Overflow answer.
-# add '-sOutputFile=output.pdf input1.pdf input2.pdf' to make it work.
-alias mergepdf='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150'
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
 
 ####################
