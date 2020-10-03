@@ -77,6 +77,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
   call dein#add('ekalinin/Dockerfile.vim', {'on_ft': 'Dockerfile'})
   call dein#add('arzg/vim-sh', {'on_ft': ['zsh', 'bash', 'sh']})
+  call dein#add('tomlion/vim-solidity')
   "
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
@@ -84,7 +85,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('prettier/vim-prettier',
     \{'on_ft': ['javascript', 'typescript', 'json', 'css', 'markdown']})
   call dein#add('dense-analysis/ale',
-    \{'on_ft': ['python', 'javascript', 'typescript']})
+    \{'on_ft': ['python', 'javascript', 'typescript', 'solidity']})
   call dein#add('chrisbra/csv.vim', {'on_ft': 'csv'})
   call dein#add('jiangmiao/auto-pairs',
     \{'on_ft': ['python', 'javascript', 'typescript', 'json', 'tex', 'vim', 'sh']})
@@ -110,7 +111,8 @@ let g:ale_fix_on_save = 1
 let g:ale_linters = {
   \'python': ['flake8'],
   \'typescript': ['eslint'],
-  \'javascript': ['eslint'] }
+  \'javascript': ['eslint'],
+  \'solidity': ['solc'] }
 let g:ale_lsp_root = {'python': ['flake8']}
 let g:ale_fixers = {
   \'html':['prettier'],
