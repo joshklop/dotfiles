@@ -45,6 +45,7 @@ gettext
 ghc
 ghex
 git
+github-cli
 glibc
 grep
 groff
