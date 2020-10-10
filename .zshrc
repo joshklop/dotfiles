@@ -70,10 +70,9 @@ alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
-  outputfile=$1
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default \
     -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true \
-    -r150 -sOutputFile=$outputfile ${@:1}
+    -r150 -sOutputFile=$1 ${@:1}
 }
 
 ####################
