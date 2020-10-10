@@ -1,9 +1,17 @@
 #!/bin/sh
 
-backup="$HOME/Documents/bw.json"
+BACKUP="$HOME/Documents/bw.json"
 
-bw login \
-  && bw export --format json --output $backup \
+function force(){
+  while true; do
+    if $1; then
+      break
+    fi
+  done
+}
+
+force "bw login" \
+  && force "bw export --format json --output $BACKUP" \
   && bw logout \
-  && gpg --encrypt --sign $backup \
-  && rm $backup
+  && gpg --encrypt --sign $BACKUP \
+  && rm $BACKUP
