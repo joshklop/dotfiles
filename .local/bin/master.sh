@@ -34,4 +34,4 @@ ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to backup.sh?" b
 ready "${GREEN}==>${RESET} ${WHITE}Now commit and push your dotfiles. Continue when you are ready."
 
 echo
-echo -e "${WHITE}All done! Make sure you reboot!${RESET}"
+echo -e "${GREEN}* ${WHITE}All done! Make sure you reboot!${RESET}"
