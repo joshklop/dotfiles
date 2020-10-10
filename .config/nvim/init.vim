@@ -48,7 +48,7 @@ set tildeop
 set hidden
 set inccommand=nosplit
 set scrolloff=3
-set updatetime=100  " Numerous plugins require this
+set updatetime=100
 set nomodeline
 set mouse=""
 set nowrap
@@ -56,10 +56,10 @@ set nocompatible
 
 
 " Plugins
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state('~/.cache/dein')
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.config/nvim/dein')
   call dein#begin('~/.config/nvim/dein')
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('junegunn/goyo.vim', {'on_cmd': 'Goyo'})
   call dein#add('junegunn/fzf.vim')
