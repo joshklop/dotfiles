@@ -7,7 +7,7 @@ RESET="${PREFIX}0m"
 
 mounted='n'
 while [[ $mounted =~ [^yY] ]]; do
-  echo -e -n "${GREEN}==> ${WHITE}Is your flash drive mounted? [y/n]${RESET}"; read resp
+  echo -e -n "${GREEN}==> ${WHITE}Is your flash drive mounted? [y/n] ${RESET}"; read resp
   mounted=$resp
 done
 
