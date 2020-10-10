@@ -1,5 +1,11 @@
 #!/bin/sh
 
+mounted='n'
+while [[ $mounted =~ [^yY] ]]; do
+  read -p 'Is your flash drive mounted? [y/N] ' resp
+  mounted=$resp
+done
+
 export BORG_REPO=/mnt/backup
 
 export BORG_PASSCOMMAND="gpg --decrypt $HOME/.local/bin/passphrase.txt.gpg"
