@@ -41,9 +41,6 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 
 setopt interactivecomments       # Allow typing comments at an interactive prompt
 
-# Automatically manage ssh keys
-eval $(keychain --eval --quiet $HOME/.ssh/github)
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/josh/code/google-cloud-sdk/path.zsh.inc' ]; then . '/home/josh/code/google-cloud-sdk/path.zsh.inc'; fi
 
