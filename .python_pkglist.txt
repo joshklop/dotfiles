@@ -1,6 +1,6 @@
 Package             Version
 ------------------- -----------
-aiodns              2.0.0
+aiodns              1.1.1
 aiohttp             3.6.2
 aiolimiter          1.0.0b1
 algorithms          0.1.4
@@ -22,12 +22,13 @@ bcrypt              3.2.0
 beautifulsoup4      4.9.3
 bitarray            1.5.3
 bleach              3.2.1
-borgbackup          1.1.13
+borgbackup          1.1.14
+brz-etckeeper       0.0.0
 btrfsutil           1.2.0
 CacheControl        0.12.6
 cached-property     1.5.2
 caffeine-ng         3.4.2
-ccxt                1.35.81
+ccxt                1.36.1
 certifi             2020.6.20
 cffi                1.14.3
 chardet             3.0.4
@@ -174,7 +175,7 @@ queuelib            1.5.0
 qutebrowser         1.13.1
 ranger-fm           1.9.3
 readme-renderer     27.0
-regex               2020.9.27
+regex               2020.10.11
 requests            2.24.0
 requests-file       1.5.1
 requests-toolbelt   0.9.1
@@ -223,6 +224,6 @@ webencodings        0.5.1
 websocket-client    0.57.0
 websockets          8.1
 wheel               0.35.1
-yarl                1.6.0
+yarl                1.1.0
 zipp                3.3.0
 zope.interface      5.1.2

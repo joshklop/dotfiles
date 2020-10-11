@@ -1,6 +1,5 @@
 bitwarden-bin
 bitwarden-cli
-bitwarden-rofi
 brave-bin
 caffeine-ng
 google-chrome
