@@ -1,6 +1,6 @@
 #!/bin/sh
 intern=eDP-1
-extern=HDMI-1
+extern=HDMI-1-0
 
 xrandr --noprimary
 
