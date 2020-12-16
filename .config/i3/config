@@ -232,16 +232,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec "lock.sh"
 
 # Monitor controls
-bindsym $mod+m exec monitor.sh
-
-# Bitwarden rofi menu
-bindsym $mod+b exec bwmenu
+bindsym $mod+m exec "monitor.sh"
 
 # Screenshot tool
 bindsym $mod+t exec "flameshot gui"
-
-# Start redshift on launch
-exec --no-startup-id "redshift -P -O 2500 -b 0.8:0.8"
-
-# Start safeeyes on launch
-exec --no-startup-id "safeeyes -e"
