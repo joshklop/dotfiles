@@ -3,15 +3,12 @@
 
 export PRINTER=M70
 
-export PATH=$PATH:$HOME/.local/bin:$(npm bin -g 2&> /dev/null)
+export PATH=$PATH:$HOME/.local/bin
 
 # Editor exports
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export FCEDIT="$VISUAL"
-
-# Python virtual environments
-source /home/josh/.local/bin/virtualenvwrapper.sh
 
 # Colorize man pages
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -41,17 +38,15 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 
 setopt interactivecomments       # Allow typing comments at an interactive prompt
 
+# Changing directories
+setopt AUTO_CD
+setopt CD_SILENT
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/josh/code/google-cloud-sdk/path.zsh.inc' ]; then . '/home/josh/code/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/josh/code/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/josh/code/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Enable NVM on startup
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/nvm.sh
-source /usr/share/nvm/bash_completion
-source /usr/share/nvm/install-nvm-exec
 
 # Aliases and Functions
 #alias ls='ls --color=auto --group-directories-first --sort=extension'
@@ -74,21 +69,40 @@ function mergepdf() {
     -r150 -sOutputFile=$1 ${@:1}
 }
 
+function -() {
+  cd -
+}
+
 ####################
 # zsh-only configs #
 ####################
 
 # Autocompletion
-zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit && compinit
+# The following lines were added by compinstall
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _complete _ignored _correct
+zstyle ':completion:*' format '%d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' ignore-parents parent
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' max-errors 2 numeric
+zstyle ':completion:*' menu select=7
+zstyle ':completion:*' original true
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' select-prompt %S current selection at %p%s
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/user/.zshrc'
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
 autoload edit-command-line # Prevent weird things from happening with entering text on the command line
 zle -N edit-command-line 
 setopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
-zstyle ':completion:*:*:*:default' menu yes select search yes # arrow-key driven interface
-
-# FZF
-export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
-source ~/.config/fzf/fzf.zsh
+kitty + complete setup zsh | . /dev/stdin # Completion for kitty
 
 # Prompt fanciness
 autoload -Uz promptinit vcs_info && promptinit
@@ -100,16 +114,18 @@ zstyle ':vcs_info:git:*' formats '%b' enable git
 PROMPT='%F{yellow}%~%f %F{7}%#%f '
 
 # Syntax highlighting!
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # Use emacs-like keybinds at the command line
 bindkey -e
+
+# FZF
+export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
+. ~/.config/fzf/fzf.zsh
 
 # Ironing out ZSH keybind quirks
 bindkey "^[[3~" delete-char     # Make 'delete' actually delete
 bindkey \^U backward-kill-line  # CTRL-u works as in bash
 bindkey "^[[1;5C" forward-word  # Ctrl-right moves right a word
 bindkey "^[[1;5D" backward-word # Ctrl-left moves left a word
+
