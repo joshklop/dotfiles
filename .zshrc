@@ -56,11 +56,9 @@ alias pacman='sudo pacman'
 alias shred='shred --remove --zero --iterations=4'
 alias rm='rm -Iv'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias wifi-menu='sudo wifi-menu -o'
 alias info='info --vi'
-alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
-alias disable-touchpad="xinput disable 'SynPS/2 Synaptics TouchPad'"
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
+alias rmorphan='pacman -Rns $(pacman -Qtdq)'
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
