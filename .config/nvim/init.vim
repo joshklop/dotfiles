@@ -11,11 +11,15 @@ augroup omnifuncs
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.md :setfiletype markdown
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.sol :setfiletype solidity
   autocmd FileType python setlocal colorcolumn=79
+  autocmd FileType python let g:keywordprog='pydoc'
   autocmd FileType javascript setlocal colorcolumn=79
+  autocmd FileType c setlocal colorcolumn=79
+  autocmd FileType c setlocal tabstop=4
+  autocmd FileType c setlocal shiftwidth=4
+  autocmd FileType cpp setlocal colorcolumn=79
   autocmd FileType solidity setlocal colorcolumn=79
   autocmd FileType solidity setlocal tabstop=4
   autocmd FileType solidity setlocal shiftwidth=4
-  autocmd FileType python let g:keywordprog='pydoc'
   autocmd FileType magit setlocal nowrap
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -61,6 +65,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#begin('~/.config/nvim/dein')
   call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('Shougo/deoplete.nvim')
+  call dein#add('deoplete-plugins/deoplete-clang', {'on_ft': ['c', 'cpp']})
   call dein#add('junegunn/goyo.vim', {'on_cmd': 'Goyo'})
   call dein#add('junegunn/fzf.vim')
   call dein#add('csexton/trailertrash.vim', {'on_cmd': 'TrailerTrim'})
@@ -85,7 +90,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('prettier/vim-prettier',
     \{'on_ft': ['javascript', 'typescript', 'json', 'css', 'markdown']})
   call dein#add('dense-analysis/ale',
-    \{'on_ft': ['python', 'javascript', 'typescript', 'solidity']})
+    \{'on_ft': ['python', 'javascript', 'typescript', 'solidity', 'c', 'cpp']})
   call dein#add('chrisbra/csv.vim', {'on_ft': 'csv'})
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('jalvesaq/nvim-r', {'on_ft': ['r', 'Rmd']})
@@ -94,7 +99,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('jreybert/vimagit')
   call dein#add('justinmk/vim-sneak')
   call dein#add('ludovicchabant/vim-gutentags',
-    \{'on_ft': ['tex', 'python', 'java', 'r', 'javascript', 'typescript']})
+    \{'on_ft': ['tex', 'python', 'java', 'r', 'javascript', 'typescript', 'c', 'cpp']})
   call dein#add('lervag/vimtex', {'on_ft': 'tex'})
   " Remove disabled plugins
   call map(dein#check_clean(), "delete(v:val, 'rf')")
@@ -111,7 +116,9 @@ let g:ale_linters = {
   \'python': ['flake8'],
   \'typescript': ['eslint'],
   \'javascript': ['eslint'],
-  \'solidity': ['solc'] }
+  \'solidity': ['solc'],
+  \'c': ['clang'],
+  \'cpp': ['clang'] }
 let g:ale_lsp_root = {'python': ['flake8']}
 let g:ale_fixers = {
   \'html':['prettier'],
@@ -155,6 +162,7 @@ nnoremap <C-s> :Rg<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-t> :Buffers<CR>
 nnoremap <C-m> :Marks<CR>
+nnoremap <C-k> :Tags<CR>
 " gruvbox8
 colorscheme gruvbox8_soft
 let g:gruvbox_italics = 0
