@@ -1,16 +1,4 @@
-bitwarden-bin
-bitwarden-cli
 brave-bin
 caffeine-ng
-google-chrome
-keybase-bin
-nvm
-openoffice
-pygtk
-safeeyes
-slack-desktop
-vmware-keymaps
-vmware-workstation
-xorg-server-xdmx
+i3lock-color
 yay
-zoom

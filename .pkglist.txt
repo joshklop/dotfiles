@@ -22,7 +22,6 @@ dhcpcd
 dia
 dialog
 diffutils
-discord
 dmenu
 docker
 docker-compose
@@ -58,11 +57,7 @@ htop
 i3-gaps
 i3lock-color
 i3status
-inetutils
-iproute2
-iputils
 jfsutils
-keychain
 kitty
 less
 libtool
@@ -83,7 +78,6 @@ mdadm
 most
 nano
 neovim
-netctl
 nodejs
 noto-fonts-emoji
 npm
@@ -106,14 +100,12 @@ psmisc
 pulseaudio
 python
 python-dbus
-python-jedi
 python-llfuse
 python-pillow
 python-pip
 python2
 qutebrowser
 r
-ranger
 redshift
 reiserfsprogs
 ripgrep
@@ -123,7 +115,6 @@ sed
 shadow
 signal-desktop
 simplescreenrecorder
-sleuthkit
 solidity
 sqlitebrowser
 strace
@@ -155,11 +146,8 @@ ufw
 unzip
 usbutils
 util-linux
-vi
 vlc
 which
-wireshark-cli
-wireshark-qt
 wpa_supplicant
 xclip
 xf86-video-vesa
