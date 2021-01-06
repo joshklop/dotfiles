@@ -71,6 +71,18 @@ function -() {
   cd -
 }
 
+venvdir="$HOME/.venv"
+
+function activate() {
+  source $venvdir/$1/bin/activate
+}
+
+function venv() {
+  cd $venvdir
+  python3 -m venv $1
+  cd -
+}
+
 ####################
 # zsh-only configs #
 ####################
@@ -98,7 +110,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 autoload edit-command-line # Prevent weird things from happening with entering text on the command line
-zle -N edit-command-line 
+zle -N edit-command-line
 setopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
 kitty + complete setup zsh | . /dev/stdin # Completion for kitty
 
