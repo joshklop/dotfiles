@@ -127,6 +127,8 @@ let g:ale_fixers = {
   \'typescript' : ['prettier'] }
 nnoremap <LocalLeader>gd :ALEGoToDefinition<CR>
 nnoremap <LocalLeader>gr :ALEFindReferences<CR>
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " csv.vim
 let b:csv_arrange_use_all_rows = 1
 " dein
@@ -162,7 +164,7 @@ nnoremap <C-s> :Rg<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-t> :Buffers<CR>
 nnoremap <C-m> :Marks<CR>
-nnoremap <C-k> :Tags<CR>
+nnoremap <C-l> :Tags<CR>
 " gruvbox8
 colorscheme gruvbox8_soft
 let g:gruvbox_italics = 0
