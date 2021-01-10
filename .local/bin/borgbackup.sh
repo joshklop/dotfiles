@@ -11,7 +11,7 @@ while [[ $mounted =~ [^yY] ]]; do
   mounted=$resp
 done
 
-export BORG_REPO=/mnt/backup
+export BORG_REPO="/mnt/backup"
 
 export BORG_PASSCOMMAND="gpg --decrypt $HOME/.local/bin/passphrase.txt.gpg"
 
@@ -24,12 +24,7 @@ borg create                                      \
         -e 'sh:**/*.tar.gz'                      \
         -e 'sh:**/*.tgz'                         \
         -e 'sh:**/*.zip'                         \
-        -e '*/Downloads'                         \
-        -e '*/Documents/Zoom'                    \
-        -e '*/R/x86_64-pc-linux-gnu-library'     \
-        -e '*/code/google-cloud-sdk'             \
-        -e '*/code/gcloud'                       \
-        -e '*/code/python-virtual-evironments'   \
+        -e '*/downloads'                         \
         -e '*/README.md'                         \
         -e '*/LICENSE'                           \
         --exclude-if-present '.git'              \

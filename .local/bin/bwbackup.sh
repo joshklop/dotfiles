@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BACKUP="$HOME/Documents/bw.json"
+BACKUP="$HOME/documents/bw.json"
 
 function force(){
   while true; do
