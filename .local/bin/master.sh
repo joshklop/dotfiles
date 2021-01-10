@@ -16,7 +16,7 @@ function ready(){
     else
       echo -e -n "$prompt [y/s/n] $RESET"; read resp
       if [[ $resp =~ y ]]; then
-        "$cmd"
+        $cmd
         break
       elif [[ $resp =~ s ]]; then
         echo -e "${RED}Skipping...${RESET}"
@@ -29,7 +29,12 @@ function ready(){
 ready "${GREEN}==>${RESET} ${WHITE}Have you deleted unnecessary files?" 
 git_unsaved_changes.sh
 ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to cleanup.sh?" cleanup.sh
-ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to backup.sh?" backup.sh
+ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to bwbackup.sh?" bwbackup.sh
+ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to borgbackup.sh?" borgbackup.sh
+echo
+echo -e "${GREEN}* ${WHITE}Make sure you umount!"
+echo
+ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to backup /etc?" "sudo etcbackup.sh"
 
 ready "${GREEN}==>${RESET} ${WHITE}Now commit and push your dotfiles. Continue when you are ready."
 
