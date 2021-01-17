@@ -31,11 +31,10 @@ git_unsaved_changes.sh
 ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to cleanup.sh?" cleanup.sh
 ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to bwbackup.sh?" bwbackup.sh
 ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to borgbackup.sh?" borgbackup.sh
+ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to backup /etc?" "sudo etcbackup.sh"
 echo
 echo -e "${GREEN}* ${WHITE}Make sure you umount!"
 echo
-ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to backup /etc?" "sudo etcbackup.sh"
-
 ready "${GREEN}==>${RESET} ${WHITE}Now commit and push your dotfiles. Continue when you are ready."
 
 echo
