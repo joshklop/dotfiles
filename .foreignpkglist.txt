@@ -1,4 +1,5 @@
+bitwarden-cli
 brave-bin
 caffeine-ng
 i3lock-color
-yay
+paru
