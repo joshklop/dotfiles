@@ -230,3 +230,5 @@ bindsym $mod+Up exec "brightness.sh +"
 bindsym $mod+Down exec "brightness.sh -"
 
 exec "dunst"
+
+exec "batchecker.sh &"
