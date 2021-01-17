@@ -53,12 +53,14 @@ if [ -f '/home/josh/code/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/j
 alias ls='exa --git --classify --group-directories-first --sort=extension --color-scale'
 alias cat='bat'
 alias pacman='sudo pacman'
+alias systemctl='sudo systemctl'
 alias shred='shred --remove --zero --iterations=4'
 alias rm='rm -Iv'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias info='info --vi'
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
 alias rmorphan='pacman -Rns $(pacman -Qtdq)'
+alias vim='nvim'
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
