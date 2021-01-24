@@ -13,5 +13,5 @@ function force(){
 force "bw login" \
   && force "bw export --format json --output $BACKUP" \
   && bw logout \
-  && gpg --encrypt --sign $BACKUP \
+  && gpg --encrypt --sign --recipient joshklop10@gmail.com $BACKUP \
   && rm $BACKUP
