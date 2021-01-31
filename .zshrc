@@ -20,6 +20,8 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 export BAT_THEME="gruvbox"
+export WWW_HOME="www.duckduckgo.com"
+export HTTP_HOME=$WWW_HOME
 
 # History options
 HISTFILE=~/.histfile
