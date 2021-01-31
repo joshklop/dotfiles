@@ -75,7 +75,6 @@ ntfs-3g
 nvidia
 nvidia-settings
 nvidia-utils
-okular
 openssh
 os-prober
 pacman-contrib
@@ -86,6 +85,7 @@ physlock
 pkgconf
 playerctl
 pulseaudio
+pulseaudio-alsa
 pulseaudio-bluetooth
 python
 python-dbus
@@ -127,8 +127,10 @@ ttf-fira-code
 typescript
 ufw
 unzip
+upower
 usbutils
 vlc
+w3m
 which
 wireless_tools
 wpa_supplicant
@@ -179,6 +181,8 @@ xorg-xwayland
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+zathura
+zathura-pdf-mupdf
 zsh
 zsh-completions
 zsh-syntax-highlighting
