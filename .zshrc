@@ -41,7 +41,6 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt interactivecomments       # Allow typing comments at an interactive prompt
 
 # Changing directories
-setopt AUTO_CD
 setopt CD_SILENT
 
 # The next line updates PATH for the Google Cloud SDK.
