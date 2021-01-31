@@ -1,0 +1,19 @@
+#set selection-clipboard zathura
+set font "FiraCode normal 12"
+set guioptions ""
+
+set default-fg "#fbf1c7"
+set default-bg "#32302f"
+
+set completion-bg "#32302f"
+set completion-fg "#fbf1c7"
+set completion-group-bg "#32302f"
+set completion-group-fg "#fbf1c7"
+set completion-highlight-bg "#98971a"
+set completion-highlight-fg "#fbf1c7"
+
+set statusbar-bg "#32302f"
+set statusbar-fg "#fbf1c7"
+
+set inputbar-bg "#32302f"
+set inputbar-fg "#fbf1c7"
