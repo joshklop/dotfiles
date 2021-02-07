@@ -1,5 +1,5 @@
 #set selection-clipboard zathura
-set font "FiraCode normal 12"
+set font "Source Code Pro 12"
 set guioptions ""
 
 set default-fg "#fbf1c7"

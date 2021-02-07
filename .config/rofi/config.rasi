@@ -30,7 +30,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     background-color:      #32302f;
     border-color:          #32302f;
     text-color:           #fbf1c7;
-    font:            "Fira Code 10";
+    font:            "Source Code Pro 10";
 }
 
 window {

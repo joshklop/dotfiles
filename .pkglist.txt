@@ -123,7 +123,6 @@ tk
 tlp
 tmux
 tree
-ttf-fira-code
 typescript
 ufw
 unzip
