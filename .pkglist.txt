@@ -1,3 +1,4 @@
+alsa-firmware
 alsa-utils
 anki
 arandr
@@ -11,6 +12,7 @@ bluez
 bluez-utils
 boost
 borg
+chntpw
 clang
 cowsay
 ctags
