@@ -48,7 +48,6 @@ set ignorecase
 set smartcase
 " Other
 set completeopt="menuone,noselect,preview,noinsert"
-set tildeop
 set hidden
 set inccommand=nosplit
 set scrolloff=3
