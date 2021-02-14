@@ -69,6 +69,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('csexton/trailertrash.vim', {'on_cmd': 'TrailerTrim'})
   call dein#add('lifepillar/vim-gruvbox8')
   " Syntax plugins
+  call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee']})
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': 'python'})
   call dein#add('vim-python/python-syntax', {'on_ft': 'python'})
   call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript'})
