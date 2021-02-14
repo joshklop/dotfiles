@@ -21,7 +21,6 @@ cups-pdf
 dhcpcd
 dia
 dialog
-dmenu
 docker
 docker-compose
 dosfstools
