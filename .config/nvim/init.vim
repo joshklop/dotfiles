@@ -68,7 +68,6 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('junegunn/fzf.vim')
   call dein#add('csexton/trailertrash.vim', {'on_cmd': 'TrailerTrim'})
   call dein#add('lifepillar/vim-gruvbox8')
-  call dein#add('itchyny/calendar.vim')
   " Syntax plugins
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': 'python'})
   call dein#add('vim-python/python-syntax', {'on_ft': 'python'})
@@ -127,16 +126,6 @@ nnoremap <LocalLeader>gd :ALEGoToDefinition<CR>
 nnoremap <LocalLeader>gr :ALEFindReferences<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-" calendar.vim
-let g:calendar_cache_directory = expand('~/.config/nvim/calendar.vim/')
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-let g:calendar_task = 1
-let g:calendar_clock_12hour = 1
-let g:calendar_view = 'day'
-let g:calendar_views = ['day',  'event', 'week', 'month']
-let g:calendar_cyclic_vew = 1
-source ~/.config/nvim/calendar.vim/credentials.vim
 " csv.vim
 let b:csv_arrange_use_all_rows = 1
 " dein
