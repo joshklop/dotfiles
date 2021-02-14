@@ -20,6 +20,16 @@ def math():
 		return False
 endglobal
 
+# anki
+snippet itex "inline" w
+[$]$1[/$]$0
+endsnippet
+
+# anki
+snippet dtex "display" w
+[$$]$1[/$$]$0
+endsnippet
+
 snippet tbf "\textbf" w
 \textbf{$1}$0
 endsnippet
@@ -54,11 +64,6 @@ snippet template "Basic template" b
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb, amsfonts, amsthm}
 \usepackage{enumitem}
-%\usepackage{graphicx}
-%\usepackage[colorlinks=true,
-%		linkcolor=,             
-%		urlcolor=blue,
-%		citecolor=gray]{hyperref}
 
 \begin{document}
 
@@ -134,7 +139,7 @@ snippet iff "iff" Ai
 endsnippet
 
 snippet mk "Math" wA
-$$1$$0
+\($1\)$0
 endsnippet
 
 snippet dm "Math" wA
@@ -156,7 +161,7 @@ snippet // "Fraction" iA
 endsnippet
 
 snippet / "Fraction" i
-\\frac{${VISUAL}}{$1}$0
+\\frac{$1}{$2}$0
 endsnippet
 
 snippet $ "Wrap in $'s" i
