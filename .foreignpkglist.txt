@@ -1,6 +1,5 @@
 bitwarden-cli
 brave-bin
-caffeine-ng
 i3lock-color
 paru
 pepper-flash
