@@ -55,7 +55,7 @@ set updatetime=100
 set nomodeline
 set mouse=""
 set nowrap
-set nocompatible
+set noswapfile
 
 
 " Plugins
