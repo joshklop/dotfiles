@@ -63,7 +63,7 @@ alias v='nvim'
 alias cwm="nvim $HOME/.config/i3/config"
 alias se='sudoedit'
 alias p='python'
-alias z='zathura'
+alias z='zathura --fork'
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
