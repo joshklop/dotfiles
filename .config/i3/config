@@ -160,42 +160,6 @@ client.unfocused        #32302f #32302f #fbf1c7 #32302f   #32302f
 client.urgent           #cc241d #cc241d #fbf1c7 #cc241d   #cc241d
 client.placeholder      #32302f #32302f #fbf1c7 #32302f   #32302f
 
-bar {
-  output eDP-1
-  tray_output none
-  font pango:Source Code Pro 9
-  status_command i3status -c ~/.i3status.conf
-  mode hide
-  colors {
-    background #32302f
-    statusline #fbf1c7
-    separator #fbf1c7
-    # <colorclass> <border> <background> <text>
-    focused_workspace #98971a #98971a #fbf1c7
-    active_workspace #504945 #504945 #fbf1c7
-    inactive_workspace #32302f #32302f #fbf1c7
-    urgent_workspace #cc241d #cc241d #fbf1c7
-  }
-}
-
-bar {
-  output HDMI-1
-  tray_output none
-  status_command i3status -c ~/.i3status-blank.conf
-  font pango:Source Code Pro 9
-  mode hide
-  colors {
-    background #32302f
-    statusline #fbf1c7
-    separator #fbf1c7
-    # <colorclass> <border> <background> <text>
-    focused_workspace #98971a #98971a #fbf1c7
-    active_workspace #504945 #504945 #fbf1c7
-    inactive_workspace #32302f #32302f #fbf1c7
-    urgent_workspace #cc241d #cc241d #fbf1c7
-  }
-}
-
 # Use gruvbox-like static color for wallpaper
 exec --no-startup-id xsetroot -solid "#32302f"
 
