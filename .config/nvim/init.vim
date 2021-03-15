@@ -186,6 +186,12 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" vim-python
+let g:python_version_2 = 0
+let b:python_version_2 = 0
+let g:python_highlight_indent_errors = 0
+let g:python_highlight_space_errors = 0
+let g:python_highlight_all = 1
 " vim-sneak
 let g:sneak#label = 1
 " vimtex
