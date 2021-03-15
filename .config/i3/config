@@ -73,7 +73,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -163,11 +163,14 @@ client.placeholder      #32302f #32302f #fbf1c7 #32302f   #32302f
 # Use gruvbox-like static color for wallpaper
 exec --no-startup-id xsetroot -solid "#32302f"
 
-# Get rid of window titles
-default_border pixel 1
+# Get rid of borders
+default_border none
 
-# Press a keybind twice to switch back and forth
-workspace_auto_back_and_forth yes
+# Jump to specific applications
+bindsym $mod+t [class="kitty"] focus
+bindsym $mod+b [class="Brave-browser"] focus
+bindsym $mod+a [class="Anki"] focus
+bindsym $mod+z [class="Zathura"] focus
 
 # Volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
@@ -184,10 +187,10 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+p exec "lock.sh"
 
 # Monitor controls
-bindsym $mod+m exec "monitor.sh"
+#bindsym $mod+m exec "monitor.sh"
 
 # Screenshot tool
-bindsym $mod+t exec "flameshot gui"
+bindsym $mod+c exec "flameshot gui"
 
 # Adjust brightness
 bindsym $mod+Up exec "brightness.sh +"
