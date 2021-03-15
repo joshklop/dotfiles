@@ -20,16 +20,6 @@ def math():
 		return False
 endglobal
 
-# anki
-snippet itex "inline" w
-[$]$1[/$]$0
-endsnippet
-
-# anki
-snippet dtex "display" w
-[$$]$1[/$$]$0
-endsnippet
-
 snippet tbf "\textbf" w
 \textbf{$1}$0
 endsnippet
@@ -38,7 +28,7 @@ snippet ttt "\texttt" w
 \texttt{$1}$0
 endsnippet
 
-snippet tit "\textit" w
+snippet txt "\textit" w
 \textit{$1}$0
 endsnippet
 
@@ -47,15 +37,15 @@ snippet mrm "\mathrm" iA
 \textrm{$1}$0
 endsnippet
 
-context "math()"
-snippet src "\mathscr" iA
-\mathscr{$1}$0
-endsnippet
-
-context "math()"
-snippet mcal "mathcal" iA
-\mathcal{$1}$0
-endsnippet
+#context "math()"
+#snippet src "\mathscr" iA
+#\mathscr{$1}$0
+#endsnippet
+#
+#context "math()"
+#snippet mcal "mathcal" iA
+#\mathcal{$1}$0
+#endsnippet
 
 snippet template "Basic template" b
 \documentclass{article}
