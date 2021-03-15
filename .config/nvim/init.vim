@@ -109,7 +109,8 @@ endif
 
 " Plugin Options
 " ale
-let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
 let g:ale_linters = {
   \'python': ['flake8'],
   \'typescript': ['eslint'],
@@ -123,8 +124,9 @@ let g:ale_fixers = {
   \'css': ['prettier'],
   \'javascript': ['prettier'],
   \'typescript' : ['prettier'] }
-nnoremap <LocalLeader>gd :ALEGoToDefinition<CR>
-nnoremap <LocalLeader>gr :ALEFindReferences<CR>
+nnoremap <Leader>l :ALEToggle<CR>
+nnoremap <Leader>gd :ALEGoToDefinition<CR>
+nnoremap <Leader>gr :ALEFindReferences<CR>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " csv.vim
