@@ -19,7 +19,7 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-export BAT_THEME="gruvbox"
+export BAT_THEME="gruvbox-dark"
 export WWW_HOME="www.duckduckgo.com"
 export HTTP_HOME=$WWW_HOME
 
@@ -60,10 +60,13 @@ alias info='info --vi'
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
 alias rmorphan='pacman -Rns $(pacman -Qtdq)'
 alias v='nvim'
-alias cwm="nvim $HOME/.config/i3/config"
+alias vwm="nvim $HOME/.config/i3/config"
+alias vsh="nvim $HOME/.zshrc"
+alias vt="nvim $HOME/.config/kitty/kitty.conf"
 alias se='sudoedit'
 alias p='python'
 alias z='zathura --fork'
+alias icat="kitty +kitten icat"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
