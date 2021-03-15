@@ -87,7 +87,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('tpope/vim-surround')
   call dein#add('chaoren/vim-wordmotion')
   call dein#add('prettier/vim-prettier',
-    \{'on_ft': ['javascript', 'typescript', 'json', 'css', 'markdown']})
+    \{'on_ft': ['javascript', 'typescript', 'json', 'css']})
   call dein#add('dense-analysis/ale',
     \{'on_ft': ['python', 'javascript', 'typescript', 'solidity', 'c', 'cpp']})
   call dein#add('chrisbra/csv.vim', {'on_ft': 'csv'})
