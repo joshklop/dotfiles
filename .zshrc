@@ -9,8 +9,10 @@ export PATH="$PATH:$HOME/.local/bin"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export FCEDIT="$VISUAL"
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 
-# Colorize man pages
+# Colorize less pages
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
 export LESS_TERMCAP_me=$'\e[0m'
