@@ -2,8 +2,7 @@
 # GENERAL CONFIGURATIONS #
 ##########################
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# Font for window titles.
 font pango:Source Code Pro 7
 
 # Window focus follows mouse movements
@@ -17,14 +16,11 @@ popup_during_fullscreen leave_fullscreen
 # Window colors
 client.background       #32302f
 # class                 border  backgr. text    indicator child_border
-client.focused          #838316 #838316 #fbf1c7 #838316   #838316
+client.focused          #504945 #504945 #fbf1c7 #504945   #504945
 client.focused_inactive #504945 #504945 #fbf1c7 #504945   #504945
 client.unfocused        #32302f #32302f #fbf1c7 #32302f   #32302f
 client.urgent           #cc241d #cc241d #fbf1c7 #cc241d   #cc241d
 client.placeholder      #32302f #32302f #fbf1c7 #32302f   #32302f
-
-# Use gruvbox-like static color for wallpaper
-exec --no-startup-id xsetroot -solid "#32302f"
 
 # Get rid of borders
 default_border none
@@ -35,9 +31,6 @@ default_border none
 
 # Set mod key
 set $mod Mod4
-
-# start a terminal
-bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -147,9 +140,13 @@ bindsym $mod+r mode "resize"
 
 # Jump to specific applications
 bindsym $mod+t [class="kitty"] focus
+bindsym $mod+Return exec kitty
 bindsym $mod+b [class="Brave-browser"] focus
+bindsym $mod+shift+b exec "brave"
 bindsym $mod+a [class="Anki"] focus
+bindsym $mod+shift+a exec "anki"
 bindsym $mod+z [class="Zathura"] focus
+bindsym $mod+shift+z exec "tabbed -c zathura -e"
 
 # Volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
@@ -169,9 +166,13 @@ bindsym $mod+c exec "flameshot gui"
 bindsym $mod+Up exec "brightness.sh +"
 bindsym $mod+Down exec "brightness.sh -"
 
+# Simple Screen Locker script
+bindsym $mod+p exec "lock.sh"
+
 ######################
 # START APPLICATIONS #
 ######################
 
+exec --no-startup-id "xsetroot -solid '#32302f'"
 exec "dunst"
 exec "batchecker.sh &"
