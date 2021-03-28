@@ -1,8 +1,9 @@
 bitwarden-cli
 brave-bin
-i3lock-color
 libsignal-client
 libzkgroup
 ncurses5-compat-libs
+optimus-manager
+optimus-manager-qt
 paru
 pepper-flash

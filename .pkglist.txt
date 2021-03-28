@@ -18,6 +18,7 @@ cowsay
 ctags
 cups
 cups-pdf
+dbus-python
 dhcpcd
 dia
 dialog
@@ -45,7 +46,7 @@ gtkmm
 highlight
 htop
 i3-gaps
-i3status
+intel-media-driver
 intel-ucode
 jfsutils
 kitty
@@ -72,6 +73,7 @@ net-tools
 networkmanager
 nodejs
 noto-fonts-emoji
+npm
 nss-mdns
 ntfs-3g
 nvidia
@@ -90,7 +92,6 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 python
-python-dbus
 python-llfuse
 python-pillow
 python-pip
@@ -99,7 +100,6 @@ qutebrowser
 r
 reiserfsprogs
 ripgrep
-rofi
 rustup
 s-nail
 simplescreenrecorder
@@ -125,16 +125,17 @@ tk
 tlp
 tmux
 tree
-typescript
 ufw
 unzip
 upower
 usbutils
+vulkan-intel
 w3m
 which
 wireless_tools
 wpa_supplicant
 xclip
+xf86-video-intel
 xf86-video-vesa
 xfsprogs
 xorg-bdftopcf
