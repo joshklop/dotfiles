@@ -21,6 +21,7 @@ augroup omnifuncs
   autocmd FileType solidity setlocal tabstop=4
   autocmd FileType solidity setlocal shiftwidth=4
   autocmd FileType magit setlocal nowrap
+"  autocmd FileType Makefile setlocal noexpandtab
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 augroup end
@@ -198,7 +199,7 @@ let g:sneak#label = 1
 let g:vimtex_enabled = 1
 let g:tex_flavor = 'latex'
 let g:tex_conceal = 'abdmg'
-let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_general_viewer = "zathura"
 set conceallevel=2
 nnoremap <Leader>q :cclose<CR>
 
