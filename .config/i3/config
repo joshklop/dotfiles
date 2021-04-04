@@ -169,6 +169,8 @@ bindsym $mod+Down exec "brightness.sh -"
 # Simple Screen Locker script
 bindsym $mod+p exec "lock.sh"
 
+bindsym $mod+m exec "monitor.sh"
+
 ######################
 # START APPLICATIONS #
 ######################
