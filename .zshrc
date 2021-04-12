@@ -60,7 +60,7 @@ alias rm='rm -Iv'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias info='info --vi'
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
-alias rmorphan='pacman -Rns $(pacman -Qtdq)'
+alias rmorphan='sudo pacman -Rns $(pacman -Qtdq)'
 alias v='nvim'
 alias vwm="nvim $HOME/.config/i3/config"
 alias vsh="nvim $HOME/.zshrc"
@@ -69,6 +69,7 @@ alias se='sudoedit'
 alias p='python'
 alias z='zathura --fork'
 alias icat="kitty +kitten icat"
+alias charge="upower -i $(upower -e | grep -i bat)"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
