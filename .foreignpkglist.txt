@@ -1,5 +1,6 @@
 bitwarden-cli
 brave-bin
+edid-decode-git
 libsignal-client
 libzkgroup
 ncurses5-compat-libs

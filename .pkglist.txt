@@ -36,10 +36,12 @@ flex
 fzf
 gcc
 gcc-fortran
+gdb
 ghc
 ghex
 git
 github-cli
+gnuplot
 groff
 grub
 gtkmm
@@ -51,6 +53,7 @@ intel-ucode
 jfsutils
 kitty
 libnotify
+libqalculate
 libtool
 linux
 linux-firmware
@@ -96,6 +99,7 @@ python-llfuse
 python-pillow
 python-pip
 python2
+qalculate-gtk
 qutebrowser
 r
 reiserfsprogs
