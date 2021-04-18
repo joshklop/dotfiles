@@ -208,8 +208,6 @@ nnoremap <Leader>q :cclose<CR>
 " LocalLeader
 nnoremap <SPACE> <Nop>
 let maplocalleader = " "
-" Never lose an idea
-nnoremap <Leader><d> ':e $HOME/todo.md<CR>'
 " Transpose lines and characters
 nnoremap <Up> ddkP
 nnoremap <Down> ddp
@@ -235,3 +233,5 @@ nnoremap <C-w>s :split<CR>
 nnoremap <C-w><A-s> :split<CR>
 nnoremap <C-w>v :vsplit<CR>
 nnoremap <C-w><A-v> :vsplit<CR>
+" Compile C program
+nnoremap <LocalLeader>c :!gcc -g %; ./a.out<CR>

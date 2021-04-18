@@ -133,6 +133,7 @@ ufw
 unzip
 upower
 usbutils
+valgrind
 vulkan-intel
 w3m
 which
