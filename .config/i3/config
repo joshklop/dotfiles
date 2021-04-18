@@ -154,9 +154,9 @@ bindsym $mod+b [class="Brave-browser"] focus
 bindsym $mod+shift+b exec "brave"
 bindsym $mod+a [class="Anki"] focus
 bindsym $mod+shift+a exec "anki"
-bindsym $mod+z [class="Zathura"] focus
+bindsym $mod+z [class="tabbed"] focus
 bindsym $mod+shift+z exec "tabbed -c zathura -e"
-bindsym $mod+c [class="qalculate-gtk"] focus
+bindsym $mod+c [class="Qalculate-gtk"] focus
 bindsym $mod+shift+c exec "qalculate-gtk"
 
 # Volume controls
