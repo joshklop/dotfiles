@@ -70,6 +70,8 @@ alias p='python'
 alias z='zathura --fork'
 alias icat="kitty +kitten icat"
 alias charge="upower -i $(upower -e | grep -i bat)"
+alias gdb="gdb -q"
+alias rr="cd $HOME/repos"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
@@ -144,9 +146,8 @@ bindkey -e
 export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
 . ~/.config/fzf/fzf.zsh
 
-# Ironing out ZSH keybind quirks
+# Keybinds
 bindkey "^[[3~" delete-char     # Make 'delete' actually delete
 bindkey \^U backward-kill-line  # CTRL-u works as in bash
 bindkey "^[[1;5C" forward-word  # Ctrl-right moves right a word
 bindkey "^[[1;5D" backward-word # Ctrl-left moves left a word
-
