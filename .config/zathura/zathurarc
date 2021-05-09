@@ -17,3 +17,6 @@ set statusbar-fg "#fbf1c7"
 
 set inputbar-bg "#32302f"
 set inputbar-fg "#fbf1c7"
+
+map u scroll half-up
+map d scroll half-down
