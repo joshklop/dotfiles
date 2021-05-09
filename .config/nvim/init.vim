@@ -37,9 +37,6 @@ set smarttab
 " Command mode
 set wildmenu
 set noshowmode
-" Line numbering
-set relativenumber
-set nu
 " Filetype
 filetype on
 filetype plugin on
@@ -67,8 +64,9 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('deoplete-plugins/deoplete-clang', {'on_ft': ['c', 'cpp']})
   call dein#add('junegunn/fzf.vim')
-  call dein#add('csexton/trailertrash.vim', {'on_cmd': 'TrailerTrim'})
-  call dein#add('lifepillar/vim-gruvbox8')
+  call dein#add('KeitaNakamura/tex-conceal.vim', {'on_ft': ['tex']})
+  call dein#add('sainnhe/gruvbox-material')
+  call dein#add('psliwka/vim-smoothie')
   " Syntax plugins
   call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee']})
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': 'python'})
@@ -110,7 +108,7 @@ endif
 
 " Plugin Options
 " ale
-let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_insert_leave = 0
 let g:ale_linters = {
   \'python': ['flake8'],
@@ -126,8 +124,8 @@ let g:ale_fixers = {
   \'javascript': ['prettier'],
   \'typescript' : ['prettier'] }
 nnoremap <Leader>l :ALEToggle<CR>
-nnoremap <Leader>gd :ALEGoToDefinition<CR>
-nnoremap <Leader>gr :ALEFindReferences<CR>
+nnoremap <Leader>gd <Plug>(ale_go_to_definition)
+nnoremap <Leader>gr <Plug>(ale_find_references)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " csv.vim
@@ -166,13 +164,16 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-t> :Buffers<CR>
 nnoremap <C-m> :Marks<CR>
 nnoremap <C-l> :Tags<CR>
-" gruvbox8
-colorscheme gruvbox8_soft
-let g:gruvbox_italics = 0
-let g:gruvbox_italicize_strings = 0
+" gruvbox-community
+let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_enable_italic = 0
+let g:gruvbox_material_disable_italic_comment = 1
+let g:gruvbox_material_sign_column_background = 'none'
 syntax enable
-set termguicolors
-set background=dark
+if has('termguicolors')
+  set termguicolors
+endif
+colorscheme gruvbox-material
 " gutentags
 let g:gutentags_ctags_exclude = ['node_modules']
 " Nvim-R
@@ -222,7 +223,8 @@ nnoremap <ESC> :nohlsearch<CR>
 nnoremap <F5> :setlocal spell! spelllang=en_us<CR>
 " Terminal Mode Keybindings "
 tnoremap <Esc> <C-\><C-n>
-tnoremap <expr> <C-R> '<C-\><C-n>"'.nr2char(getchar()).'pi' " Simlulate CTRL-R
+" Simlulate CTRL-R
+tnoremap <expr> <C-R> '<C-\><C-n>"'.nr2char(getchar()).'pi'
 " Easier Window Navigation
 noremap <A-h> <C-w>h
 noremap <A-j> <C-w>j
@@ -233,5 +235,3 @@ nnoremap <C-w>s :split<CR>
 nnoremap <C-w><A-s> :split<CR>
 nnoremap <C-w>v :vsplit<CR>
 nnoremap <C-w><A-v> :vsplit<CR>
-" Compile C program
-nnoremap <LocalLeader>c :!gcc -g %; ./a.out<CR>
