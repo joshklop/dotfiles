@@ -8,5 +8,5 @@ while true; do
   elif [[ $bat -ge 90 ]]; then
     notify-send --urgency="critical" "WARNING: battery charge is >= 90%"
   fi
-  sleep 120;
+  sleep 300;
 done
