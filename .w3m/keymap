@@ -1,7 +1,0 @@
-keymap t NEW_TAB
-keymap 0 LINE_BEGIN
-keymap d NEXT_PAGE
-keymap u PREV_PAGE
-keymap o GOTO
-keymap O GOTO_HOME
-keymap U OPTIONS
