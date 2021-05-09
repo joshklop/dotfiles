@@ -135,7 +135,6 @@ upower
 usbutils
 valgrind
 vulkan-intel
-w3m
 which
 wireless_tools
 wpa_supplicant
