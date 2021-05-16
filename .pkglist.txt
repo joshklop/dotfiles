@@ -106,6 +106,7 @@ reiserfsprogs
 ripgrep
 rustup
 s-nail
+signal-desktop
 simplescreenrecorder
 solidity
 sqlitebrowser
