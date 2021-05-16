@@ -2,8 +2,11 @@
 	name = Josh Klopfenstein
 	email = joshklop10@gmail.com
 [alias]
-	cgraph = log --all --decorate --oneline --graph
-	st = status -s
+  a = add
+  c = commit
+	cg = log --all --decorate --oneline --graph
+	s = status -s
+  d = diff
 [pull]
 	rebase = false
 [merge]
