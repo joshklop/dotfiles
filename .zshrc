@@ -57,7 +57,7 @@ alias ls='exa --git --classify --group-directories-first --sort=extension --colo
 alias cat='bat'
 alias shred='shred --remove --zero --iterations=4'
 alias rm='rm -Iv'
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias c='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias info='info --vi'
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
 alias rmorphan='sudo pacman -Rns $(pacman -Qtdq)'
@@ -72,6 +72,7 @@ alias icat="kitty +kitten icat"
 alias charge="upower -i $(upower -e | grep -i bat)"
 alias gdb="gdb -q"
 alias rr="cd $HOME/repos"
+alias g="git"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
