@@ -45,12 +45,6 @@ setopt interactivecomments       # Allow typing comments at an interactive promp
 # Changing directories
 setopt CD_SILENT
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/josh/code/google-cloud-sdk/path.zsh.inc' ]; then . '/home/josh/code/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/josh/code/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/josh/code/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Aliases and Functions
 #alias ls='ls --color=auto --group-directories-first --sort=extension'
 alias ls='exa --git --classify --group-directories-first --sort=extension --color-scale'
