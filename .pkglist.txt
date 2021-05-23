@@ -1,4 +1,5 @@
 alsa-firmware
+alsa-tools
 alsa-utils
 anki
 arandr
@@ -93,7 +94,6 @@ pkgconf
 playerctl
 pulseaudio
 pulseaudio-alsa
-pulseaudio-bluetooth
 python
 python-llfuse
 python-pillow
