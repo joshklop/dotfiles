@@ -14,7 +14,7 @@ for i in $HOME/repos/*/; do
     behind=$(git -C $i rev-list --left-right --count origin/master...master | cut -f 1)
     ahead=$(git -C $i rev-list --left-right --count origin/master...master | cut -f 2)
     echo -e "master is ${RED}$ahead${RESET} commits ahead and ${RED}$behind${RESET} commits behind origin/master."
-    git -C $i st -s
+    git -C $i s -s
     echo
   fi
 done
