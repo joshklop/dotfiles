@@ -55,6 +55,10 @@ set mouse=""
 set nowrap
 set noswapfile
 
+" Remap leader keys
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+let maplocalleader = ","
 
 " Plugins
 set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
@@ -126,8 +130,8 @@ let g:ale_fixers = {
 nnoremap <Leader>l :ALEToggle<CR>
 nnoremap <Leader>gd <Plug>(ale_go_to_definition)
 nnoremap <Leader>gr <Plug>(ale_find_references)
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <Leader>j <Plug>(ale_next_wrap)
+nmap <Leader>k <Plug>(ale_previous_wrap)
 " csv.vim
 let b:csv_arrange_use_all_rows = 1
 " dein
@@ -206,9 +210,6 @@ nnoremap <Leader>q :cclose<CR>
 
 
 " Keymaps
-" LocalLeader
-nnoremap <SPACE> <Nop>
-let maplocalleader = " "
 " Transpose lines and characters
 nnoremap <Up> ddkP
 nnoremap <Down> ddp
@@ -226,12 +227,8 @@ tnoremap <Esc> <C-\><C-n>
 " Simlulate CTRL-R
 tnoremap <expr> <C-R> '<C-\><C-n>"'.nr2char(getchar()).'pi'
 " Easier Window Navigation
-noremap <A-h> <C-w>h
-noremap <A-j> <C-w>j
-noremap <A-k> <C-w>k
-noremap <A-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 noremap <C-w>t :tabnew<CR>
-nnoremap <C-w>s :split<CR>
-nnoremap <C-w><A-s> :split<CR>
-nnoremap <C-w>v :vsplit<CR>
-nnoremap <C-w><A-v> :vsplit<CR>
