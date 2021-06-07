@@ -8,7 +8,7 @@ augroup omnifuncs
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.snippets :setfiletype snippets
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.js :setfiletype javascript
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.ts :setfiletype typescript
-  autocmd BufNew,BufNewFile,BufRead,BufEnter *.md :setfiletype markdown
+  au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.sol :setfiletype solidity
   autocmd FileType python setlocal colorcolumn=79
   autocmd FileType python let g:keywordprog='pydoc'
@@ -71,6 +71,10 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('KeitaNakamura/tex-conceal.vim', {'on_ft': ['tex']})
   call dein#add('cormacrelf/vim-colors-github')
   call dein#add('psliwka/vim-smoothie')
+  call dein#add('godlygeek/tabular', {'on_cmd': ['Tabularize']})
+  call dein#add('vim-pandoc/vim-pandoc-syntax', {'on_ft': ['markdown']})
+  call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'markdown.pandoc', 'rmd']},
+                \{'build': 'sh -c "cd app && yarn install"'})
   " Syntax plugins
   call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee']})
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': 'python'})
