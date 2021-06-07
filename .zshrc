@@ -66,6 +66,7 @@ alias charge="upower -i $(upower -e | grep -i bat)"
 alias gdb="gdb -q"
 alias rr="cd $HOME/repos"
 alias g="git"
+alias l="ls"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
