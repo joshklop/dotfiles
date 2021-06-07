@@ -21,9 +21,8 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-export BAT_THEME="gruvbox-dark"
-export WWW_HOME="www.duckduckgo.com"
-export HTTP_HOME=$WWW_HOME
+export BAT_THEME="GitHub"
+export LS_COLORS="README*=30;01;04:*akefile=30;01;04:build.gradle=30;01;04:Cargo.toml=30;01;04:CMakeLists*=30;01;04:Dockerfile=30;01;04"
 
 # History options
 HISTFILE=~/.histfile
@@ -47,7 +46,7 @@ setopt CD_SILENT
 
 # Aliases and Functions
 #alias ls='ls --color=auto --group-directories-first --sort=extension'
-alias ls='exa --git --classify --group-directories-first --sort=extension --color-scale'
+alias ls='exa --git --classify --group-directories-first --sort=extension --color=always --color-scale'
 alias cat='bat'
 alias shred='shred --remove --zero --iterations=4'
 alias rm='rm -Iv'
@@ -129,7 +128,7 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 RPROMPT='%F{red}'\$vcs_info_msg_0_'%f'
 zstyle ':vcs_info:git:*' formats '%b' enable git
-PROMPT='%F{yellow}%~%f %F{7}%#%f '
+PROMPT='%F{blue}%~%f %F{blue}%#%f '
 
 # Syntax highlighting!
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh

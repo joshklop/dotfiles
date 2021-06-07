@@ -69,7 +69,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('deoplete-plugins/deoplete-clang', {'on_ft': ['c', 'cpp']})
   call dein#add('junegunn/fzf.vim')
   call dein#add('KeitaNakamura/tex-conceal.vim', {'on_ft': ['tex']})
-  call dein#add('sainnhe/gruvbox-material')
+  call dein#add('cormacrelf/vim-colors-github')
   call dein#add('psliwka/vim-smoothie')
   " Syntax plugins
   call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee']})
@@ -163,21 +163,15 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
-nnoremap <C-s> :Rg<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <C-t> :Buffers<CR>
-nnoremap <C-m> :Marks<CR>
-nnoremap <C-l> :Tags<CR>
-" gruvbox-community
-let g:gruvbox_material_background = 'soft'
-let g:gruvbox_material_enable_italic = 0
-let g:gruvbox_material_disable_italic_comment = 1
-let g:gruvbox_material_sign_column_background = 'none'
-syntax enable
+nnoremap <C-g> :Buffers<CR>
+nnoremap <C-t> :Tags<CR>
 if has('termguicolors')
   set termguicolors
 endif
-colorscheme gruvbox-material
+set background=light
+let g:github_colors_soft = 1
+colorscheme github
 " gutentags
 let g:gutentags_ctags_exclude = ['node_modules']
 " Nvim-R

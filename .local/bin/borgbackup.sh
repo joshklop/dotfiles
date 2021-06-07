@@ -1,13 +1,13 @@
 #!/bin/sh
 
 PREFIX='\033['
-WHITE="${PREFIX}1;37m"
 GREEN="${PREFIX}1;32m"
 RESET="${PREFIX}0m"
+BOLD=$(tput bold)
 
 mounted='n'
 while [[ $mounted =~ [^yY] ]]; do
-  echo -e -n "${GREEN}==> ${WHITE}Is your flash drive mounted? [y/n] ${RESET}"; read resp
+  echo -e -n "${GREEN}==>${RESET} ${BOLD}Is your flash drive mounted?${RESET} [y/n] "; read resp
   mounted=$resp
 done
 

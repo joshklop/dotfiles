@@ -1,10 +1,10 @@
 #!/bin/sh
 
 PREFIX='\033['
-WHITE="${PREFIX}1;37m"
 GREEN="${PREFIX}1;32m"
 RED="${PREFIX}0;31m"
 RESET="${PREFIX}0m"
+BOLD=$(tput bold)
 
 function ready(){
   prompt=$1
@@ -26,16 +26,16 @@ function ready(){
   done
 }
 
-ready "${GREEN}==>${RESET} ${WHITE}Have you deleted unnecessary files?" 
+ready "${GREEN}==>${RESET} ${BOLD}Have you deleted unnecessary files?${RESET}" 
 git_unsaved_changes.sh
-ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to cleanup.sh?" cleanup.sh
-ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to bwbackup.sh?" bwbackup.sh
-ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to borgbackup.sh?" borgbackup.sh
-ready "${GREEN}==>${RESET} ${WHITE}Are you prepared to continue to backup /etc?" "sudo etcbackup.sh"
+ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to cleanup.sh?${RESET}" cleanup.sh
+ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to bwbackup.sh?${RESET}" bwbackup.sh
+ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to borgbackup.sh?${RESET}" borgbackup.sh
+ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to backup /etc?${RESET}" "sudo etcbackup.sh"
 echo
-echo -e "${GREEN}* ${WHITE}Make sure you umount!"
+echo -e "${GREEN}* ${BOLD}Make sure you umount!${RESET}"
 echo
-ready "${GREEN}==>${RESET} ${WHITE}Now commit and push your dotfiles. Continue when you are ready."
+ready "${GREEN}==>${RESET} ${BOLD}Now commit and push your dotfiles. Continue when you are ready.${RESET}"
 
 echo
-echo -e "${GREEN}* ${WHITE}All done! Make sure you reboot!${RESET}"
+echo -e "${GREEN}* ${BOLD}All done! Make sure you reboot!${RESET}"

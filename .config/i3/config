@@ -18,15 +18,14 @@ for_window [class="Qalculate-gtk"] floating enable
 popup_during_fullscreen leave_fullscreen
 
 # Window colors
-client.background       #32302f
+client.background       #f4f4f4
 # class                 border  backgr. text    indicator child_border
-client.focused          #504945 #504945 #fbf1c7 #504945   #504945
-client.focused_inactive #504945 #504945 #fbf1c7 #504945   #504945
-client.unfocused        #32302f #32302f #fbf1c7 #32302f   #32302f
-client.urgent           #cc241d #cc241d #fbf1c7 #cc241d   #cc241d
-client.placeholder      #32302f #32302f #fbf1c7 #32302f   #32302f
+client.focused          #3e3e3e #3e3e3e #f4f4f4 #3e3e3e   #3e3e3e
+client.focused_inactive #3e3e3e #3e3e3e #f4f4f4 #3e3e3e   #3e3e3e
+client.unfocused        #f4f4f4 #f4f4f4 #3e3e3e #f4f4f4   #f4f4f4
+client.urgent           #970b16 #970b16 #3e3e3e #970b16   #970b16
+client.placeholder      #f4f4f4 #f4f4f4 #3e3e3e #f4f4f4   #f4f4f4
 
-# Get rid of borders
 default_border none
 
 ############
@@ -187,7 +186,6 @@ bindsym $mod+p exec "lock.sh"
 # START APPLICATIONS #
 ######################
 
-exec --no-startup-id "xsetroot -solid '#32302f'"
 exec "dunst"
 exec "batchecker.sh &"
 exec "flameshot"
