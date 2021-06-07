@@ -178,13 +178,16 @@ let g:github_colors_soft = 1
 colorscheme github
 " gutentags
 let g:gutentags_ctags_exclude = ['node_modules']
+" markdown-preview
+let g:mkdp_auto_close = 0
+let g:mkdp_browser = 'brave'
+let g:mkdp_filetypes = ['markdown', 'markdown.pandoc', 'rmd']
+nmap <LocalLeader><a> <Plug>MarkdownPreviewToggle
 " Nvim-R
 let R_nvimpager = 'tab'
 let R_assign = 2
 let rout_follow_colorscheme = 1
 let Rout_more_colors = 1
-" TrailerTrim
-noremap <Leader>t :TrailerTrim<CR>
 " UltiSnips
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
