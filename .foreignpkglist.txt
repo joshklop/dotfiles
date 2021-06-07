@@ -10,3 +10,4 @@ optimus-manager
 optimus-manager-qt
 paru
 pepper-flash
+volnoti
