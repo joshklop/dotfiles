@@ -123,12 +123,9 @@ setopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
 kitty + complete setup zsh | . /dev/stdin # Completion for kitty
 
 # Prompt fanciness
-autoload -Uz promptinit vcs_info && promptinit
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+autoload -Uz promptinit
 setopt prompt_subst
 RPROMPT='%F{red}'\$vcs_info_msg_0_'%f'
-zstyle ':vcs_info:git:*' formats '%b' enable git
 PROMPT='%F{blue}%~%f %F{blue}%#%f '
 
 # Syntax highlighting!
