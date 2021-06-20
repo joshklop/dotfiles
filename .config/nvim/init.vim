@@ -21,7 +21,6 @@ augroup omnifuncs
   autocmd FileType solidity setlocal tabstop=4
   autocmd FileType solidity setlocal shiftwidth=4
   autocmd FileType magit setlocal nowrap
-"  autocmd FileType Makefile setlocal noexpandtab
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 augroup end
@@ -234,3 +233,5 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-w>t :tabnew<CR>
+" Delete buffer without deleting window
+nnoremap <Leader>d :bp\|bd #<CR>
