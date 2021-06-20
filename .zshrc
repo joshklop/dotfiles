@@ -58,15 +58,9 @@ alias v='nvim'
 alias vwm="nvim $HOME/.config/i3/config"
 alias vsh="nvim $HOME/.zshrc"
 alias vt="nvim $HOME/.config/kitty/kitty.conf"
-alias se='sudoedit'
-alias p='python'
-alias z='zathura --fork'
 alias icat="kitty +kitten icat"
 alias charge="upower -i $(upower -e | grep -i bat)"
 alias gdb="gdb -q"
-alias rr="cd $HOME/repos"
-alias g="git"
-alias l="ls"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
