@@ -27,7 +27,7 @@ borg create                                      \
         -e '*/downloads'                         \
         -e '*/README.md'                         \
         -e '*/LICENSE'                           \
-        --exclude-if-present '*.git'             \
+        -e '*/repos'                             \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"       \
         "$HOME"
 
