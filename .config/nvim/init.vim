@@ -54,11 +54,15 @@ set nomodeline
 set mouse=""
 set nowrap
 set noswapfile
+set relativenumber
+set number
+
 
 " Remap leader keys
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 let maplocalleader = ","
+
 
 " Plugins
 set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
@@ -103,7 +107,6 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('sirver/UltiSnips', {'on_ft': ['tex', 'python', 'java']})
   call dein#add('dmdque/solidity.vim', {'on_ft': 'sol'})
   call dein#add('jreybert/vimagit')
-  call dein#add('justinmk/vim-sneak')
   call dein#add('ludovicchabant/vim-gutentags',
     \{'on_ft': ['tex', 'python', 'java', 'r', 'javascript', 'typescript', 'c', 'cpp']})
   call dein#add('lervag/vimtex', {'on_ft': 'tex'})
@@ -193,14 +196,12 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" vim-python
+" python-syntax
 let g:python_version_2 = 0
 let b:python_version_2 = 0
 let g:python_highlight_indent_errors = 0
 let g:python_highlight_space_errors = 0
 let g:python_highlight_all = 1
-" vim-sneak
-let g:sneak#label = 1
 " vimtex
 let g:vimtex_enabled = 1
 let g:tex_flavor = 'latex'
