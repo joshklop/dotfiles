@@ -52,6 +52,7 @@ i3-gaps
 intel-media-driver
 intel-ucode
 jfsutils
+jupyter-notebook
 kitty
 libnotify
 libqalculate
