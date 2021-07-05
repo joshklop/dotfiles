@@ -32,6 +32,7 @@ ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to cleanup.sh?${R
 ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to bwbackup.sh?${RESET}" bwbackup.sh
 ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to borgbackup.sh?${RESET}" borgbackup.sh
 ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to backup /etc?${RESET}" "sudo etcbackup.sh"
+ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to backup your notes?${RESET}" notesbackup.sh
 echo
 echo -e "${GREEN}* ${BOLD}Make sure you umount!${RESET}"
 echo
