@@ -61,6 +61,8 @@ alias vt="nvim $HOME/.config/kitty/kitty.conf"
 alias icat="kitty +kitten icat"
 alias charge="upower -i $(upower -e | grep -i bat)"
 alias gdb="gdb -q"
+alias zkl="zk list -i"
+alias zke="zk edit -i"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
