@@ -11,3 +11,4 @@ optimus-manager-qt
 paru
 pepper-flash
 volnoti
+zk
