@@ -8,7 +8,7 @@ augroup omnifuncs
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.snippets :setfiletype snippets
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.js :setfiletype javascript
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.ts :setfiletype typescript
-  au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+  au! BufNewFile,BufFilePre,BufRead *.md :setfiletype markdown.pandoc
   autocmd BufNew,BufNewFile,BufRead,BufEnter *.sol :setfiletype solidity
   autocmd FileType python setlocal colorcolumn=79
   autocmd FileType python let g:keywordprog='pydoc'
@@ -79,6 +79,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'markdown.pandoc', 'rmd']},
                 \{'build': 'sh -c "cd app && yarn install"'})
   " Syntax plugins
+  call dein#add('uiiaoo/java-syntax.vim')
   call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee']})
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': 'python'})
   call dein#add('vim-python/python-syntax', {'on_ft': 'python'})
@@ -99,7 +100,7 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('prettier/vim-prettier',
     \{'on_ft': ['javascript', 'typescript', 'json', 'css']})
   call dein#add('dense-analysis/ale',
-    \{'on_ft': ['python', 'javascript', 'typescript', 'solidity', 'c', 'cpp']})
+    \{'on_ft': ['python', 'javascript', 'typescript', 'solidity', 'c', 'cpp', 'java']})
   call dein#add('chrisbra/csv.vim', {'on_ft': 'csv'})
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('jalvesaq/nvim-r', {'on_ft': ['r', 'Rmd']})
