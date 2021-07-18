@@ -14,22 +14,19 @@ augroup omnifuncs
   autocmd FileType python let g:keywordprog='pydoc'
   autocmd FileType javascript setlocal colorcolumn=79
   autocmd FileType c setlocal colorcolumn=79
-  autocmd FileType c setlocal tabstop=4
-  autocmd FileType c setlocal shiftwidth=4
   autocmd FileType cpp setlocal colorcolumn=79
   autocmd FileType solidity setlocal colorcolumn=79
-  autocmd FileType solidity setlocal tabstop=4
-  autocmd FileType solidity setlocal shiftwidth=4
   autocmd FileType magit setlocal nowrap
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType java setlocal colorcolumn=99
 augroup end
 
 
 " Tabs, indents
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set softtabstop=4
+set shiftwidth=4
 set autoindent
 set smartindent
 set smarttab
