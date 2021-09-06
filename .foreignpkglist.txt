@@ -1,6 +1,7 @@
 bitwarden-cli-bin
 brave-bin
 caffeine-ng
+criterion
 edid-decode-git
 libcsv
 libsignal-client
@@ -12,3 +13,4 @@ paru
 pepper-flash
 volnoti
 zk
+zoom

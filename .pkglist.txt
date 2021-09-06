@@ -26,11 +26,14 @@ dialog
 docker
 docker-compose
 dosfstools
+dotnet-runtime
+dotnet-sdk
 dunst
 efibootmgr
 etckeeper
 exa
 fakeroot
+fd
 flake8
 flameshot
 flex
@@ -105,6 +108,7 @@ qutebrowser
 r
 reiserfsprogs
 ripgrep
+ruby
 rustup
 s-nail
 signal-desktop
