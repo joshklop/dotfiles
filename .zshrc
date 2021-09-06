@@ -3,7 +3,7 @@
 
 export PRINTER=M70
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:/home/user/.local/share/gem/ruby/3.0.0/bin"
 
 # Editor exports
 export VISUAL=nvim
