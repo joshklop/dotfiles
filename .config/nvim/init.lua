@@ -46,7 +46,7 @@ map('n', 'k', 'gk')
 map('n', '<ESC>', '<CMD>nohlsearch<CR>')
 -- Easier Window Navigation
 map('', '<C-h>', '<C-w>h')
-map('', '<C-j>', '<C-w>j')
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {})
 map('', '<C-k>', '<C-w>k')
 map('', '<C-l>', '<C-w>l')
 map('', '<C-w>t', '<CMD>tabnew<CR>')
@@ -60,9 +60,11 @@ augroup omnifuncs
 au BufNew,BufNewFile,BufRead,BufEnter *.snippets :setfiletype snippets
 au BufNew,BufNewFile,BufRead,BufEnter *.js :setfiletype javascript
 au BufNew,BufNewFile,BufRead,BufEnter *.ts :setfiletype typescript
-au FileType python,c,cpp,lua setlocal colorcolumn=79
+au FileType python,lua setlocal colorcolumn=79
+au FileType c,cpp setlocal colorcolumn=89
 au FileType magit setlocal nowrap
 au FileType java setlocal colorcolumn=99
+au BufNew,BufNewFile,BufRead,BufEnter *.tex :setfiletype tex
 augroup end
 ]]
 
@@ -73,20 +75,10 @@ require('me.plugins')
 
 -- LSP
 require('me.setup_lsp').setup_lua()
+require('me.setup_lsp').setup_latex()
+require('me.setup_lsp').setup_c()
 vim.cmd [[
 augroup lsp
-"au FileType python lua reuqire('setup_lsp').setup_python()
-"au FileType c,cpp lua require('lspconfig').clangd.setup({on_attach = on_attach})
-au FileType java lua require('setup_lsp').setup_jdtls()
+au FileType java lua require('me.setup_lsp').setup_java()
 augroup end
 ]]
-
--- TODO
--- telescope + lsp commands
--- jdtls, nvim-dap
--- pyright
--- clangd
--- wildmenu.nvim
--- set up other plugins with previous configuration (eg. vimtex)
--- search dotfiles with telescope
--- why do i need to do autocommand with jdtls? is there a better way? ftplugin?

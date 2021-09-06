@@ -1,21 +1,20 @@
 -- Plugins
 require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
+    use {'hrsh7th/vim-vsnip'}
+    use {'hrsh7th/vim-vsnip-integ'}
     use {'cormacrelf/vim-colors-github'}
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
-    use {'KeitaNakamura/tex-conceal.vim', ft = {'tex'}}
     use {'psliwka/vim-smoothie'}
     use {'neovim/nvim-lspconfig'}
     use {'tpope/vim-repeat'}
     use {'tpope/vim-surround'}
     use {'chaoren/vim-wordmotion'}
     use {'jiangmiao/auto-pairs'}
-    use {'sirver/UltiSnips', ft = {'tex', 'python', 'java'}}
     use {'jreybert/vimagit'}
-    use {'lervag/vimtex', ft = {'tex'}}
     use {'hrsh7th/nvim-compe'}
     use {'Vimjas/vim-python-pep8-indent', ft = {'python'}}
     use {
@@ -23,10 +22,7 @@ require('packer').startup(function(use)
         ft = {'javascript', 'typescript', 'json', 'css'}
     }
     use {'mfussenegger/nvim-jdtls'} -- Do not set to only run on ft = java
-    use {
-        'glacambre/firenvim',
-        run = function() vim.fn['firenvim#install'](0) end
-    }
+    use {'mfussenegger/nvim-dap'}
     use {'kabouzeid/nvim-lspinstall'}
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -64,32 +60,49 @@ require('compe').setup {
         calc = true;
         nvim_lsp = true;
         nvim_lua = true;
-        ultisnips = true;
         treesitter = true;
         emoji = false;
         vim_dadbod_completion = true;
+        vsnip = true;
     };
 }
 
 require('nvim-treesitter.configs').setup {
-    highlight = {enable = true, disable = {'lua'}},
+    highlight = {enable = true, disable = {'lua', 'json', 'latex'}},
     incremental_selection = {enable = true},
 }
 
-
-local M = {}
-
--- Telescope
 -- TODO make this a global or something, you're using it everywhere
 local function map(mode, lhs, rhs, opts)
     local options = {noremap = true}
     if opts then options = vim.tbl_extend('force', options, opts) end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
+
+-- vsnip
+-- Expand
+vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config' .. '/nvim' .. '/snippets'
+-- Expand
+vim.cmd [[
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+]]
+-- Expand or jump
+vim.cmd [[
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+]]
+-- Jump forward or backward
+vim.cmd [[
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+]]
+
+-- Telescope
 map('n', '<Leader>ff', '<CMD>Telescope find_files<CR>')
 map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
 map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
-map('n', '<Leader>fd', "<CMD>lua require('custom').find_dotfiles()<CR>")
-
-return M
+-- map('n', '<Leader>fd', "<CMD>lua require('custom').find_dotfiles()<CR>") FIXME

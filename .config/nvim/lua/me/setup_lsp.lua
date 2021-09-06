@@ -19,7 +19,7 @@ local function on_attach(client, bufnr)
     vim.cmd [[
     hi LspDiagnosticsVirtualTextError guifg=red
     hi LspDiagnosticsVirtualTextWarning guifg=orange
-    hi LspDiagnosticsVirtualTextInformation guifg=yellow
+    hi LspDiagnosticsVirtualTextInformation guifg=gray
     hi LspDiagnosticsVirtualTextHint guifg=green
     ]]
     -- Set some keybinds conditional on server capabilities
@@ -69,7 +69,15 @@ function LSP.setup_lua()
     }
 end
 
-function LSP.setup_jdtls()
+function LSP.setup_latex()
+    require('lspconfig').texlab.setup {
+        cmd = {os.getenv('HOME') .. '/.local' .. '/share' .. '/nvim' .. '/lspinstall' .. '/latex' .. '/texlab'},
+        on_attach = on_attach
+    }
+    vim.api.nvim_set_keymap('n', '<Leader>lb', '<CMD>TexlabBuild<CR>', {noremap = true})
+end
+
+function LSP.setup_java()
     local on_attach_jdtls = function(client, bufnr)
         on_attach(client, bufnr)
         local opts = {noremap=true, silent=true}
@@ -130,6 +138,20 @@ function LSP.setup_jdtls()
         cmd = {'java-lsp.sh', workspace_folder}
     }
     require('jdtls').start_or_attach(config)
+end
+
+function LSP.setup_c()
+    require('lspconfig').clangd.setup {
+        on_attach = on_attach
+    }
+end
+
+function LSP.setup_python()
+    local path = os.getenv('HOME') .. '/.local/share/nvim/lspinstall/python/node_modules/pyright/langserver.index.js'
+    require('lspconfig').pyright.setup {
+        cmd = {path, '--stdio'},
+        on_attach = on_attach
+    }
 end
 
 return LSP

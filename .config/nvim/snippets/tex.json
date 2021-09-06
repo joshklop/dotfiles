@@ -1,0 +1,138 @@
+{
+    "school template": {
+        "prefix": "stemp",
+        "body": [
+            "\\documentclass{article}",
+            "",
+            "\\usepackage{geometry}[margin=0.75in]",
+            "\\usepackage{amsmath,amsthm}",
+            "\\usepackage{graphicx}",
+            "\\graphicspath{{./images}}",
+            "",
+            "\\setlength{\\parindent}{0cm}",
+            "\\newtheorem{theorem}{Theorem}",
+            "",
+            "\\begin{document}",
+            "\\pagenumbering{gobble}",
+            "",
+            "$0",
+            "",
+            "\\end{document}"
+        ],
+        "description": "school template"
+    },
+    "align": {
+        "prefix": "ali",
+        "body": [
+            "\\begin{align*}",
+            "\t$1",
+            "\\end{align*}",
+            "$0"
+        ],
+        "description": "align environment"
+    },
+    "environment": {
+        "prefix": "beg",
+        "body": [
+            "\\begin{$1}",
+            "\t$2",
+            "\\end{$1}",
+            "$0"
+        ]
+    },
+    "math mode": {
+        "prefix": "m",
+        "body": [
+            "\\($1\\)$0"
+        ],
+        "description": "math mode"
+    },
+    "figure": {
+        "prefix": "fig",
+        "body": [
+            "\\begin{figure}[h]",
+            "\t\\includegraphics{$1}",
+            "\t\\caption{$2}",
+            "\\end{figure}",
+            "$0"
+        ],
+        "description": "figure environment"
+    },
+    "theorem": {
+        "prefix": "th",
+        "body": [
+            "\\begin{theorem}[$1]",
+            "$2",
+            "\\end{theorem}",
+            "$0"
+        ],
+        "description": "theorem environment"
+    },
+    "itemize": {
+        "prefix": "item",
+        "body": [
+            "\\begin{itemize}",
+            "\t\\item $1",
+            "\\end{itemize}",
+            "$0"
+        ],
+        "description": "itemize environment"
+    },
+    "equation": {
+        "prefix": "eq",
+        "body": [
+            "\\begin{equation*}",
+            "\t$1",
+            "\\end{equation*}",
+            "$0"
+        ],
+        "description": "equation environment"
+    },
+    "tabular": {
+        "prefix": "tab",
+        "body": [
+            "\\begin{center}",
+            "\\begin{tabular}{$1}",
+            "\t$2",
+            "\\end{tabular}",
+            "\\end{center}",
+            "$0"
+        ],
+        "description": "tabular environment"
+    },
+    "paragraph": {
+        "prefix": "para",
+        "body": [
+            "\\paragraph{$1} $0"
+        ],
+        "description": "paragraph"
+    },
+    "implies": {
+        "prefix": "imp",
+        "body": [
+            "\\implies $0"
+        ],
+        "description": "implies"
+    },
+    "bold face": {
+        "prefix": "bf",
+        "body": [
+            "\\textbf{$1} $0"
+        ],
+        "description": "bold face"
+    },
+    "italicize": {
+        "prefix": "it",
+        "body": [
+            "\\textit{$1} $0"
+        ],
+        "description": "italicize"
+    },
+    "text": {
+        "prefix": "t",
+        "body": [
+            "\\text{$1} $0"
+        ],
+        "description": "text"
+    }
+}
