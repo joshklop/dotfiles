@@ -1,7 +1,7 @@
 [Added Associations]
 text/html=brave-browser.desktop
 application/pdf=org.pwmt.zathura.desktop;
-binary/octet-stream=anki.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-LWALA1.desktop;
 
 [Default Applications]
 x-scheme-handler/webcal=brave-browser.desktop
@@ -9,7 +9,6 @@ x-scheme-handler/http=brave-browser.desktop
 x-scheme-handler/https=brave-browser.desktop
 x-scheme-handler/about=brave-browser.desktop
 x-scheme-handler/unknown=brave-browser.desktop
-#inode/directory=ranger.desktop
 application/pdf=org.pwmt.zathura.desktop
-binary/octet-stream=anki.desktop;
 x-scheme-handler/mailto=brave-browser.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-LWALA1.desktop

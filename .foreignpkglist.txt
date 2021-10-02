@@ -1,8 +1,11 @@
+anki
 bitwarden-cli-bin
 brave-bin
 caffeine-ng
 criterion
+debtap
 edid-decode-git
+f5vpn
 libcsv
 libsignal-client
 libzkgroup
@@ -14,3 +17,4 @@ pepper-flash
 volnoti
 zk
 zoom
+zotero

@@ -1,7 +1,6 @@
 alsa-firmware
 alsa-tools
 alsa-utils
-anki
 arandr
 autoconf
 automake
@@ -9,6 +8,7 @@ base
 bat
 binutils
 bison
+bitcoin-qt
 bluez
 bluez-utils
 boost
@@ -32,6 +32,7 @@ dunst
 efibootmgr
 etckeeper
 exa
+expect
 fakeroot
 fd
 flake8
@@ -118,6 +119,7 @@ sqlitebrowser
 strace
 sudo
 sysfsutils
+telegram-desktop
 texinfo
 texlive-bibtexextra
 texlive-core
