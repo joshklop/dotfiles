@@ -28,6 +28,7 @@ borg create                                      \
         -e '*/README.md'                         \
         -e '*/LICENSE'                           \
         -e '*/repos'                             \
+        -e '*/Zotero'                            \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"       \
         "$HOME"
 
