@@ -4,16 +4,7 @@
         "body": [
             "\\documentclass{article}",
             "",
-            "\\usepackage{geometry}[margin=0.75in]",
-            "\\usepackage{amsmath,amsthm}",
-            "\\usepackage{graphicx}",
-            "\\graphicspath{{./images}}",
-            "",
-            "\\setlength{\\parindent}{0cm}",
-            "\\newtheorem{theorem}{Theorem}",
-            "",
             "\\begin{document}",
-            "\\pagenumbering{gobble}",
             "",
             "$0",
             "",
@@ -50,7 +41,8 @@
     "figure": {
         "prefix": "fig",
         "body": [
-            "\\begin{figure}[h]",
+            "\\begin{figure}[!ht]",
+            "\t\\centering",
             "\t\\includegraphics{$1}",
             "\t\\caption{$2}",
             "\\end{figure}",
@@ -103,7 +95,7 @@
     "paragraph": {
         "prefix": "para",
         "body": [
-            "\\paragraph{$1} $0"
+            "\\paragraph{$1}$0"
         ],
         "description": "paragraph"
     },
@@ -117,22 +109,111 @@
     "bold face": {
         "prefix": "bf",
         "body": [
-            "\\textbf{$1} $0"
+            "\\textbf{$1}$0"
         ],
         "description": "bold face"
     },
     "italicize": {
         "prefix": "it",
         "body": [
-            "\\textit{$1} $0"
+            "\\textit{$1}$0"
         ],
         "description": "italicize"
     },
     "text": {
         "prefix": "t",
         "body": [
-            "\\text{$1} $0"
+            "\\text{$1}$0"
         ],
         "description": "text"
+    },
+    "proof": {
+        "prefix": "pr",
+        "body": [
+            "\\begin{proof}",
+            "$1",
+            "\\end{proof}",
+            "$0"
+        ],
+        "description": "proof environment"
+    },
+    "definition": {
+        "prefix": "def",
+        "body": [
+            "\\begin{definition}[$1]",
+            "$2",
+            "\\end{definition}",
+            "$0"
+        ],
+        "description": "definition environment"
+    },
+    "display equation": {
+        "prefix": "e",
+        "body": [
+            "\\[",
+            "$1",
+            "\\]",
+            "$0"
+        ],
+        "description": "display equation"
+    },
+    "mono text": {
+        "prefix": "tt",
+        "body": [
+            "\\texttt{$1}$0"
+        ],
+        "description": "mono text"
+    },
+    "right arrow": {
+        "prefix": "->",
+        "body": [
+            "\\rightarrow$0"
+        ],
+        "description": "right arrow"
+    },
+    "left arrow": {
+        "prefix": "<-",
+        "body": [
+            "\\leftarrow$0"
+        ],
+        "description": "left arrow"
+    },
+    "times": {
+        "prefix": "x",
+        "body": [
+            "\\times$0"
+        ],
+        "description": "times"
+    },
+    "enum": {
+        "prefix": "enum",
+        "body": [
+            "\\begin{enumerate}",
+            "\t\\item $1",
+            "\\end{enumerate}",
+            "$0"
+        ],
+        "description": "enumerate environment"
+    },
+    "sum": {
+        "prefix": "sum",
+        "body": [            
+            "\\sum_{$1}^{$2} $0"
+        ],
+        "description": "summation"
+    },
+    "<=>": {
+        "prefix": "<=>",
+        "body": [
+            "\\Leftrightarrow"
+        ],
+        "description": "<=>"
+    },
+    "fraction": {
+        "prefix": "frac",
+        "body": [
+            "\\frac{$1}{$2}$0"
+        ],
+        "description": "fraction"
     }
 }

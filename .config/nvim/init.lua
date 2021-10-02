@@ -23,7 +23,6 @@ vim.opt.inccommand = 'nosplit'
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 8
 
-
 -- Keymaps
 local function map(mode, lhs, rhs, opts)
     local options = {noremap = true}

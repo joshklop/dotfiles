@@ -15,7 +15,17 @@ require('packer').startup(function(use)
     use {'chaoren/vim-wordmotion'}
     use {'jiangmiao/auto-pairs'}
     use {'jreybert/vimagit'}
-    use {'hrsh7th/nvim-compe'}
+
+    use {'hrsh7th/nvim-cmp'}
+    use {'hrsh7th/cmp-calc'}
+    use {'hrsh7th/cmp-omni'}
+    use {'hrsh7th/cmp-vsnip'}
+    use {'kdheepak/cmp-latex-symbols'}
+    use {'hrsh7th/cmp-buffer'}
+    use {'hrsh7th/cmp-path'}
+    use {'hrsh7th/cmp-nvim-lsp'}
+    use {'hrsh7th/cmp-nvim-lua'}
+
     use {'Vimjas/vim-python-pep8-indent', ft = {'python'}}
     use {
         'prettier/vim-prettier',
@@ -31,6 +41,7 @@ require('packer').startup(function(use)
     }
     use {'chrisbra/csv.vim', ft = {'csv'}}
     use {'jalvesaq/nvim-r', ft = {'r', 'Rmd'}}
+    use {'ray-x/lsp_signature.nvim'}
 end)
 
 
@@ -39,32 +50,26 @@ vim.opt.background = 'light'
 vim.g.github_colors_soft = 1
 vim.cmd 'colorscheme github'
 
-require('compe').setup {
-    enabled = true;
-    autocomplete = true;
-    debug = false;
-    min_length = 1;
-    throttle_time = 80;
-    source_timeout = 200;
-    incomplete_delay = 400;
-    max_abbr_width = 100;
-    max_kind_width = 100;
-    max_menu_width = 100;
-    documentation = true;
-    source = {
-        omni = {
-            filetypes = {'tex', 'java', 'python', 'c'},
-        },
-        path = true;
-        buffer = true;
-        calc = true;
-        nvim_lsp = true;
-        nvim_lua = true;
-        treesitter = true;
-        emoji = false;
-        vim_dadbod_completion = true;
-        vsnip = true;
-    };
+local cmp = require('cmp');
+cmp.setup {
+  completion = {
+    completeopt = 'menu,menuone,noselect',
+  },
+  snippet = {
+      expand = function(args)
+          vim.fn["vsnip#anonymous"](args.body)
+      end
+  },
+  sources = {
+    {name = 'buffer'},
+    {name = 'path'},
+    {name = 'nvim_lua'},
+    {name = 'omni'},
+    {name = 'calc'},
+    {name = 'nvim_lsp'},
+    {name = 'vsnip'},
+    {name = 'latex_symbols'}
+  }
 }
 
 require('nvim-treesitter.configs').setup {

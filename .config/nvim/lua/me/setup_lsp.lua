@@ -1,5 +1,10 @@
 local LSP = {}
 
+local function get_capabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    return require('cmp_nvim_lsp').update_capabilities(capabilities)
+end
+
 local function on_attach(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -38,7 +43,10 @@ local function on_attach(client, bufnr)
         augroup END
         ]], false)
     end
+    -- Attach lsp_signature plugin to see function signature while typing
+    require('lsp_signature').on_attach()
 end
+
 
 function LSP.setup_lua()
     local sumneko_root_path = os.getenv('HOME') .. '/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server'
@@ -50,6 +58,7 @@ function LSP.setup_lua()
 
     require('lspconfig').sumneko_lua.setup {
       cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
+      capabilities = get_capabilities(),
       on_attach = on_attach,
       filetypes = {'lua'},
       settings = {
@@ -72,6 +81,7 @@ end
 function LSP.setup_latex()
     require('lspconfig').texlab.setup {
         cmd = {os.getenv('HOME') .. '/.local' .. '/share' .. '/nvim' .. '/lspinstall' .. '/latex' .. '/texlab'},
+        capabilities = get_capabilities(),
         on_attach = on_attach
     }
     vim.api.nvim_set_keymap('n', '<Leader>lb', '<CMD>TexlabBuild<CR>', {noremap = true})
@@ -87,10 +97,11 @@ function LSP.setup_java()
         buf_set_keymap('n', '<Leader>dc', "<CMD>lua require'jdtls'.test_class()<CR>", opts)
         buf_set_keymap('n', '<Leader>dm', "<CMD>lua require'jdtls'.test_nearest_method()<CR>", opts)
     end
-    local capabilities = {
+    local capabilities = get_capabilities()
+    capabilities.update({
         workspace = {configuration = true},
-        textDocument = {completion = {completionItem = {snippetSupport = true}}}
-    }
+        textDocument = {completion = {completionItem = {snippetSupport = true}}},
+    })
     local workspace_folder = os.getenv('HOME') .. '/.workspace' .. vim.fn.fnamemodify(root_dir, ':p:h:t')
     local settings = {
     --    ['java.format.settings.url'] = home .. "/.config/nvim/language-servers/java-google-formatter.xml",
@@ -142,7 +153,8 @@ end
 
 function LSP.setup_c()
     require('lspconfig').clangd.setup {
-        on_attach = on_attach
+        on_attach = on_attach,
+        capabilities = get_capabilities()
     }
 end
 
@@ -150,6 +162,7 @@ function LSP.setup_python()
     local path = os.getenv('HOME') .. '/.local/share/nvim/lspinstall/python/node_modules/pyright/langserver.index.js'
     require('lspconfig').pyright.setup {
         cmd = {path, '--stdio'},
+        capabilities = get_capabilities(),
         on_attach = on_attach
     }
 end
