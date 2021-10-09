@@ -28,14 +28,11 @@ function ready(){
 
 ready "${GREEN}==>${RESET} ${BOLD}Have you deleted unnecessary files?${RESET}" 
 git_unsaved_changes.sh
-ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to cleanup.sh?${RESET}" cleanup.sh
-ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to bwbackup.sh?${RESET}" bwbackup.sh
-ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to borgbackup.sh?${RESET}" borgbackup.sh
-ready "${GREEN}==>${RESET} ${BOLD}Are you prepared to continue to backup /etc?${RESET}" "sudo etcbackup.sh"
+ready "${GREEN}==>${RESET} ${BOLD}Update packages and neovim plugins?${RESET}" cleanup.sh
+ready "${GREEN}==>${RESET} ${BOLD}Backup bitwarden?${RESET}" bwbackup.sh
+ready "${GREEN}==>${RESET} ${BOLD}Backup ${HOME}?${RESET}" borgbackup.sh
+ready "${GREEN}==>${RESET} ${BOLD}Backup /etc?${RESET}" "sudo etcbackup.sh"
 echo
 echo -e "${GREEN}* ${BOLD}Make sure you umount!${RESET}"
 echo
-ready "${GREEN}==>${RESET} ${BOLD}Now commit and push your dotfiles. Continue when you are ready.${RESET}"
-
-echo
-echo -e "${GREEN}* ${BOLD}All done! Make sure you reboot!${RESET}"
+ready "${GREEN}==>${RESET} ${BOLD}Commit and push your dotfiles.${RESET}"
