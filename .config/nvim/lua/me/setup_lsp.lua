@@ -159,9 +159,7 @@ function LSP.setup_c()
 end
 
 function LSP.setup_python()
-    local path = os.getenv('HOME') .. '/.local/share/nvim/lspinstall/python/node_modules/pyright/langserver.index.js'
-    require('lspconfig').pyright.setup {
-        cmd = {path, '--stdio'},
+    require('lspconfig').pylsp.setup {
         capabilities = get_capabilities(),
         on_attach = on_attach
     }

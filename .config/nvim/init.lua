@@ -76,6 +76,7 @@ require('me.plugins')
 require('me.setup_lsp').setup_lua()
 require('me.setup_lsp').setup_latex()
 require('me.setup_lsp').setup_c()
+require('me.setup_lsp').setup_python()
 vim.cmd [[
 augroup lsp
 au FileType java lua require('me.setup_lsp').setup_java()
