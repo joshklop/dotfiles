@@ -1,5 +1,3 @@
-anki
-bitwarden-cli-bin
 brave-bin
 caffeine-ng
 criterion

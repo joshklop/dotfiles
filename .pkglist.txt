@@ -9,6 +9,7 @@ bat
 binutils
 bison
 bitcoin-qt
+bitwarden-cli
 bluez
 bluez-utils
 boost
@@ -23,6 +24,7 @@ dbus-python
 dhcpcd
 dia
 dialog
+discord
 docker
 docker-compose
 dosfstools
@@ -109,6 +111,7 @@ qutebrowser
 r
 reiserfsprogs
 ripgrep
+rofi
 ruby
 rustup
 s-nail
