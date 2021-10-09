@@ -215,5 +215,12 @@
             "\\frac{$1}{$2}$0"
         ],
         "description": "fraction"
+    },
+    "textrm": {
+        "prefix": "rm",
+        "body": [
+            "\\textrm{$1}$0"
+        ],
+        "description": "textrm"
     }
 }
