@@ -27,6 +27,7 @@ borg create                                      \
         -e '*/downloads'                         \
         -e '*/README.md'                         \
         -e '*/LICENSE'                           \
+        -e '*/todo.md'                           \
         -e '*/repos'                             \
         -e '*/Zotero'                            \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"       \

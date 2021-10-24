@@ -38,8 +38,7 @@ set $mod Mod4
 # kill focused window
 bindsym $mod+shift+q kill
 
-# start dmenu
-#bindsym $mod+d exec dmenu_run
+# start rofi
 bindsym $mod+d exec rofi -show run
 bindsym $mod+a exec rofi -show window exec rofi -show window
 
