@@ -23,12 +23,9 @@ vim.opt.inccommand = 'nosplit'
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 8
 
+local map = require('me.utils').map
+
 -- Keymaps
-local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
-    if opts then options = vim.tbl_extend('force', options, opts) end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
 -- Remap leader keys
 map('n', '<SPACE>', '<NOP>')
 vim.g.mapleader = ' '
@@ -50,18 +47,21 @@ map('', '<C-k>', '<C-w>k')
 map('', '<C-l>', '<C-w>l')
 map('', '<C-w>t', '<CMD>tabnew<CR>')
 -- Delete buffer without deleting window
-map('n', '<Leader>d', [[<CMD>bp\|bd]])
+-- TODO make this the default for `:bd`
+map('n', '<Leader>bd', [[<CMD>bp\|bd<CR>]])
 
 
 -- Filetype-specific settings
 vim.cmd [[
 augroup omnifuncs
 au BufNew,BufNewFile,BufRead,BufEnter *.snippets :setfiletype snippets
-au BufNew,BufNewFile,BufRead,BufEnter *.js :setfiletype javascript
-au BufNew,BufNewFile,BufRead,BufEnter *.ts :setfiletype typescript
 au FileType python,lua setlocal colorcolumn=79
 au FileType c,cpp setlocal colorcolumn=89
 au FileType magit setlocal nowrap
+au FileType javascript setlocal shiftwidth=2
+au FileType typescript setlocal shiftwidth=2
+au FileType javascript setlocal softtabstop=2
+au FileType typescript setlocal softtabstop=2
 au FileType java setlocal colorcolumn=99
 au BufNew,BufNewFile,BufRead,BufEnter *.tex :setfiletype tex
 augroup end
@@ -73,12 +73,29 @@ require('me.plugins')
 
 
 -- LSP
-require('me.setup_lsp').setup_lua()
-require('me.setup_lsp').setup_latex()
-require('me.setup_lsp').setup_c()
-require('me.setup_lsp').setup_python()
+local lsp = require('me.setup_lsp')
+lsp.setup_lua()
+lsp.setup_latex()
+lsp.setup_c()
+lsp.setup_python()
+lsp.setup_css()
+lsp.setup_typescript()
+lsp.setup_haskell()
 vim.cmd [[
 augroup lsp
 au FileType java lua require('me.setup_lsp').setup_java()
 augroup end
 ]]
+-- Set up logging (useful for troubleshooting frequent LSP mishaps)
+vim.lsp.set_log_level("debug")
+vim.cmd [[
+command LspLog lua vim.cmd('e'..vim.lsp.get_log_path())
+]]
+
+-- Debugging
+local dap_install = require("dap-install")
+local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
+
+for _, debugger in ipairs(dbg_list) do
+	dap_install.config(debugger)
+end

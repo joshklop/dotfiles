@@ -1,7 +1,7 @@
 -- Bootstrap packer
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 -- Plugins
@@ -32,14 +32,24 @@ require('packer').startup(function(use)
     use {'hrsh7th/cmp-nvim-lsp'}
     use {'hrsh7th/cmp-nvim-lua'}
 
+    use {'ap/vim-css-color'}
     use {'Vimjas/vim-python-pep8-indent', ft = {'python'}}
     use {
         'prettier/vim-prettier',
         ft = {'javascript', 'typescript', 'json', 'css'}
     }
+    use {'HerringtonDarkholme/yats.vim'}
+    use {'turbio/bracey.vim', run = 'npm install --prefix server'}
+    use {'MaxMEllon/vim-jsx-pretty'}
+    use {'pangloss/vim-javascript'}
     use {'mfussenegger/nvim-jdtls'} -- Do not set to only run on ft = java
     use {'mfussenegger/nvim-dap'}
-    use {'kabouzeid/nvim-lspinstall'}
+    use {'Pocco81/DAPInstall.nvim'}
+    use {'nvim-telescope/telescope-dap.nvim'}
+    use {'theHamsta/nvim-dap-virtual-text'}
+
+    use {'williamboman/nvim-lsp-installer'}
+
     use {
         'nvim-treesitter/nvim-treesitter',
         branch = '0.5-compat',
@@ -47,9 +57,14 @@ require('packer').startup(function(use)
     }
     use {'chrisbra/csv.vim', ft = {'csv'}}
     use {'jalvesaq/nvim-r', ft = {'r', 'Rmd'}}
+    use {'neovimhaskell/haskell-vim'}
     use {'ray-x/lsp_signature.nvim'}
+    if PACKER_BOOTSTRAP then
+        require('packer').sync()
+    end
 end)
 
+local map = require('me.utils').map
 
 -- colorscheme
 vim.opt.background = 'light'
@@ -83,12 +98,16 @@ require('nvim-treesitter.configs').setup {
     incremental_selection = {enable = true},
 }
 
--- TODO make this a global or something, you're using it everywhere
-local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
-    if opts then options = vim.tbl_extend('force', options, opts) end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+vim.g.bracey_server_port = 3000
+
+-- haskell-vim
+vim.g.haskell_enable_quantification = 1
+vim.g.haskell_enable_recursivedo = 1
+vim.g.haskell_enable_arrowsyntax = 1
+vim.g.haskell_enable_pattern_synonyms = 1
+vim.g.haskell_enable_typeroles = 1
+vim.g.haskell_enable_static_pointers = 1
+vim.g.haskell_backpack = 1
 
 -- vsnip
 -- Expand
@@ -113,7 +132,37 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 
 -- Telescope
 map('n', '<Leader>ff', '<CMD>Telescope find_files<CR>')
+map('n', '<Leader>fk', '<CMD>Telescope keymaps<CR>')
 map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
 map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
--- map('n', '<Leader>fd', "<CMD>lua require('custom').find_dotfiles()<CR>") FIXME
+map('n', '<Leader>fd', "<CMD>lua require('me.utils').find_dotfiles()<CR>")
+
+-- nvim-dap
+vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
+map('n', '<Leader>dh', '<CMD>lua require("dap").toggle_breakpoint()<CR>')
+map('n', '<Leader>do', '<CMD>lua require("dap").step_out()<CR>')
+map('n', '<Leader>di', '<CMD>lua require("dap").step_into()<CR>')
+map('n', '<Leader>ds', '<CMD>lua require("dap").step_over()<CR>')
+map('n', '<Leader>db', '<CMD>lua require("dap").step_back()<CR>')
+map('n', '<Leader>dc', '<CMD>lua require("dap").continue()<CR>')
+map('n', '<Leader>dq', '<CMD>lua require("dap").disconnect({ terminateDebuggee = true });require"dap".close()<CR>')
+map('n', '<Leader>dr', '<CMD>lua require("dap").repl.toggle({}, "vsplit")<CR><C-w>l')
+map('n', '<Leader>d?', '<CMD>lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
+-- nvim-dap-virtual-text
+vim.g.dap_virtual_text = true
+-- nvim-telescope/telescope-dap.nvim
+require('telescope').load_extension('dap')
+map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
+map('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
+
+-- haskell-vim
+vim.g.haskell_enable_quantification = 1   -- `forall`
+vim.g.haskell_enable_recursivedo = 1      -- `mdo` and `rec`
+vim.g.haskell_enable_arrowsyntax = 1      -- `proc`
+vim.g.haskell_enable_pattern_synonyms = 1 -- `pattern`
+vim.g.haskell_enable_typeroles = 1        -- type roles
+vim.g.haskell_enable_static_pointers = 1  -- `static`
+vim.g.haskell_backpack = 1                -- backpack keywords

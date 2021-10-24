@@ -222,5 +222,15 @@
             "\\textrm{$1}$0"
         ],
         "description": "textrm"
+    },
+    "example": {
+        "prefix": "ex",
+        "body": [
+            "\\begin{exmp}[$1]",
+            "$2",
+            "\\end{exmp}",
+            "$0"
+        ],
+        "description": "example"
     }
 }
