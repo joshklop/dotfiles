@@ -14,6 +14,7 @@ bluez
 bluez-utils
 boost
 borg
+cabal-install
 chntpw
 clang
 cowsay
@@ -119,6 +120,7 @@ signal-desktop
 simplescreenrecorder
 solidity
 sqlitebrowser
+stack
 strace
 sudo
 sysfsutils
@@ -145,7 +147,9 @@ unzip
 upower
 usbutils
 valgrind
+vlc
 vulkan-intel
+wget
 which
 wireless_tools
 wpa_supplicant
