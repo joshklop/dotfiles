@@ -202,6 +202,13 @@
         ],
         "description": "summation"
     },
+    "product": {
+        "prefix": "prod",
+        "body": [
+            "\\prod_{$1}^{$2} $0"
+        ],
+        "description": "product"
+    },
     "<=>": {
         "prefix": "<=>",
         "body": [
@@ -232,5 +239,26 @@
             "$0"
         ],
         "description": "example"
+    },
+    "parens": {
+        "prefix": "()",
+        "body": [
+            "\\left($1\\right)"
+        ],
+        "description": "big-parens"
+    },
+    "squirlyBrackets": {
+        "prefix": "{}",
+        "body": [
+            "\\{$1\\\\}$0"
+        ],
+        "description": "squirlyBrackets"
+    },
+    "rightArrow": {
+        "prefix": "=>",
+        "body": [
+            "\\Rightarrow$0"
+        ],
+        "description": "rightArrow"
     }
 }
