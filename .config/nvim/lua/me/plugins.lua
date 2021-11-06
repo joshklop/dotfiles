@@ -9,7 +9,7 @@ require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
     use {'hrsh7th/vim-vsnip'}
     use {'hrsh7th/vim-vsnip-integ'}
-    use {'cormacrelf/vim-colors-github'}
+    use {'projekt0n/github-nvim-theme'}
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
@@ -46,6 +46,7 @@ require('packer').startup(function(use)
     use {'mfussenegger/nvim-dap'}
     use {'Pocco81/DAPInstall.nvim'}
     use {'nvim-telescope/telescope-dap.nvim'}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {'theHamsta/nvim-dap-virtual-text'}
 
     use {'williamboman/nvim-lsp-installer'}
@@ -68,11 +69,15 @@ local map = require('me.utils').map
 
 -- colorscheme
 vim.opt.background = 'light'
-vim.g.github_colors_soft = 1
-vim.cmd 'colorscheme github'
+require('github-theme').setup({
+    theme_style = 'light',
+    comment_style = 'NONE',
+    keyword_style = 'NONE',
+    dark_float = true,
+})
 
 local cmp = require('cmp');
-cmp.setup {
+cmp.setup({
   completion = {
     completeopt = 'menu,menuone,noselect',
   },
@@ -91,12 +96,15 @@ cmp.setup {
     {name = 'vsnip'},
     {name = 'latex_symbols'}
   }
-}
+})
 
-require('nvim-treesitter.configs').setup {
-    highlight = {enable = true, disable = {'lua', 'json', 'latex'}},
+require('nvim-treesitter.configs').setup({
+    highlight = {
+        enable = true,
+        disable = {'json', 'latex'}
+    },
     incremental_selection = {enable = true},
-}
+})
 
 vim.g.bracey_server_port = 3000
 
@@ -122,14 +130,19 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 ]]
 
 -- Telescope
+local telescope = require('telescope')
+telescope.setup()
+telescope.load_extension('fzf')
 map('n', '<Leader>ff', '<CMD>Telescope find_files<CR>')
 map('n', '<Leader>fk', '<CMD>Telescope keymaps<CR>')
 map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
 map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
-map('n', '<Leader>fd', "<CMD>lua require('me.utils').find_dotfiles()<CR>")
+map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
+map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
 
 -- nvim-dap
+require('dap') -- Need to load the plugin in order for signs to work
 vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
@@ -143,9 +156,9 @@ map('n', '<Leader>dq', '<CMD>lua require("dap").disconnect({ terminateDebuggee =
 map('n', '<Leader>dr', '<CMD>lua require("dap").repl.toggle({}, "vsplit")<CR><C-w>l')
 map('n', '<Leader>d?', '<CMD>lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
 -- nvim-dap-virtual-text
-vim.g.dap_virtual_text = true
+require('nvim-dap-virtual-text').setup()
 -- nvim-telescope/telescope-dap.nvim
-require('telescope').load_extension('dap')
+telescope.load_extension('dap')
 map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
 map('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
 

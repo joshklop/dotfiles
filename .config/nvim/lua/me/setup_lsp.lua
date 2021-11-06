@@ -74,7 +74,7 @@ function LSP.setup_java()
         jdtls.setup_dap({hotcodereplace = 'auto'})
         jdtls.setup.add_commands()
         map('n', '<Leader>dm', '<CMD>lua require("jdtls").test_nearest_method()<CR>')
-        map('n', '<Leader>dc', '<CMD>lua require("jdtls").test_class()<CR>')
+        map('n', '<Leader>dC', '<CMD>lua require("jdtls").test_class()<CR>')
     end
     local settings = {
         --    ['java.format.settings.url'] = home .. "/.config/nvim/language-servers/java-google-formatter.xml",
