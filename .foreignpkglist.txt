@@ -3,16 +3,14 @@ caffeine-ng
 criterion
 debtap
 edid-decode-git
-f5vpn
 libcsv
 libsignal-client
 libzkgroup
 ncurses5-compat-libs
 optimus-manager
 optimus-manager-qt
-paru
+paru-bin
 pepper-flash
 volnoti
-zk
 zoom
 zotero

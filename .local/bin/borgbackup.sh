@@ -30,6 +30,8 @@ borg create                                      \
         -e '*/todo.md'                           \
         -e '*/repos'                             \
         -e '*/Zotero'                            \
+        -e '*/go'                                \
+        -e '*/documents/zoom'                    \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)"       \
         "$HOME"
 

@@ -22,7 +22,6 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 export BAT_THEME="GitHub"
-export LS_COLORS="README*=30;01;04:*akefile=30;01;04:build.gradle=30;01;04:Cargo.toml=30;01;04:CMakeLists*=30;01;04:Dockerfile=30;01;04"
 
 # History options
 HISTFILE=~/.histfile
