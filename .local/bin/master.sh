@@ -14,11 +14,11 @@ function ready(){
       echo -e -n "$prompt [y/n] $RESET"; read resp
       [[ $resp =~ [yY] ]] && break
     else
-      echo -e -n "$prompt [y/s/n] $RESET"; read resp
+      echo -e -n "$prompt [y/n] $RESET"; read resp
       if [[ $resp =~ y ]]; then
         $cmd
         break
-      elif [[ $resp =~ s ]]; then
+      elif [[ $resp =~ n ]]; then
         echo -e "${RED}Skipping...${RESET}"
         break
       fi

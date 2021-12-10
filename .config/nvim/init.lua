@@ -90,12 +90,22 @@ augroup end
 -- Set up logging (useful for troubleshooting frequent LSP mishaps)
 vim.lsp.set_log_level("debug")
 vim.cmd [[
-command LspLog lua vim.cmd('e'..vim.lsp.get_log_path())
+command! LspLog lua vim.cmd('e'..vim.lsp.get_log_path())
 ]]
 
 -- Debugging
-local dap_install = require("dap-install")
-local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
-for _, debugger in ipairs(dbg_list) do
-    dap_install.config(debugger)
+M = {}
+
+function M.refresh_debuggers()
+    local dap_install = require("dap-install")
+    local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
+    for _, debugger in ipairs(dbg_list) do
+        dap_install.config(debugger)
+    end
 end
+
+M.refresh_debuggers()
+
+vim.cmd([[command! DIRefresh lua M.refresh_debuggers()]])
+
+return M;

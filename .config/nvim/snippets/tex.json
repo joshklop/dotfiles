@@ -260,5 +260,67 @@
             "\\Rightarrow$0"
         ],
         "description": "rightArrow"
+    },
+    "lemma": {
+        "prefix": "lem",
+        "body": [
+            "\\begin{lemma}[$1]",
+            "$2",
+            "\\end{lemma}",
+            "$0"
+        ],
+        "description": "lemma environment"
+    },
+    "corollary": {
+        "prefix": "co",
+        "body": [
+            "\\begin{corollary}[$1]",
+            "$2",
+            "\\end{corollary}",
+            "$0"
+        ],
+        "description": "corollary environment"
+    },
+    "section": {
+        "prefix": "sec",
+        "body": [
+            "\\section{$1}$0"
+        ],
+        "description": "section"
+    },
+    "subsection": {
+        "prefix": "ssec",
+        "body": [
+            "\\subsection{$1}$0"
+        ],
+        "description": "subsection"
+    },
+    "subsubsection": {
+        "prefix": "sss",
+        "body": [
+            "\\subsubsection{$1}$0"
+        ],
+        "description": "subsubsection"
+    },
+    "xRightArrow": {
+        "prefix": "x=>",
+        "body": [
+            "\\xRightarrow{$1}$0"
+        ],
+        "description": "xRightarrow"
+    },
+    "subseteq": {
+        "prefix": "sseq",
+        "body": [
+            "\\subseteq$0"
+        ],
+        "description": "subseteq"
+    },
+    "choose": {
+        "prefix": "binom",
+        "body": [
+            "\\binom{$1}{$2}$0"
+        ],
+        "description": "binomial"
     }
 }

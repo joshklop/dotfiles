@@ -54,6 +54,7 @@ groff
 grub
 gtkmm
 highlight
+hsetroot
 htop
 i3-gaps
 intel-media-driver
@@ -98,6 +99,7 @@ pandoc
 patch
 pavucontrol
 physlock
+picom
 pkgconf
 playerctl
 pulseaudio

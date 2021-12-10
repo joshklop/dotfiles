@@ -1,14 +1,20 @@
 # Todo
 
+* [ ] Transition to pacmanfile
+* [ ] Lazy-load zsh functions (i.e. move them into separate scripts) to decrease startup time
 * [ ] Make `fzf` ignore certain directories (e.g. Zotero, node\_modules, etc.)
 * [ ] Make `paru` ignore certain packages, especially manually installed ones (i.e. f5)
-* [ ] Rice `rofi` and learn to use ssh helper
+* [ ] Rice rofi
 * [ ] Switch from i3 to xmonad (haskell all the things!)
+* [ ] Configure slock or switch to new lockscreen
+* [ ] `Xresources`
+* [ ] Zsh
+  + [ ] plugin manager (`zinit`)
+  + [ ] Plugins: `z`, prompt helper for git info?, see brokenbyte's dotfiles for more
 * Neovim
-  + [ ] `Xresources`
-  + [ ] Packer.nvim: take advantage of `use` functions to configure plugins and do other things
-  + [ ] Set up code action keymaps nvim-lsp
+  + [ ] lualine
   + [ ] Organize directories (i.e. use ftdetect, ftplugin, colors, etc.)
+  + [ ] Set up code action keymaps nvim-lsp
   + [ ] Look into using treesitter to do cool things with latex
 
 # Done
@@ -19,3 +25,6 @@
 * [X] Telescope.nvim: use fzf instead of native searching
 * [X] Use light theme supported by treesitter (or make one)
 * [X] Fix dunst CTRL-space keymaps
+* [X] Install a compositor
+* [X] Change zathura colorscheme to github
+* [X] gitsigns

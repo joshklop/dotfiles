@@ -10,10 +10,19 @@ require('packer').startup(function(use)
     use {'hrsh7th/vim-vsnip'}
     use {'hrsh7th/vim-vsnip-integ'}
     use {'projekt0n/github-nvim-theme'}
+
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
     }
+
+    use {
+        'nvim-telescope/telescope-frecency.nvim',
+        requires = {'tami5/sqlite.lua'}
+    }
+
+    use {'lewis6991/gitsigns.nvim'}
+
     use {'psliwka/vim-smoothie'}
     use {'neovim/nvim-lspconfig'}
     use {'tpope/vim-repeat'}
@@ -76,8 +85,8 @@ require('github-theme').setup({
     dark_float = true,
 })
 
-local cmp = require('cmp');
-cmp.setup({
+-- completion
+require('cmp').setup({
   completion = {
     completeopt = 'menu,menuone,noselect',
   },
@@ -98,6 +107,7 @@ cmp.setup({
   }
 })
 
+-- treesitter
 require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true,
@@ -106,10 +116,10 @@ require('nvim-treesitter.configs').setup({
     incremental_selection = {enable = true},
 })
 
+-- bracey
 vim.g.bracey_server_port = 3000
 
--- vsnip
--- Expand
+-- snippets
 vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config' .. '/nvim' .. '/snippets'
 -- Expand
 vim.cmd [[
@@ -129,18 +139,6 @@ imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 ]]
 
--- Telescope
-local telescope = require('telescope')
-telescope.setup()
-telescope.load_extension('fzf')
-map('n', '<Leader>ff', '<CMD>Telescope find_files<CR>')
-map('n', '<Leader>fk', '<CMD>Telescope keymaps<CR>')
-map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
-map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
-map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
-map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
-map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
-
 -- nvim-dap
 require('dap') -- Need to load the plugin in order for signs to work
 vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
@@ -152,12 +150,25 @@ map('n', '<Leader>di', '<CMD>lua require("dap").step_into()<CR>')
 map('n', '<Leader>ds', '<CMD>lua require("dap").step_over()<CR>')
 map('n', '<Leader>db', '<CMD>lua require("dap").step_back()<CR>')
 map('n', '<Leader>dc', '<CMD>lua require("dap").continue()<CR>')
-map('n', '<Leader>dq', '<CMD>lua require("dap").disconnect({ terminateDebuggee = true });require"dap".close()<CR>')
+map('n', '<Leader>dq', '<CMD>lua require("dap").disconnect({ terminateDebuggee = true });require("dap").close()<CR>')
 map('n', '<Leader>dr', '<CMD>lua require("dap").repl.toggle({}, "vsplit")<CR><C-w>l')
 map('n', '<Leader>d?', '<CMD>lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
 -- nvim-dap-virtual-text
 require('nvim-dap-virtual-text').setup()
+
+-- nvim-telescope/telescope.nvim
+local telescope = require('telescope')
+telescope.setup()
+map('n', '<Leader>ff', '<CMD>Telescope find_files<CR>')
+map('n', '<Leader>fk', '<CMD>Telescope keymaps<CR>')
+map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
+map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
+map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
+map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
+map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>') -- TODO register extension
 -- nvim-telescope/telescope-dap.nvim
+telescope.load_extension('fzf')
+telescope.load_extension('frecency')
 telescope.load_extension('dap')
 map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
 map('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
@@ -170,3 +181,9 @@ vim.g.haskell_enable_pattern_synonyms = 1 -- `pattern`
 vim.g.haskell_enable_typeroles = 1        -- type roles
 vim.g.haskell_enable_static_pointers = 1  -- `static`
 vim.g.haskell_backpack = 1                -- backpack keywords
+
+-- gitsigns
+require('gitsigns').setup({
+    signcolumn = false,
+    numhl = true
+})

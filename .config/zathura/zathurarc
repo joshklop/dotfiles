@@ -2,21 +2,21 @@
 set font "Source Code Pro 12"
 set guioptions ""
 
-set default-fg "#fbf1c7"
-set default-bg "#32302f"
+set default-fg "#586069"
+set default-bg "#ffffff"
 
-set completion-bg "#32302f"
-set completion-fg "#fbf1c7"
-set completion-group-bg "#32302f"
-set completion-group-fg "#fbf1c7"
-set completion-highlight-bg "#98971a"
-set completion-highlight-fg "#fbf1c7"
+set completion-bg "#ffffff"
+set completion-fg "#586069"
+set completion-group-bg "#ffffff"
+set completion-group-fg "#586069"
+set completion-highlight-bg "#dbe9f9"
+set completion-highlight-fg "#586069"
 
-set statusbar-bg "#32302f"
-set statusbar-fg "#fbf1c7"
+set statusbar-bg "#ffffff"
+set statusbar-fg "#586069"
 
-set inputbar-bg "#32302f"
-set inputbar-fg "#fbf1c7"
+set inputbar-bg "#ffffff"
+set inputbar-fg "#586069"
 
 map u scroll half-up
 map d scroll half-down

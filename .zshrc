@@ -44,34 +44,22 @@ setopt interactivecomments       # Allow typing comments at an interactive promp
 setopt CD_SILENT
 
 # Aliases and Functions
-#alias ls='ls --color=auto --group-directories-first --sort=extension'
-alias ls='exa --git --classify --group-directories-first --sort=extension --color=always --color-scale'
+alias ls='exa --git --classify --group-directories-first --sort=extension --color=always'
 alias cat='bat'
 alias shred='shred --remove --zero --iterations=4'
 alias rm='rm -Iv'
 alias c='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias info='info --vi'
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
-alias rmorphan='sudo pacman -Rns $(pacman -Qtdq)'
 alias v='nvim'
-alias vwm="nvim $HOME/.config/i3/config"
-alias vsh="nvim $HOME/.zshrc"
-alias vt="nvim $HOME/.config/kitty/kitty.conf"
 alias icat="kitty +kitten icat"
-alias charge="upower -i $(upower -e | grep -i bat)"
 alias gdb="gdb -q"
-alias zkl="zk list -i"
-alias zke="zk edit -i"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default \
     -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true \
     -r150 -sOutputFile=$1 ${@:1}
-}
-
-function -() {
-  cd -
 }
 
 venvdir="$HOME/.venv"
