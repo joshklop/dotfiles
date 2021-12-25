@@ -167,4 +167,20 @@ function LSP.setup_haskell()
     }
 end
 
+function LSP.setup_svelte()
+    require('lspconfig').svelte.setup {
+        capabilities = get_capabilities(),
+        cmd = {os.getenv('HOME') .. '/.local/share/nvim/lsp_servers/svelte/node_modules/svelte-language-server/bin/server.js', '--stdio'},
+        on_attach = on_attach
+    }
+end
+
+function LSP.setup_html()
+    require('lspconfig').html.setup {
+        capabilities = get_capabilities(),
+        cmd = {os.getenv('HOME') .. '/.local/share/nvim/lsp_servers/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server', '--stdio'},
+        on_attach = on_attach
+    }
+end
+
 return LSP

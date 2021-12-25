@@ -66,6 +66,7 @@ require('packer').startup(function(use)
         run = ':TSUpdate'
     }
     use {'chrisbra/csv.vim', ft = {'csv'}}
+    use { 'thesis/vim-solidity' }
     use {'jalvesaq/nvim-r', ft = {'r', 'Rmd'}}
     use {'neovimhaskell/haskell-vim'}
     use {'ray-x/lsp_signature.nvim'}

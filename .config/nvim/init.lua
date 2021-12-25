@@ -55,12 +55,17 @@ map('n', '<Leader>bd', [[<CMD>bp\|bd<CR>]])
 vim.cmd [[
 augroup omnifuncs
 au BufNew,BufNewFile,BufRead,BufEnter *.snippets setfiletype snippets
-au FileType python,lua setlocal colorcolumn=79
+au BufNew,BufNewFile,BufRead,BufEnter *.sol setfiletype solidity
+au FileType python,lua,solidity setlocal colorcolumn=79
 au FileType c,cpp setlocal colorcolumn=89
 au FileType magit setlocal nowrap
+au FileType svelte setlocal shiftwidth=2
+au FileType svelte setlocal softtabstop=2
+au FileType html setlocal shiftwidth=2
+au FileType html setlocal softtabstop=2
 au FileType javascript setlocal shiftwidth=2
-au FileType typescript setlocal shiftwidth=2
 au FileType javascript setlocal softtabstop=2
+au FileType typescript setlocal shiftwidth=2
 au FileType typescript setlocal softtabstop=2
 au FileType java setlocal colorcolumn=99
 au BufNewFile,BufRead *.rasi setfiletype css
@@ -79,9 +84,11 @@ lsp.setup_lua()
 lsp.setup_latex()
 lsp.setup_c()
 lsp.setup_python()
+lsp.setup_svelte()
 lsp.setup_css()
 lsp.setup_typescript()
-lsp.setup_haskell()
+lsp.setup_html()
+-- lsp.setup_haskell()
 vim.cmd [[
 augroup lsp
 au FileType java lua require('me.setup_lsp').setup_java()
