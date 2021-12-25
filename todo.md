@@ -12,6 +12,7 @@
   + [ ] plugin manager (`zinit`)
   + [ ] Plugins: `z`, prompt helper for git info?, see brokenbyte's dotfiles for more
 * Neovim
+  + [ ] use buf-local settings (e.g. declutter your keymaps)
   + [ ] lualine
   + [ ] Organize directories (i.e. use ftdetect, ftplugin, colors, etc.)
   + [ ] Set up code action keymaps nvim-lsp
