@@ -27,7 +27,6 @@ function ready(){
 }
 
 ready "${GREEN}==>${RESET} ${BOLD}Have you deleted unnecessary files?${RESET}" 
-git_unsaved_changes.sh
 ready "${GREEN}==>${RESET} ${BOLD}Update packages and neovim plugins?${RESET}" cleanup.sh
 ready "${GREEN}==>${RESET} ${BOLD}Backup bitwarden?${RESET}" bwbackup.sh
 ready "${GREEN}==>${RESET} ${BOLD}Backup ${HOME}?${RESET}" borgbackup.sh
