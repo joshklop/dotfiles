@@ -4,6 +4,7 @@ criterion
 debtap
 edid-decode-git
 f5vpn
+ganache-bin
 libcsv
 libsignal-client
 libzkgroup
