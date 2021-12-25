@@ -54,6 +54,7 @@ alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
 alias v='nvim'
 alias icat="kitty +kitten icat"
 alias gdb="gdb -q"
+alias npm="npm --color=always"
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
