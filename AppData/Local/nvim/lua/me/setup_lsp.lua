@@ -1,6 +1,7 @@
 local LSP = {}
 
 local map = require('me.utils').map
+local servers = vim.fn.stdpath('data') .. '/lsp_servers'
 
 local function get_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -31,8 +32,7 @@ end
 
 
 function LSP.setup_lua()
-    local sumneko_root_path = os.getenv('HOME') .. '/.local/share/nvim/lsp_servers/sumneko_lua/extension/server'
-    local sumneko_binary = sumneko_root_path .. '/bin' .. '/Linux' .. '/lua-language-server'
+    local sumneko_root_path = servers .. '/sumneko_lua/extension/server/bin/lua-language-server.exe'
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, 'lua/?.lua')
     table.insert(runtime_path, 'lua/?/init.lua')
@@ -60,7 +60,7 @@ end
 
 function LSP.setup_latex()
     require('lspconfig').texlab.setup {
-        cmd = {os.getenv('HOME') .. '/.local/share/nvim/lsp_servers/latex/texlab'},
+        cmd = {servers .. '/latex/texlab'},
         capabilities = get_capabilities(),
         on_attach = on_attach
     }
@@ -111,7 +111,7 @@ function LSP.setup_java()
             }
         }
     }
-    local home = os.getenv('HOME');
+    local home = os.getenv('USERPROFILE');
     local bundles = {vim.fn.glob(home .. '/.config/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar')}
     vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.config/nvim/vscode-java-test/server/*.jar'), '\n'))
     local root_dir = jdtls.setup.find_root({'.git', 'mvnw', 'gradlew'})
@@ -146,7 +146,7 @@ end
 
 function LSP.setup_css()
     require('lspconfig').tailwindcss.setup {
-        cmd = {os.getenv('HOME')..'/.local/share/nvim/lsp_servers/tailwindcss_npm/node_modules/@tailwindcss/language-server/bin/tailwindcss-language-server'},
+        cmd = {servers .. '/tailwindcss_npm/node_modules/@tailwindcss/language-server/bin/tailwindcss-language-server'},
         capabilities = get_capabilities(),
         on_attach = on_attach
     }
@@ -163,14 +163,14 @@ end
 function LSP.setup_haskell()
     require('lspconfig').hls.setup {
         on_attach = on_attach,
-        cmd = { os.getenv('HOME') .. '/.local/share/nvim/lsp_servers/haskell/haskell-language-server-wrapper', '--lsp' }
+        cmd = {servers .. '/haskell/haskell-language-server-wrapper', '--lsp'}
     }
 end
 
 function LSP.setup_svelte()
     require('lspconfig').svelte.setup {
         capabilities = get_capabilities(),
-        cmd = {os.getenv('HOME') .. '/.local/share/nvim/lsp_servers/svelte/node_modules/svelte-language-server/bin/server.js', '--stdio'},
+        cmd = {servers .. '/svelte/node_modules/svelte-language-server/bin/server.js', '--stdio'},
         on_attach = on_attach
     }
 end
@@ -178,7 +178,7 @@ end
 function LSP.setup_html()
     require('lspconfig').html.setup {
         capabilities = get_capabilities(),
-        cmd = {os.getenv('HOME') .. '/.local/share/nvim/lsp_servers/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server', '--stdio'},
+        cmd = {servers .. '/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server', '--stdio'},
         on_attach = on_attach
     }
 end

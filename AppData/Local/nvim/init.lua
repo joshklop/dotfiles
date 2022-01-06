@@ -1,6 +1,4 @@
-vim.g.python3_host_prog = '/bin/python3'
 vim.g.loaded_python_provider = 0
-
 
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
@@ -80,7 +78,9 @@ require('me.plugins')
 
 -- LSP
 local lsp = require('me.setup_lsp')
-lsp.setup_lua()
+-- nvim-lspconfig assumes all paths use forward slashes, I do not think lsp-installer follows this pattern
+-- https://github.com/neovim/nvim-lspconfig/issues/1075#issuecomment-999979827
+-- lsp.setup_lua()
 lsp.setup_latex()
 lsp.setup_c()
 lsp.setup_python()

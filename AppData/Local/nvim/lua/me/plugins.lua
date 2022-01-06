@@ -16,10 +16,10 @@ require('packer').startup(function(use)
         requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
     }
 
-    use {
-        'nvim-telescope/telescope-frecency.nvim',
-        requires = {'tami5/sqlite.lua'}
-    }
+    -- use {
+    --     'nvim-telescope/telescope-frecency.nvim',
+    --     requires = {'tami5/sqlite.lua'}
+    -- }
 
     use {'lewis6991/gitsigns.nvim'}
 
@@ -55,7 +55,7 @@ require('packer').startup(function(use)
     use {'mfussenegger/nvim-dap'}
     use {'Pocco81/DAPInstall.nvim'}
     use {'nvim-telescope/telescope-dap.nvim'}
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    -- use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {'theHamsta/nvim-dap-virtual-text'}
 
     use {'williamboman/nvim-lsp-installer'}
@@ -121,7 +121,7 @@ require('nvim-treesitter.configs').setup({
 vim.g.bracey_server_port = 3000
 
 -- snippets
-vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config' .. '/nvim' .. '/snippets'
+vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. '/snippets'
 -- Expand
 vim.cmd [[
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -167,9 +167,10 @@ map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
 map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
 map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>') -- TODO register extension
+
+-- telescope.load_extension('fzf')
+-- telescope.load_extension('frecency')
 -- nvim-telescope/telescope-dap.nvim
-telescope.load_extension('fzf')
-telescope.load_extension('frecency')
 telescope.load_extension('dap')
 map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
 map('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
