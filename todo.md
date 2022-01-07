@@ -1,6 +1,6 @@
 # System
 
-* [ ] Make terminal github dark theme (remove borders?)
+* [ ] Fix dotfile system
 
 # Neovim
 
@@ -12,3 +12,5 @@
 # Done
 
 * [X] Add scoop-installed programs to dotfiles
+* [X] Make terminal github dark theme (remove borders?)
+* [X] Swap escape and caps lock
