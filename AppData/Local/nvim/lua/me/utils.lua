@@ -1,12 +1,13 @@
 local M = {}
 
+M.home = os.getenv('HOME') or os.getenv('USERPROFILE')
+
 function M.find_dotfiles(opts)
     opts = opts or {}
     opts.cwd = opts.cwd or vim.loop.cwd()
-    local home = os.getenv('USERPROFILE')
     local Path = require('plenary.path')
     opts.entry_maker = opts.entry_maker or function(entry)
-       local path = Path:new(Path:new(home .. entry):make_relative(opts.cwd)):normalize(opts.cwd)
+       local path = Path:new(Path:new(M.home .. entry):make_relative(opts.cwd)):normalize(opts.cwd)
        return {
            path = path,
            value = path,
@@ -16,8 +17,9 @@ function M.find_dotfiles(opts)
     end
     -- c ls-tree --full-tree -r --name-only HEAD
     local custom_cmd = {
-        'git', '--git-dir=' .. home .. '/.dotfiles', '--work-tree=' .. home,
-        'ls-tree', '--full-tree', '-r', '--name-only', 'HEAD'
+        'git', '--git-dir=' .. M.home .. '/.dotfiles',
+        '--work-tree=' .. M.home, 'ls-tree', '--full-tree', '-r',
+        '--name-only', 'HEAD'
     }
     require('telescope.pickers').new(opts, {
         results_title = 'dotfiles',

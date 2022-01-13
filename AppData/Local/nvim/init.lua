@@ -1,3 +1,10 @@
+local utils = require('me.utils')
+local map = utils.map
+local home = utils.home
+
+if vim.fn.has('win32') then
+    vim.g.python3_host_prog = home .. '/scoop/apps/python/current/python.exe'
+end
 vim.g.loaded_python_provider = 0
 
 vim.opt.expandtab = true
@@ -21,7 +28,6 @@ vim.opt.inccommand = 'nosplit'
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 8
 
-local map = require('me.utils').map
 
 -- Keymaps
 -- Remap leader keys
@@ -78,41 +84,39 @@ require('me.plugins')
 
 -- LSP
 local lsp = require('me.setup_lsp')
--- nvim-lspconfig assumes all paths use forward slashes, I do not think lsp-installer follows this pattern
--- https://github.com/neovim/nvim-lspconfig/issues/1075#issuecomment-999979827
--- lsp.setup_lua()
+
+lsp.setup_lua()
 lsp.setup_latex()
 lsp.setup_c()
 lsp.setup_python()
-lsp.setup_svelte()
-lsp.setup_css()
-lsp.setup_typescript()
-lsp.setup_html()
--- lsp.setup_haskell()
+lsp.setup_go()
+lsp.setup_haskell()
+lsp.setup_powershell()
 vim.cmd [[
 augroup lsp
 au FileType java lua require('me.setup_lsp').setup_java()
 augroup end
 ]]
--- Set up logging (useful for troubleshooting frequent LSP mishaps)
+
+-- May not work
+lsp.setup_svelte()
+lsp.setup_css()
+lsp.setup_typescript()
+lsp.setup_html()
+
+-- Logging
 vim.lsp.set_log_level("debug")
 vim.cmd [[
-command! LspLog lua vim.cmd('e'..vim.lsp.get_log_path())
+command! LspLog lua vim.cmd('e '.. vim.lsp.get_log_path())
 ]]
 
--- Debugging
-M = {}
 
-function M.refresh_debuggers()
-    local dap_install = require("dap-install")
-    local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
-    for _, debugger in ipairs(dbg_list) do
-        dap_install.config(debugger)
-    end
+-- Make Powershell the default shell on Windows
+if (vim.fn.has('win32')) then
+    vim.opt.shell = 'pwsh' -- Assume we have Powershell Core
+    vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.opt.shellquote = ""
+    vim.opt.shellxquote = '"'
 end
-
-M.refresh_debuggers()
-
-vim.cmd([[command! DIRefresh lua M.refresh_debuggers()]])
-
-return M;

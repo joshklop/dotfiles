@@ -16,11 +16,6 @@ require('packer').startup(function(use)
         requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
     }
 
-    -- use {
-    --     'nvim-telescope/telescope-frecency.nvim',
-    --     requires = {'tami5/sqlite.lua'}
-    -- }
-
     use {'lewis6991/gitsigns.nvim'}
 
     use {'psliwka/vim-smoothie'}
@@ -47,15 +42,13 @@ require('packer').startup(function(use)
         'prettier/vim-prettier',
         ft = {'javascript', 'typescript', 'json', 'css'}
     }
-    use {'HerringtonDarkholme/yats.vim'}
-    use {'turbio/bracey.vim', run = 'npm install --prefix server'}
     use {'MaxMEllon/vim-jsx-pretty'}
     use {'pangloss/vim-javascript'}
     use {'mfussenegger/nvim-jdtls'} -- Do not set to only run on ft = java
     use {'mfussenegger/nvim-dap'}
     use {'Pocco81/DAPInstall.nvim'}
     use {'nvim-telescope/telescope-dap.nvim'}
-    -- use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {'theHamsta/nvim-dap-virtual-text'}
 
     use {'williamboman/nvim-lsp-installer'}
@@ -72,7 +65,8 @@ require('packer').startup(function(use)
     end
 end)
 
-local map = require('me.utils').map
+local utils = require('me.utils')
+local map = utils.map
 
 -- colorscheme
 vim.opt.background = 'light'
@@ -109,13 +103,10 @@ require('cmp').setup({
 require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true,
-        disable = {'json', 'latex'}
+        disable = {'latex'}
     },
     incremental_selection = {enable = true},
 })
-
--- bracey
-vim.g.bracey_server_port = 3000
 
 -- snippets
 vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. '/snippets'
@@ -138,7 +129,7 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 ]]
 
 -- nvim-dap
-require('dap') -- Need to load the plugin in order for signs to work
+local dap = require('dap') -- Need to load the plugin in order for signs to work
 vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
@@ -163,10 +154,8 @@ map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
 map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
 map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
-map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>') -- TODO register extension
-
--- telescope.load_extension('fzf')
--- telescope.load_extension('frecency')
+map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
+telescope.load_extension('fzf')
 -- nvim-telescope/telescope-dap.nvim
 telescope.load_extension('dap')
 map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
@@ -186,3 +175,40 @@ require('gitsigns').setup({
     signcolumn = false,
     numhl = true
 })
+
+-- dap-install
+if vim.fn.has('win32') then -- dap-install does not support windows yet
+    local dbg_path = vim.fn.stdpath('data') .. '/dapinstall'
+
+    -- Modified from https://github.com/Pocco81/DAPInstall.nvim/blob/main/lua/dap-install/core/debuggers/ccppr_vsc.lua
+    -- FIXME Not working
+    dap.adapters.cpptools = {
+        type = 'executable',
+        command = dbg_path .. '/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7.exe',
+    }
+    dap.configurations.c = {{
+        name = 'Launch file',
+        type = 'cpptools',
+        request = 'launch',
+        miDebuggerPath = 'gdb', -- Tried path here, didn't work
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = true,
+    }}
+    dap.configurations.cpp = dap.configurations.c
+else
+    M = {}
+    function M.refresh_debuggers()
+        local dap_install = require("dap-install")
+        local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
+        for _, debugger in ipairs(dbg_list) do
+            dap_install.config(debugger)
+        end
+    end
+    M.refresh_debuggers()
+    vim.cmd([[command! DIRefresh lua M.refresh_debuggers()]])
+end
+
+return M
