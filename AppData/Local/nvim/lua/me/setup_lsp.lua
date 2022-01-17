@@ -1,18 +1,14 @@
-local LSP = {}
-
+local lspconfig = require('lspconfig')
 local utils = require('me.utils')
 local map = utils.map
 local home = utils.home
 local servers = vim.fn.stdpath('data') .. '/lsp_servers'
 
-local function get_capabilities()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    return require('cmp_nvim_lsp').update_capabilities(capabilities)
-end
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local function on_attach(_, bufnr)
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     map('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
     map('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
     map('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
@@ -39,47 +35,90 @@ local function sanitize_binary(path)
     return path
 end
 
-function LSP.setup_lua()
-    local root_path = servers .. '/sumneko_lua/extension/server'
-    local binary_path = sanitize_binary(root_path .. '/bin/lua-language-server')
-    local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, 'lua/?.lua')
-    table.insert(runtime_path, 'lua/?/init.lua')
-    require('lspconfig').sumneko_lua.setup {
-        cmd = {binary_path, '-E', root_path .. '/main.lua'},
-        capabilities = get_capabilities(),
-        on_attach = on_attach,
-        filetypes = {'lua'},
-        settings = {
-            Lua = {
-                runtime = {
-                    version = 'LuaJIT',
-                    path = runtime_path,
-                },
-                diagnostics = {
-                    globals = {'vim'},
-                },
-                workspace = {
-                    library = vim.api.nvim_get_runtime_file("", true),
-                },
-                telemetry = {
-                    enable = false,
-                }
+local sumneko_root_path = servers .. '/sumneko_lua/extension/server'
+local sumneko_binary_path = sanitize_binary(sumneko_root_path .. '/bin/lua-language-server')
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
+lspconfig.sumneko_lua.setup({
+    cmd = {sumneko_binary_path, '-E', sumneko_root_path .. '/main.lua'},
+    capabilities = capabilities,
+    on_attach = on_attach,
+    filetypes = {'lua'},
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',
+                path = runtime_path,
+            },
+            diagnostics = {
+                globals = {'vim'},
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            telemetry = {
+                enable = false,
             }
         }
     }
-end
+})
 
-function LSP.setup_latex()
-    require('lspconfig').texlab.setup {
-        cmd = {sanitize_binary(servers .. '/latex/texlab')},
-        capabilities = get_capabilities(),
-        on_attach = on_attach
-    }
-    map('n', '<Leader>lb', '<CMD>TexlabBuild<CR>') -- TODO put in on_attach
+local function latex_on_attach(client, bufnr)
+    on_attach(client, bufnr)
+    map('n', '<Leader>lb', '<CMD>TexlabBuild<CR>')
 end
+lspconfig.texlab.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/latex/texlab')},
+    on_attach = latex_on_attach
+})
 
-function LSP.setup_java()
+local target = ''
+if vim.fn.has('win32') then
+    target = '--target=x86_64-w64-mingw64' -- Use gcc for linking on Windows
+end
+lspconfig.clangd.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/clangd/clangd/bin/clangd')},
+    init_options = {
+        fallbackFlags = {target, '-Wall'}
+    },
+    on_attach = on_attach
+})
+
+lspconfig.pylsp.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/pylsp/venv/Scripts/pylsp')},
+    on_attach = on_attach
+})
+
+lspconfig.hls.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/haskell/haskell-language-server-wrapper'), '--lsp'},
+    on_attach = on_attach
+})
+
+lspconfig.powershell_es.setup({
+    capabilities = capabilities,
+    bundle_path = servers .. '/powershell_es',
+    on_attach = on_attach
+})
+
+lspconfig.gopls.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/go/gopls')},
+    on_attach = on_attach
+})
+
+lspconfig.solc.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/solc/solc'), '--lsp'},
+    on_attach = on_attach
+})
+
+-- Java
+local function setup_java()
     local jdtls = require('jdtls')
     local on_attach_jdtls = function(client, bufnr)
         on_attach(client, bufnr)
@@ -114,7 +153,7 @@ function LSP.setup_java()
     local root_dir = jdtls.setup.find_root({'.git', 'mvnw', 'gradlew'})
 
     local config = {
-        capabilities = get_capabilities(),
+        capabilities = capabilities,
         on_attach = on_attach_jdtls,
         settings = {
             java = {
@@ -161,90 +200,14 @@ function LSP.setup_java()
             '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
             '-jar', jdtls_root .. '/server/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
             '-configuration', jdtls_root .. '/server/config_win',
-            '-data', jdtls_root .. '/.workspace' .. vim.fn.fnamemodify(root_dir, ':p:t')}
+            '-data', jdtls_root .. '/.workspace' .. vim.fn.fnamemodify(root_dir, ':p:t')
         }
-        jdtls.start_or_attach(config)
-    end
-
-function LSP.setup_c()
-    local target = ''
-    if vim.fn.has('win32') then
-        target = '--target=x86_64-w64-mingw64' -- Use gcc for linking on Windows
-    end
-    require('lspconfig').clangd.setup {
-        capabilities = get_capabilities(),
-        cmd = {sanitize_binary(servers .. '/clangd/clangd/bin/clangd')},
-        init_options = {
-            fallbackFlags = {target, '-Wall'}
-        },
-        on_attach = on_attach
     }
+    jdtls.start_or_attach(config)
 end
 
-function LSP.setup_python()
-    require('lspconfig').pylsp.setup {
-        capabilities = get_capabilities(),
-        cmd = {sanitize_binary(servers .. '/pylsp/venv/Scripts/pylsp')},
-        on_attach = on_attach
-    }
-end
-
-function LSP.setup_css()
-    require('lspconfig').tailwindcss.setup {
-        cmd = {servers .. '/tailwindcss_npm/node_modules/@tailwindcss/language-server/bin/tailwindcss-language-server'},
-        capabilities = get_capabilities(),
-        on_attach = on_attach
-    }
-end
-
-function LSP.setup_typescript()
-    require('lspconfig').tsserver.setup {
-        capabilities = get_capabilities(),
-        on_attach = on_attach
-    }
-end
-
-function LSP.setup_haskell()
-    require('lspconfig').hls.setup {
-        capabilities = get_capabilities(),
-        cmd = {sanitize_binary(servers .. '/haskell/haskell-language-server-wrapper'), '--lsp'},
-        on_attach = on_attach
-    }
-end
-
-function LSP.setup_svelte()
-    require('lspconfig').svelte.setup {
-        capabilities = get_capabilities(),
-        cmd = {servers .. '/svelte/node_modules/svelte-language-server/bin/server.js', '--stdio'},
-        on_attach = on_attach
-    }
-end
-
-function LSP.setup_html()
-    require('lspconfig').html.setup {
-        capabilities = get_capabilities(),
-        cmd = {servers .. '/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server', '--stdio'},
-        on_attach = on_attach
-    }
-end
-
-function LSP.setup_powershell()
-    if not vim.fn.has('win32') then
-        return -- Only run on Windows
-    end
-    require('lspconfig').powershell_es.setup {
-        capabilities = get_capabilities(),
-        bundle_path = servers .. '/powershell_es',
-        on_attach = on_attach
-    }
-end
-
-function LSP.setup_go()
-    require('lspconfig').gopls.setup {
-        capabilities = get_capabilities(),
-        cmd = {sanitize_binary(servers .. '/go/gopls')},
-        on_attach = on_attach
-    }
-end
-
-return LSP
+vim.cmd [[
+augroup lsp
+au FileType java lua setup_java()
+augroup end
+]]
