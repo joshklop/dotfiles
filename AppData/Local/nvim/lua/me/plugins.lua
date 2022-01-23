@@ -35,7 +35,7 @@ require('packer').startup(function(use)
     use {'mfussenegger/nvim-jdtls'} -- Do not set to only run on ft = java
     use {'mfussenegger/nvim-dap'}
     use {'nvim-telescope/telescope-dap.nvim'}
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    -- use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {'theHamsta/nvim-dap-virtual-text'}
     use {'williamboman/nvim-lsp-installer'}
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -141,7 +141,7 @@ map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
 map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
 map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
 -- nvim-telescope/telescope-fzf-native
-telescope.load_extension('fzf')
+-- telescope.load_extension('fzf')
 -- nvim-telescope/telescope-dap.nvim
 telescope.load_extension('dap')
 map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')

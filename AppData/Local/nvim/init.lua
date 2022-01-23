@@ -7,6 +7,7 @@ if vim.fn.has('win32') then
 end
 vim.g.loaded_python_provider = 0
 
+
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -27,7 +28,7 @@ vim.opt.mouse = ''
 vim.opt.inccommand = 'nosplit'
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = 'SauceCodePro NF:12'
+vim.opt.guifont = 'SauceCodePro NF:h12'
 
 
 -- Keymaps
