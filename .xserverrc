@@ -1,2 +1,0 @@
-#!/bin/sh
-/usr/bin/prime-offload && exec /usr/bin/X -nolisten tcp "$@" vt$XDG_VTNR

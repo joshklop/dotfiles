@@ -1,6 +1,5 @@
 # Todo
 
-* [ ] Transition to pacmanfile
 * [ ] Lazy-load zsh functions (i.e. move them into separate scripts) to decrease startup time
 * [ ] Make `fzf` ignore certain directories (e.g. Zotero, node\_modules, etc.)
 * [ ] Make `paru` ignore certain packages, especially manually installed ones (i.e. f5)
@@ -20,6 +19,7 @@
 
 # Done
 
+* [X] Set up C and Java and bash and latex
 * [X] Set up `nvim-jdtls`+`nvim-dap` for Java
 * [X] `nvim-dap`: fix signs
 * [X] `nvim-jdtls`: fix :JdtJshell command (didn't need fixing: it will only work in .java buffers)
@@ -29,3 +29,4 @@
 * [X] Install a compositor
 * [X] Change zathura colorscheme to github
 * [X] gitsigns
+* [X] Transition to pacmanfile

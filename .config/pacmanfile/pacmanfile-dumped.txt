@@ -104,8 +104,6 @@ nvidia
 nvidia-settings
 nvidia-utils
 openssh
-optimus-manager
-optimus-manager-qt
 os-prober
 pacman-contrib
 pacmanfile

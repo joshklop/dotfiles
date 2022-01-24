@@ -6,3 +6,4 @@ pacmanfile sync
 python3 -m pip install --upgrade pip
 nvim -c PackerUpdate
 sudo nvim -c PackerUpdate
+pacmanfile dump
