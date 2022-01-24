@@ -1,4 +1,12 @@
-vim.g.python3_host_prog = '/bin/python3'
+local utils = require('me.utils')
+local map = utils.map
+local home = utils.home
+
+if vim.fn.has('win32') ~= 0 then
+    vim.g.python3_host_prog = home .. '/scoop/apps/python/current/python.exe'
+else
+    vim.g.python3_host_prog = '/usr/bin/python'
+end
 vim.g.loaded_python_provider = 0
 
 
@@ -22,8 +30,8 @@ vim.opt.mouse = ''
 vim.opt.inccommand = 'nosplit'
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 8
+vim.opt.guifont = 'SauceCodePro NF:h12'
 
-local map = require('me.utils').map
 
 -- Keymaps
 -- Remap leader keys
@@ -35,7 +43,7 @@ map('n', '<Up>', 'ddkP')
 map('n', '<Down>', 'ddp')
 map('n', '<Left>', 'xhP')
 map('n', '<Right>', 'xp')
--- Allow easier navigation on broken lines
+-- Easier navigation on broken lines
 map('n', 'j', 'gj')
 map('n', 'k', 'gk')
 -- Redraw screen
@@ -47,7 +55,6 @@ map('', '<C-k>', '<C-w>k')
 map('', '<C-l>', '<C-w>l')
 map('', '<C-w>t', '<CMD>tabnew<CR>')
 -- Delete buffer without deleting window
--- TODO make this the default for `:bd`
 map('n', '<Leader>bd', [[<CMD>bp\|bd<CR>]])
 
 
@@ -79,40 +86,15 @@ require('me.plugins')
 
 
 -- LSP
-local lsp = require('me.setup_lsp')
-lsp.setup_lua()
-lsp.setup_latex()
-lsp.setup_c()
-lsp.setup_python()
-lsp.setup_svelte()
-lsp.setup_css()
-lsp.setup_typescript()
-lsp.setup_html()
--- lsp.setup_haskell()
-vim.cmd [[
-augroup lsp
-au FileType java lua require('me.setup_lsp').setup_java()
-augroup end
-]]
--- Set up logging (useful for troubleshooting frequent LSP mishaps)
-vim.lsp.set_log_level("debug")
-vim.cmd [[
-command! LspLog lua vim.cmd('e'..vim.lsp.get_log_path())
-]]
+require('me.setup_lsp')
 
--- Debugging
-M = {}
 
-function M.refresh_debuggers()
-    local dap_install = require("dap-install")
-    local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
-    for _, debugger in ipairs(dbg_list) do
-        dap_install.config(debugger)
-    end
+-- Make Powershell the default shell on Windows
+if vim.fn.has('win32') ~= 0 then
+    vim.opt.shell = 'pwsh' -- Assume we have Powershell Core
+    vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.opt.shellquote = ""
+    vim.opt.shellxquote = '"'
 end
-
-M.refresh_debuggers()
-
-vim.cmd([[command! DIRefresh lua M.refresh_debuggers()]])
-
-return M;

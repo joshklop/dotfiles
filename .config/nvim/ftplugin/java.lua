@@ -1,5 +1,7 @@
 local utils = require('me.utils')
 local home = utils.home
+local map = utils.map
+local on_attach = utils.on_attach
 local jdtls = require('jdtls')
 
 local on_attach_jdtls = function(client, bufnr)
