@@ -1,16 +1,19 @@
 # Todo
 
+* [ ] Really understand `fzf` configs
+* [ ] Really understand how nix works
 * [ ] Lazy-load zsh functions (i.e. move them into separate scripts) to decrease startup time
 * [ ] Make `fzf` ignore certain directories (e.g. Zotero, node\_modules, etc.)
 * [ ] Make `paru` ignore certain packages, especially manually installed ones (i.e. f5)
 * [ ] Rice rofi
 * [ ] Switch from i3 to xmonad (haskell all the things!)
-* [ ] Configure slock or switch to new lockscreen
 * [ ] `Xresources`
-* [ ] Zsh
-  + [ ] plugin manager (`zinit`)
-  + [ ] Plugins: `z`, prompt helper for git info?, see brokenbyte's dotfiles for more
-* Neovim
+* zinit
+  + [ ] see brokenbyte's configs
+  + [ ] prompt for git fanciness
+  + [ ] completions, plus you want to use compinit in turbo mode (no `autoload -Uz compinit; compinit`)
+* neovim
+  + [ ] use new diagnostic features
   + [ ] use buf-local settings (e.g. declutter your keymaps)
   + [ ] lualine
   + [ ] Organize directories (i.e. use ftdetect, ftplugin, colors, etc.)
@@ -30,3 +33,7 @@
 * [X] Change zathura colorscheme to github
 * [X] gitsigns
 * [X] Transition to pacmanfile
+* [X] plugin manager (`zinit`)
+* [X] Get hls working
+* [X] Nix setup: zsh-nix-shell, nix-zsh-completions
+* [X] Use zoxide

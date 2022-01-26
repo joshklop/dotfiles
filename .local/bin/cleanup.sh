@@ -2,8 +2,12 @@
 
 sudo pacman -Syu
 paru -Syu --aur
-pacmanfile sync
+pacmanfile dump
+
 python3 -m pip install --upgrade pip
+
 nvim -c PackerUpdate
 sudo nvim -c PackerUpdate
-pacmanfile dump
+
+zinit self-update
+zinit update --parallel

@@ -4,6 +4,8 @@
 export PRINTER=M70
 
 export PATH="$PATH:$HOME/.local/bin:/home/user/.local/share/gem/ruby/3.0.0/bin"
+# For Chromium development
+export PATH="$HOME/repos/depot_tools:$PATH"
 
 # Editor exports
 export VISUAL=nvim
@@ -44,6 +46,7 @@ setopt interactivecomments       # Allow typing comments at an interactive promp
 setopt CD_SILENT
 
 # Aliases and Functions
+alias cd='' # Force yourself to use `j` for zoxide
 alias ls='exa --git --classify --group-directories-first --sort=extension --color=always'
 alias cat='bat'
 alias shred='shred --remove --zero --iterations=4'
@@ -79,6 +82,50 @@ function venv() {
 # zsh-only configs #
 ####################
 
+# Prompt fanciness
+autoload -Uz promptinit
+setopt prompt_subst
+RPROMPT='%F{red}'\$vcs_info_msg_0_'%f'
+PROMPT='%F{blue}%~%f %F{blue}%#%f '
+
+# Use emacs-like keybinds at the command line
+bindkey -e
+
+# fzf
+export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
+. ~/.config/fzf/fzf.zsh
+
+# Keybinds
+bindkey "^[[3~" delete-char     # Make 'delete' actually delete
+bindkey \^U backward-kill-line  # CTRL-u works as in bash
+bindkey "^[[1;5C" forward-word  # Ctrl-right moves right a word
+bindkey "^[[1;5D" backward-word # Ctrl-left moves left a word
+
+# Plugins
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+autoload -Uz compinit; compinit
+
+zinit wait lucid blockf for \
+    atinit"zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+    chisui/zsh-nix-shell \
+    atload"prompt_nix_shell_setup" \
+    spwhitt/nix-zsh-completions
+
 # Autocompletion
 # The following lines were added by compinstall
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -98,32 +145,14 @@ zstyle ':completion:*' select-prompt %S current selection at %p%s
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '/home/user/.zshrc'
-autoload -Uz compinit
-compinit
 # End of lines added by compinstall
+
+# autoload -U colors && colors TODO is this necessary?
 autoload edit-command-line # Prevent weird things from happening with entering text on the command line
 zle -N edit-command-line
 setopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
 kitty + complete setup zsh | . /dev/stdin # Completion for kitty
 
-# Prompt fanciness
-autoload -Uz promptinit
-setopt prompt_subst
-RPROMPT='%F{red}'\$vcs_info_msg_0_'%f'
-PROMPT='%F{blue}%~%f %F{blue}%#%f '
-
-# Syntax highlighting!
-. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-
-# Use emacs-like keybinds at the command line
-bindkey -e
-
-# FZF
-export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
-. ~/.config/fzf/fzf.zsh
-
-# Keybinds
-bindkey "^[[3~" delete-char     # Make 'delete' actually delete
-bindkey \^U backward-kill-line  # CTRL-u works as in bash
-bindkey "^[[1;5C" forward-word  # Ctrl-right moves right a word
-bindkey "^[[1;5D" backward-word # Ctrl-left moves left a word
+_ZD_FZF_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
+# zoxide (must be called after compinit)
+eval "$(zoxide init zsh --cmd j)"

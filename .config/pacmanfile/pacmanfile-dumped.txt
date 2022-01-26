@@ -87,6 +87,7 @@ make
 man-db
 man-pages
 mdadm
+mesa-utils
 most
 mpv
 mtools

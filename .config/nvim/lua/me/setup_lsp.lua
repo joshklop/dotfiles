@@ -62,7 +62,7 @@ lspconfig.clangd.setup({
 
 lspconfig.pylsp.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/pylsp/venv/Scripts/pylsp')},
+    cmd = {sanitize_binary(servers .. '/pylsp/venv/bin/pylsp')},
     on_attach = on_attach
 })
 

@@ -16,6 +16,7 @@ require('packer').startup(function(use)
         requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
     }
     use {'nvim-telescope/telescope-ui-select.nvim'}
+    use {'jvgrootveld/telescope-zoxide'}
     use {'lewis6991/gitsigns.nvim'}
     use {'psliwka/vim-smoothie'}
     use {'neovim/nvim-lspconfig'}
@@ -142,7 +143,10 @@ map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
 map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
 map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
 -- nvim-telescope/telescope-fzf-native
--- telescope.load_extension('fzf')
+telescope.load_extension('fzf')
+-- nvim-telescope/telescope-zoxide
+telescope.load_extension('zoxide')
+map('n', '<Leader>fj', '<CMD>Telescope zoxide list<CR>')
 -- nvim-telescope/telescope-dap.nvim
 telescope.load_extension('dap')
 map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')

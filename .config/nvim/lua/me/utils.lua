@@ -56,7 +56,7 @@ function M.on_attach(_, bufnr)
     M.map('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
     M.map('n', '<Leader>D', '<CMD>lua vim.lsp.buf.type_definition()<CR>')
     M.map('n', '<Leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>')
-    M.map('n', '<Leader>e', '<CMD>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+    M.map('n', '<Leader>e', '<CMD>lua vim.diagnostic.open_float(nil, {scope = "line"})<CR>') -- Modified
     M.map('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>')
     M.map('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<CR>')
     M.map('n', '<Leader>q', '<CMD>lua vim.lsp.diagnostic.set_loclist()<CR>')

@@ -86,6 +86,13 @@ require('me.plugins')
 
 
 -- LSP
+vim.diagnostic.config({
+    signs = {
+        severity = {
+            min=vim.diagnostic.severity.WARN,
+        },
+    },
+})
 require('me.setup_lsp')
 
 
