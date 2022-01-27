@@ -46,7 +46,6 @@ setopt interactivecomments       # Allow typing comments at an interactive promp
 setopt CD_SILENT
 
 # Aliases and Functions
-alias cd='' # Force yourself to use `j` for zoxide
 alias ls='exa --git --classify --group-directories-first --sort=extension --color=always'
 alias cat='bat'
 alias shred='shred --remove --zero --iterations=4'
@@ -154,5 +153,12 @@ setopt COMPLETE_ALIASES # autocompletion of command line switches for aliases
 kitty + complete setup zsh | . /dev/stdin # Completion for kitty
 
 _ZD_FZF_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
+
 # zoxide (must be called after compinit)
 eval "$(zoxide init zsh --cmd j)"
+
+# nvm (normally in `init-nvm.sh`, but I prefer to be explicit)
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/install-nvm-exec
+#source /usr/share/nvm/bash_completion we use zsh
