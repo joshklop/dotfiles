@@ -96,3 +96,16 @@ lspconfig.bashls.setup({
     on_attach = on_attach,
     filetypes = {'sh', 'bash', 'zsh'},
 })
+
+lspconfig.tsserver.setup({
+    capabilities = capabilities,
+    cmd = {servers .. '/tsserver/node_modules/typescript-language-server/lib/cli.js', '--stdio'},
+    on_attach = on_attach,
+})
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+lspconfig.html.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server'), '--stdio'},
+    on_attach = on_attach,
+})

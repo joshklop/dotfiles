@@ -54,8 +54,6 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {})
 map('', '<C-k>', '<C-w>k')
 map('', '<C-l>', '<C-w>l')
 map('', '<C-w>t', '<CMD>tabnew<CR>')
--- Delete buffer without deleting window
-map('n', '<Leader>bd', [[<CMD>bp\|bd<CR>]])
 
 
 -- Filetype-specific settings

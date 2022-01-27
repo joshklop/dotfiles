@@ -6,8 +6,8 @@ end
 
 require('packer').startup(function(use)
     -- Consider adding
-    -- https://github.com/windwp/nvim-ts-autotag
     use {'wbthomason/packer.nvim'}
+    use {'windwp/nvim-ts-autotag'}
     use {'hrsh7th/vim-vsnip'}
     use {'hrsh7th/vim-vsnip-integ'}
     use {'projekt0n/github-nvim-theme'}
@@ -67,6 +67,9 @@ require('github-theme').setup({
 require('nvim-autopairs').setup({
     fast_wrap = {},
 })
+
+-- windwp/nvim-ts-autotag
+require('nvim-ts-autotag').setup()
 
 -- hrsh7th/nvim-cmp
 local cmp = require('cmp')
