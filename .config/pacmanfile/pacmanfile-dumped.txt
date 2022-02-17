@@ -36,6 +36,7 @@ dosfstools
 dotnet-runtime
 dotnet-sdk
 dunst
+eclipse-java
 edid-decode-git
 efibootmgr
 etckeeper
@@ -104,6 +105,7 @@ ntfs-3g
 nvidia
 nvidia-settings
 nvidia-utils
+nvm
 openssh
 os-prober
 pacman-contrib
@@ -225,6 +227,7 @@ zathura
 zathura-pdf-mupdf
 zoom
 zotero
+zoxide
 zsh
 zsh-completions
 zsh-syntax-highlighting
