@@ -9,12 +9,12 @@ else
 end
 vim.g.loaded_python_provider = 0
 
-
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.autoindent = true
 vim.opt.smarttab = true
+vim.opt.smartindent = true
 vim.opt.wildmenu = true
 vim.opt.showmode = false
 vim.opt.ignorecase = true
@@ -31,7 +31,6 @@ vim.opt.inccommand = 'nosplit'
 vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = 'SauceCodePro NF:h12'
-
 
 -- Keymaps
 -- Remap leader keys
@@ -55,7 +54,6 @@ map('', '<C-k>', '<C-w>k')
 map('', '<C-l>', '<C-w>l')
 map('', '<C-w>t', '<CMD>tabnew<CR>')
 
-
 -- Filetype-specific settings
 vim.cmd [[
 augroup omnifuncs
@@ -78,10 +76,8 @@ au BufNew,BufNewFile,BufRead,BufEnter *.tex :setfiletype tex
 augroup end
 ]]
 
-
 -- Plugins
 require('me.plugins')
-
 
 -- LSP
 vim.diagnostic.config({
@@ -92,7 +88,6 @@ vim.diagnostic.config({
     },
 })
 require('me.setup_lsp')
-
 
 -- Make Powershell the default shell on Windows
 if vim.fn.has('win32') ~= 0 then

@@ -3,10 +3,8 @@ local utils = require('me.utils')
 local map = utils.map
 local on_attach = utils.on_attach
 local sanitize_binary = utils.sanitize_binary
+local capabilities = utils.capabilities
 local servers = vim.fn.stdpath('data') .. '/lsp_servers'
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local sumneko_root_path = servers .. '/sumneko_lua/extension/server'
 local sumneko_binary_path = sanitize_binary(sumneko_root_path .. '/bin/lua-language-server')
@@ -32,9 +30,9 @@ lspconfig.sumneko_lua.setup({
             },
             telemetry = {
                 enable = false,
-            }
-        }
-    }
+            },
+        },
+    },
 })
 
 local function latex_on_attach(client, bufnr)
@@ -44,7 +42,7 @@ end
 lspconfig.texlab.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/latex/texlab')},
-    on_attach = latex_on_attach
+    on_attach = latex_on_attach,
 })
 
 local target = ''
@@ -55,39 +53,39 @@ lspconfig.clangd.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/clangd/clangd/bin/clangd')},
     init_options = {
-        fallbackFlags = {target, '-Wall'}
+        fallbackFlags = {target, '-Wall'},
     },
-    on_attach = on_attach
+    on_attach = on_attach,
 })
 
 lspconfig.pylsp.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/pylsp/venv/bin/pylsp')},
-    on_attach = on_attach
+    on_attach = on_attach,
 })
 
 lspconfig.hls.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/haskell/haskell-language-server-wrapper'), '--lsp'},
-    on_attach = on_attach
+    on_attach = on_attach,
 })
 
 lspconfig.powershell_es.setup({
     capabilities = capabilities,
     bundle_path = servers .. '/powershell_es',
-    on_attach = on_attach
+    on_attach = on_attach,
 })
 
 lspconfig.gopls.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/go/gopls')},
-    on_attach = on_attach
+    on_attach = on_attach,
 })
 
 lspconfig.solc.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/solc/solc'), '--lsp'},
-    on_attach = on_attach
+    on_attach = on_attach,
 })
 
 lspconfig.bashls.setup({

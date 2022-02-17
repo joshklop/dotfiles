@@ -104,7 +104,7 @@ cmp.event:on(
 require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true,
-        disable = {'latex'}
+        disable = {'latex'},
     },
     incremental_selection = {enable = true},
 })
@@ -144,6 +144,7 @@ map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
 map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
 map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
+map('n', '<Leader>fl', '<CMD>Telescope lsp_code_actions<CR>')
 map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
 -- nvim-telescope/telescope-fzf-native
 telescope.load_extension('fzf')
@@ -160,7 +161,7 @@ telescope.load_extension('ui-select')
 -- lewis6991/gitsigns.nvim
 require('gitsigns').setup({
     signcolumn = false,
-    numhl = true
+    numhl = true,
 })
 
 -- mfussenegger/nvim-dap
@@ -186,7 +187,7 @@ command! DAPLog lua vim.cmd('e '.. vim.fn.stdpath('cache') .. '/dap.log')
 local dbg_path = vim.fn.stdpath('data') .. '/dapinstall'
 dap.adapters.cpptools = {
     type = 'executable',
-    command = sanitize_binary(dbg_path .. '/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7')
+    command = sanitize_binary(dbg_path .. '/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7'),
 }
 local mi_debugger_path = '/usr/bin/gdb'
 if vim.fn.has('win32') ~= 0 then

@@ -2,12 +2,13 @@ local utils = require('me.utils')
 local home = utils.home
 local map = utils.map
 local on_attach = utils.on_attach
+local capabilities = utils.capabilities
 local jdtls = require('jdtls')
 
 local on_attach_jdtls = function(client, bufnr)
     on_attach(client, bufnr)
     jdtls.setup_dap({hotcodereplace = 'auto'})
-    jdtls.setup.add_commands()
+    jdtls.setup.add_commands() -- Must be run after `setup_dap`
     map('n', '<Leader>dm', '<CMD>lua require("jdtls").test_nearest_method()<CR>')
     map('n', '<Leader>dC', '<CMD>lua require("jdtls").test_class()<CR>')
 end

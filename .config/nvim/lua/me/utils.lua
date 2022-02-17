@@ -12,7 +12,7 @@ function M.find_dotfiles(opts)
            path = path,
            value = path,
            display = path,
-           ordinal = path
+           ordinal = path,
        }
     end
     -- c ls-tree --full-tree -r --name-only HEAD
@@ -68,5 +68,8 @@ function M.on_attach(_, bufnr)
     ]]
     require('lsp_signature').on_attach()
 end
+
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = require('cmp_nvim_lsp').update_capabilities(M.capabilities)
 
 return M
