@@ -42,7 +42,6 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 
 setopt interactivecomments       # Allow typing comments at an interactive prompt
 
-# Changing directories
 setopt CD_SILENT
 
 # Aliases and Functions
@@ -54,9 +53,9 @@ alias c='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias info='info --vi'
 alias ssh='TERM=xterm-256color ssh' # So ssh works properly with kitty
 alias v='nvim'
-alias icat="kitty +kitten icat"
-alias gdb="gdb -q"
-alias npm="npm --color=always"
+alias icat='kitty +kitten icat'
+alias gdb='gdb -q'
+alias npm='npm --color=always'
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
@@ -77,30 +76,27 @@ function venv() {
   cd -
 }
 
-####################
-# zsh-only configs #
-####################
-
-# Prompt fanciness
-autoload -Uz promptinit
-setopt prompt_subst
-RPROMPT='%F{red}'\$vcs_info_msg_0_'%f'
+# Prompt fanciness FIXME git branch info does not work
+autoload -Uz add-zsh-hook vcs_info
+setopt PROMPT_SUBST
+add-zsh-hook precmd vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats '%b'
+RPROMPT="%F{red}${vcs_info_msg_0_}%f"
 PROMPT='%F{blue}%~%f %F{blue}%#%f '
 
 # Use emacs-like keybinds at the command line
 bindkey -e
 
 # fzf
-export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=always {} 2>/dev/null'"
-. ~/.config/fzf/fzf.zsh
+source $HOME/.config/fzf/fzf.zsh
+export FZF_DEFAULT_OPTS="-m --color='light,fg:#586069,bg:#ffffff,preview-fg:#586069,preview-bg:#ffffff,bg+:#dbe9f9,pointer:#cd3131,spinner:#dbe9f9,hl:#14ce14,hl+:#14ce14' --preview 'bat --style=numbers --color=github {} 2>/dev/null'"
 
 # Keybinds
 bindkey "^[[3~" delete-char     # Make 'delete' actually delete
 bindkey \^U backward-kill-line  # CTRL-u works as in bash
-bindkey "^[[1;5C" forward-word  # Ctrl-right moves right a word
-bindkey "^[[1;5D" backward-word # Ctrl-left moves left a word
-
-# Plugins
+bindkey "^[[1;5C" forward-word  # CTRL-right moves right a word
+bindkey "^[[1;5D" backward-word # CTRL-left moves left a word
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
