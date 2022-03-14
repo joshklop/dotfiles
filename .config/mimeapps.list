@@ -13,3 +13,4 @@ application/pdf=org.pwmt.zathura.desktop
 x-scheme-handler/mailto=brave-browser.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-LWALA1.desktop
 x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop
+text/html=brave-browser.desktop

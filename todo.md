@@ -1,5 +1,8 @@
 # Todo
 
+* [ ] fix zoom and picom
+* [ ] Sync time b/t linux and windows (see arch wiki article)
+* [ ] Bluetooth on linux/windows
 * [ ] Really understand how nix works
 * [ ] Make `fzf` ignore certain directories (e.g. Zotero, node\_modules, etc.)
 * [ ] Rice rofi
@@ -10,13 +13,14 @@
   + [ ] prompt for git fanciness
   + [ ] completions, plus you want to use compinit in turbo mode (no `autoload -Uz compinit; compinit`)
 * neovim
+  + [ ] luasnips instead of vsnips
   + [ ] better ui for nvim-dap
   + [ ] use new diagnostic features
-  + [ ] use buf-local settings (e.g. declutter your keymaps)
-  + [ ] lualine
+  + [ ] use buf-local settings (e.g. declutter your keymaps, declutter latex autocomplete)
   + [ ] Organize directories (i.e. use ftdetect, ftplugin, colors, etc.)
   + [ ] Set up code action keymaps nvim-lsp
   + [ ] Use lsp plugins instead of lspconfig where possible
+  + [ ] lualine
   + [ ] Look into using treesitter to do cool things with latex
 
 # Done

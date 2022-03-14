@@ -67,6 +67,7 @@ htop
 i3-gaps
 intel-media-driver
 intel-ucode
+javafx-scenebuilder
 jfsutils
 jupyter-notebook
 kitty
