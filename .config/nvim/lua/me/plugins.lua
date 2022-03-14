@@ -44,6 +44,8 @@ require('packer').startup(function(use)
     use {'thesis/vim-solidity'} -- TODO replace with tree-sitter when available
     use {'jalvesaq/nvim-r', ft = {'r', 'Rmd'}}
     use {'ray-x/lsp_signature.nvim'}
+    use {'ten3roberts/qf.nvim'}
+    use {'winston0410/commented.nvim'}
     if PACKER_BOOTSTRAP then
         require('packer').sync()
     end
@@ -62,6 +64,24 @@ require('github-theme').setup({
     keyword_style = 'NONE',
     dark_float = true,
 })
+
+-- winston0410/commented.nvim
+require('commented').setup({
+    keybindings = {
+        n = '<Leader>oo',
+        v = '<Leader>oo',
+        nl = '<Leader>od'
+    }
+})
+
+-- ten3roberts/qf.nvim
+require('qf').setup({})
+map('n', '<Leader>lt', '<CMD>lua require("qf").toggle("l", true)<CR>')
+map('n', '<Leader>lj', '<CMD>lua require("qf").below("visible")<CR>')
+map('n', '<Leader>lk', '<CMD>lua require("qf").above("visible")<CR>')
+map('n', '<Leader>ct', '<CMD>lua require("qf").toggle("c", true)<CR>')
+map('n', '<Leader>cj', '<CMD>lua require("qf").below("visible")<CR>')
+map('n', '<Leader>ck', '<CMD>lua require("qf").above("visible")<CR>')
 
 -- windwp/nvim-autopairs
 require('nvim-autopairs').setup({
