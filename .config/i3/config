@@ -184,5 +184,5 @@ exec "dunst"
 exec "batchecker.sh &"
 exec "flameshot"
 exec "volnoti"
-exec --no-startup-id picom -I 0.1 -O 0.1 --inactive-dim 0.01 --focus-exclude '_NET_WM_NAME@:s = "rofi"' --focus-exclude '_NET_WM_NAME@:s = "flameshot"' --focus-exclude 'WM_NAME@:s = "Zoom Meeting"'
+exec --no-startup-id picom
 exec --no-startup-id hsetroot -solid '#000000'

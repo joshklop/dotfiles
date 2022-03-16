@@ -1,7 +1,5 @@
 # Todo
 
-* [ ] fix zoom and picom
-* [ ] Sync time b/t linux and windows (see arch wiki article)
 * [ ] Bluetooth on linux/windows
 * [ ] Really understand how nix works
 * [ ] Make `fzf` ignore certain directories (e.g. Zotero, node\_modules, etc.)
@@ -14,6 +12,7 @@
   + [ ] completions, plus you want to use compinit in turbo mode (no `autoload -Uz compinit; compinit`)
 * neovim
   + [ ] luasnips instead of vsnips
+  + [ ] fix oddities with JS indentation and bracketing in html script tags
   + [ ] better ui for nvim-dap
   + [ ] use new diagnostic features
   + [ ] use buf-local settings (e.g. declutter your keymaps, declutter latex autocomplete)
@@ -41,3 +40,5 @@
 * [X] Nix setup: zsh-nix-shell, nix-zsh-completions
 * [X] Use zoxide
 * [X] `fzf` github colors
+* [X] fix zoom and picom
+* [X] Sync time b/t linux and windows (see arch wiki article)
