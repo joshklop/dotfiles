@@ -54,23 +54,11 @@ map('', '<C-k>', '<C-w>k')
 map('', '<C-l>', '<C-w>l')
 map('', '<C-w>t', '<CMD>tabnew<CR>')
 
--- Filetype-specific settings
+-- TODO move to ftdetect
 vim.cmd [[
 augroup omnifuncs
 au BufNew,BufNewFile,BufRead,BufEnter *.snippets setfiletype snippets
 au BufNew,BufNewFile,BufRead,BufEnter *.sol setfiletype solidity
-au FileType python,lua,solidity setlocal colorcolumn=79
-au FileType c,cpp setlocal colorcolumn=89
-au FileType magit setlocal nowrap
-au FileType svelte setlocal shiftwidth=2
-au FileType svelte setlocal softtabstop=2
-au FileType html setlocal shiftwidth=2
-au FileType html setlocal softtabstop=2
-au FileType javascript setlocal shiftwidth=2
-au FileType javascript setlocal softtabstop=2
-au FileType typescript setlocal shiftwidth=2
-au FileType typescript setlocal softtabstop=2
-au FileType java setlocal colorcolumn=99
 au BufNewFile,BufRead *.rasi setfiletype css
 au BufNew,BufNewFile,BufRead,BufEnter *.tex :setfiletype tex
 augroup end

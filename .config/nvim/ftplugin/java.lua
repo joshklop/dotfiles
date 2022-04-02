@@ -5,6 +5,8 @@ local on_attach = utils.on_attach
 local capabilities = utils.capabilities
 local jdtls = require('jdtls')
 
+vim.opt_local.colorcolumn = 100
+
 local on_attach_jdtls = function(client, bufnr)
     on_attach(client, bufnr)
     jdtls.setup_dap({hotcodereplace = 'auto'})
