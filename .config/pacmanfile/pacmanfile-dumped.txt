@@ -1,6 +1,7 @@
 alsa-firmware
 alsa-tools
 alsa-utils
+anki
 arandr
 autoconf
 automake
@@ -18,9 +19,9 @@ brave-bin
 cabal-install
 caffeine-ng
 chntpw
+chrony
 clang
 cowsay
-criterion
 ctags
 cups
 cups-pdf
@@ -45,6 +46,7 @@ expect
 f5vpn
 fakeroot
 fd
+firefox
 flake8
 flameshot
 flex
@@ -53,11 +55,13 @@ ganache-bin
 gcc
 gcc-fortran
 gdb
+geckodriver
 ghc
 ghex
 git
 github-cli
 gnuplot
+google-chrome
 groff
 grub
 gtkmm
@@ -68,6 +72,8 @@ i3-gaps
 intel-media-driver
 intel-ucode
 javafx-scenebuilder
+jdk17-openjdk
+jdtls
 jfsutils
 jupyter-notebook
 kitty
@@ -81,6 +87,7 @@ linux
 linux-firmware
 linux-headers
 logrotate
+lsb-release
 lsof
 luit
 lvm2
@@ -142,6 +149,7 @@ solidity
 sqlitebrowser
 stack
 strace
+stress
 sudo
 sysfsutils
 telegram-desktop
@@ -170,6 +178,7 @@ valgrind
 vlc
 volnoti
 vulkan-intel
+wabt
 wget
 which
 wireless_tools
@@ -227,7 +236,7 @@ youtube-dl
 zathura
 zathura-pdf-mupdf
 zoom
-zotero
+zotero-bin
 zoxide
 zsh
 zsh-completions
