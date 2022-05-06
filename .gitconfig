@@ -1,20 +1,28 @@
 [user]
-	name = Josh Klopfenstein
-	email = joshklop10@gmail.com
+    name = Josh Klopfenstein
+    email = joshklop10@gmail.com
 [alias]
-  a = add
-  c = commit
-	cg = log --all --decorate --oneline --graph
-	s = status -s
-  d = diff
+    a = add
+    c = commit
+    cg = log --all --decorate --oneline --graph
+    s = status -s
+    d = diff
 [pull]
-	rebase = false
+    rebase = false
 [merge]
-	tool = nvim
-	conflictstyle = diff3
-	prompt = false
+    tool = nvimdiff4
+[mergetool "nvimdiff4"]
+    cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+    trustExitCode = true
 [init]
-	defaultBranch = master
+    defaultBranch = master
 [credential "https://github.com"]
-	helper =
-	helper = !/usr/bin/gh auth git-credential
+    helper =
+    helper = !/usr/bin/gh auth git-credential
+[core]
+    editor = nvim
+[diff]
+    tool = nvimdiff2
+[difftool "nvimdiff2"]
+    cmd = nvim -d $LOCAL $REMOTE
+    trustExitCode = true
