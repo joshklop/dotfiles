@@ -7,16 +7,13 @@ if vim.fn.has('win32') ~= 0 then
 else
     vim.g.python3_host_prog = '/usr/bin/python'
 end
-vim.g.loaded_python_provider = 0
 
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.autoindent = true
-vim.opt.smarttab = true
 vim.opt.smartindent = true
-vim.opt.wildmenu = true
 vim.opt.showmode = false
+vim.opt.shiftround = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.completeopt = {'menuone', 'noinsert', 'noselect'}
@@ -49,7 +46,7 @@ map('n', 'k', 'gk')
 map('n', '<ESC>', '<CMD>nohlsearch<CR>')
 -- Easier Window Navigation
 map('', '<C-h>', '<C-w>h')
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {})
+map('n', '<C-j>', '<C-w>j', {})
 map('', '<C-k>', '<C-w>k')
 map('', '<C-l>', '<C-w>l')
 map('', '<C-w>t', '<CMD>tabnew<CR>')

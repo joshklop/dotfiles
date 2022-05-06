@@ -101,9 +101,27 @@ lspconfig.tsserver.setup({
     on_attach = on_attach,
 })
 
+lspconfig.awk_ls.setup({
+    capabilities, capabilities,
+    cmd = {servers .. '/awk_ls/node_modules/node_modules/awk-language-server/out/cli.js'},
+    on_attach = on_attach,
+})
+
+lspconfig.groovyls.setup({
+    capabilities = capabilities,
+    cmd = {'java', '-jar', servers .. '/groovyls/build/libs/groovyls-all.jar'},
+    on_attach = on_attach,
+})
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.html.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server'), '--stdio'},
+    on_attach = on_attach,
+})
+
+lspconfig.jsonls.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server'), '--stdio'},
     on_attach = on_attach,
 })

@@ -5,7 +5,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-    -- Consider adding
     use {'wbthomason/packer.nvim'}
     use {'windwp/nvim-ts-autotag'}
     use {'hrsh7th/vim-vsnip'}
@@ -36,8 +35,9 @@ require('packer').startup(function(use)
     use {'mfussenegger/nvim-jdtls'} -- Do not set to only run on ft = java
     use {'mfussenegger/nvim-dap'}
     use {'nvim-telescope/telescope-dap.nvim'}
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {'theHamsta/nvim-dap-virtual-text'}
+    use {'mfussenegger/nvim-dap-python'}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {'williamboman/nvim-lsp-installer'}
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'chrisbra/csv.vim', ft = {'csv'}}
@@ -95,7 +95,7 @@ require('nvim-ts-autotag').setup()
 local cmp = require('cmp')
 cmp.setup({
   completion = {
-    completeopt = 'menu,menuone,noselect',
+    completeopt = 'menu,menuone,preview,noselect',
   },
   snippet = {
       expand = function(args)
@@ -111,7 +111,10 @@ cmp.setup({
     {name = 'nvim_lsp'}, -- hrsh7th/cmp-nvim-lsp
     {name = 'vsnip'}, -- hrsh7th/cmp-vnsip
     {name = 'latex_symbols'}, -- hrsh7th/cmp-latex-symbols
-  }
+  },
+  mapping = cmp.mapping.preset.insert({
+     ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = require('cmp.types').cmp.SelectBehavior.Insert }), { 'i', 'c' }),
+  }),
 })
 -- Integrate with windwp/nvim-autopairs
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -125,6 +128,9 @@ require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true,
         disable = {'latex'},
+    },
+    indent = {
+        enable = true,
     },
     incremental_selection = {enable = true},
 })
@@ -163,7 +169,7 @@ map('n', '<Leader>fk', '<CMD>Telescope keymaps<CR>')
 map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
 map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
-map('n', '<Leader>fm', '<CMD>Telescope man_pages<CR>')
+map('n', '<Leader>fm', '<CMD>lua require("telescope.builtin").man_pages({sections = {"ALL"}})<CR>')
 map('n', '<Leader>fl', '<CMD>Telescope lsp_code_actions<CR>')
 map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
 -- nvim-telescope/telescope-fzf-native
@@ -177,6 +183,9 @@ map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
 map('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
 -- nvim-telescope/telescope-ui-select.nvim
 telescope.load_extension('ui-select')
+-- mfussenegger/nvim-dap-python
+require('dap-python').setup(os.getenv('HOME') .. '.venv/debugpy/bin/python')
+require('dap-python').test_runner = 'pytest'
 
 -- lewis6991/gitsigns.nvim
 require('gitsigns').setup({

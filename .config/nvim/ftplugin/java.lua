@@ -1,18 +1,17 @@
 local utils = require('me.utils')
 local home = utils.home
-local map = utils.map
 local on_attach = utils.on_attach
 local capabilities = utils.capabilities
 local jdtls = require('jdtls')
 
-vim.opt_local.colorcolumn = 100
+vim.opt_local.colorcolumn = '100'
 
 local on_attach_jdtls = function(client, bufnr)
     on_attach(client, bufnr)
     jdtls.setup_dap({hotcodereplace = 'auto'})
     jdtls.setup.add_commands() -- Must be run after `setup_dap`
-    map('n', '<Leader>dm', '<CMD>lua require("jdtls").test_nearest_method()<CR>')
-    map('n', '<Leader>dC', '<CMD>lua require("jdtls").test_class()<CR>')
+    utils.buf_map('n', '<LocalLeader>dm', '<CMD>lua require("jdtls").test_nearest_method()<CR>')
+    utils.buf_map('n', '<LocalLeader>dC', '<CMD>lua require("jdtls").test_class()<CR>')
 end
 
 local runtimes = {
