@@ -64,6 +64,8 @@ function mergepdf() {
     -r150 -sOutputFile=$1 ${@:1}
 }
 
+# TODO is there a way to make these functions aliases?
+
 venvdir="$HOME/.venv"
 
 function activate() {
@@ -76,14 +78,12 @@ function venv() {
   cd -
 }
 
-# Prompt fanciness FIXME git branch info does not work
-autoload -Uz add-zsh-hook vcs_info
+# Prompt fanciness
+autoload -Uz vcs_info add-zsh-hook
 setopt PROMPT_SUBST
 add-zsh-hook precmd vcs_info
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats '%b'
-RPROMPT="%F{red}${vcs_info_msg_0_}%f"
-PROMPT='%F{blue}%~%f %F{blue}%#%f '
+zstyle ':vcs_info:git:*' formats '(%b) '
+PROMPT='%F{blue}%~ %F{red}${vcs_info_msg_0_}%f%F{blue}%#%f '
 
 # Use emacs-like keybinds at the command line
 bindkey -e
@@ -119,7 +119,12 @@ zinit wait lucid blockf for \
     zdharma-continuum/fast-syntax-highlighting \
     chisui/zsh-nix-shell \
     atload"prompt_nix_shell_setup" \
-    spwhitt/nix-zsh-completions
+    spwhitt/nix-zsh-completions \
+    Aloxaf/fzf-tab \
+    MichaelAquilina/zsh-auto-notify \
+    hlissner/zsh-autopair
+
+# fzf-tab config TODO -- see brokenbyte's
 
 # Autocompletion
 # The following lines were added by compinstall
