@@ -56,12 +56,13 @@ alias v='nvim'
 alias icat='kitty +kitten icat'
 alias gdb='gdb -q'
 alias npm='npm --color=always'
+alias sudo='sudo ' # Allow for aliases https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default \
     -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true \
-    -r150 -sOutputFile=$1 ${@:1}
+    -r150 -sOutputFile="$1" "${@:1}"
 }
 
 # TODO is there a way to make these functions aliases?
@@ -69,11 +70,11 @@ function mergepdf() {
 venvdir="$HOME/.venv"
 
 function activate() {
-  source $venvdir/$1/bin/activate
+  source "$venvdir"/"$1"/bin/activate
 }
 
 function venv() {
-  cd $venvdir
+  cd "$venvdir"
   python3 -m venv $1
   cd -
 }

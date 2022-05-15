@@ -1,5 +1,6 @@
 # Todo
 
+* [ ] figure out dunst context menu
 * [ ] Bluetooth on linux/windows
 * [ ] Really understand how git works
 * [ ] Really understand how nix works

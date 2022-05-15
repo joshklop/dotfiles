@@ -173,14 +173,15 @@ bindsym $mod+Down exec "brightness.sh -"
 bindsym $mod+p exec "lock.sh"
 
 # Dunst notifications
-bindsym ctrl+space exec "dunstctl close"
-bindsym ctrl+shift+space exec "dunstctl action"
+bindsym $mod+x exec "dunstctl close"
+bindsym $mod+shift+x exec "dunstctl action; dunstctl close"
+bindsym $mod+grave exec "dunstctl history-pop"
 
 ######################
 # START APPLICATIONS #
 ######################
 
-exec "dunst"
+exec --no-startup-id "dunst"
 exec "batchecker.sh &"
 exec "flameshot"
 exec "volnoti"

@@ -170,7 +170,7 @@ map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
 map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
 map('n', '<Leader>fm', '<CMD>lua require("telescope.builtin").man_pages({sections = {"ALL"}})<CR>')
-map('n', '<Leader>fl', '<CMD>Telescope lsp_code_actions<CR>')
+map('n', '<Leader>fl', '<CMD>lua vim.lsp.buf.code_action()<CR>')
 map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
 -- nvim-telescope/telescope-fzf-native
 telescope.load_extension('fzf')
