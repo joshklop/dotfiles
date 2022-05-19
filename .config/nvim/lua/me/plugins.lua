@@ -129,10 +129,10 @@ require('nvim-treesitter.configs').setup({
         enable = true,
         disable = {'latex'},
     },
-    indent = {
-        enable = true,
+    incremental_selection = {
+	enable = true
     },
-    incremental_selection = {enable = true},
+    textobjects = {enable = true}
 })
 
 -- nvim/nvim-lspconfig

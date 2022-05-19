@@ -7,7 +7,7 @@ function M.find_dotfiles(opts)
     opts.cwd = opts.cwd or vim.loop.cwd()
     local Path = require('plenary.path')
     opts.entry_maker = opts.entry_maker or function(entry)
-       local path = Path:new(Path:new(M.home .. entry):make_relative(opts.cwd)):normalize(opts.cwd)
+       local path = Path:new(Path:new(M.home .. '/' .. entry):make_relative(opts.cwd)):normalize(opts.cwd)
        return {
            path = path,
            value = path,

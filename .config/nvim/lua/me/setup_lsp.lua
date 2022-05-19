@@ -64,11 +64,12 @@ lspconfig.pylsp.setup({
     on_attach = on_attach,
 })
 
-lspconfig.hls.setup({
-    capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/haskell/haskell-language-server-wrapper'), '--lsp'},
-    on_attach = on_attach,
-})
+-- FIXME
+--lspconfig.hls.setup({
+--    capabilities = capabilities,
+--    cmd = {sanitize_binary(servers .. '/haskell/haskell-language-server-wrapper'), '--lsp'},
+--    on_attach = on_attach,
+--})
 
 lspconfig.powershell_es.setup({
     capabilities = capabilities,
@@ -78,8 +79,16 @@ lspconfig.powershell_es.setup({
 
 lspconfig.gopls.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/go/gopls')},
+    cmd = {sanitize_binary(servers .. '/go/gopls'), 'serve'},
     on_attach = on_attach,
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    }
 })
 
 lspconfig.solc.setup({
@@ -123,5 +132,11 @@ lspconfig.html.setup({
 lspconfig.jsonls.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server'), '--stdio'},
+    on_attach = on_attach,
+})
+
+lspconfig.rust_analyzer.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/rust/rust-analyzer')},
     on_attach = on_attach,
 })
