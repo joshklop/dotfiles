@@ -2,6 +2,7 @@ alsa-firmware
 alsa-tools
 alsa-utils
 anki
+apulse
 arandr
 autoconf
 automake
@@ -27,10 +28,12 @@ cups
 cups-pdf
 dbus-python
 debtap
+delve
 dhcpcd
 dia
 dialog
 discord
+displaylink
 docker
 docker-compose
 dosfstools
@@ -41,6 +44,7 @@ eclipse-java
 edid-decode-git
 efibootmgr
 etckeeper
+evdi
 exa
 expect
 f5vpn
@@ -86,6 +90,7 @@ libzkgroup
 linux
 linux-firmware
 linux-headers
+lldb
 logrotate
 lsb-release
 lsof
@@ -129,6 +134,7 @@ pkgconf
 playerctl
 pulseaudio
 pulseaudio-alsa
+pyenv
 python
 python2
 python-llfuse

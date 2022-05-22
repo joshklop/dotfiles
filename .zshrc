@@ -5,7 +5,7 @@ export PRINTER=M70
 
 export PATH="$PATH:$HOME/.local/bin:/home/user/.local/share/gem/ruby/3.0.0/bin"
 # For Chromium development
-export PATH="$HOME/repos/depot_tools:$PATH"
+export PATH="$PATH:$HOME/repos/depot_tools:"
 
 # Editor exports
 export VISUAL=nvim
@@ -71,12 +71,6 @@ venvdir="$HOME/.venv"
 
 function activate() {
   source "$venvdir"/"$1"/bin/activate
-}
-
-function venv() {
-  cd "$venvdir"
-  python3 -m venv $1
-  cd -
 }
 
 # Prompt fanciness
@@ -164,3 +158,8 @@ eval "$(zoxide init zsh --cmd j)"
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/install-nvm-exec
 #source /usr/share/nvm/bash_completion we use zsh
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
