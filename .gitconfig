@@ -21,8 +21,11 @@
     helper = !/usr/bin/gh auth git-credential
 [core]
     editor = nvim
+	pager = nvim -R
 [diff]
     tool = nvimdiff2
 [difftool "nvimdiff2"]
     cmd = nvim -d $LOCAL $REMOTE
     trustExitCode = true
+[color]
+	pager = no
