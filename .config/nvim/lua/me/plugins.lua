@@ -31,9 +31,11 @@ require('packer').startup(function(use)
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-nvim-lsp'}
+    use {'hrsh7th/cmp-cmdline'}
     use {'hrsh7th/cmp-nvim-lua'}
     use {'mfussenegger/nvim-jdtls'} -- Do not set to only run on ft = java
     use {'mfussenegger/nvim-dap'}
+    use {'leoluz/nvim-dap-go'}
     use {'nvim-telescope/telescope-dap.nvim'}
     use {'theHamsta/nvim-dap-virtual-text'}
     use {'mfussenegger/nvim-dap-python'}
@@ -46,6 +48,7 @@ require('packer').startup(function(use)
     use {'ray-x/lsp_signature.nvim'}
     use {'ten3roberts/qf.nvim'}
     use {'winston0410/commented.nvim'}
+    use {'alx741/vinfo'}
     if PACKER_BOOTSTRAP then
         require('packer').sync()
     end
@@ -92,29 +95,35 @@ require('nvim-autopairs').setup({
 require('nvim-ts-autotag').setup()
 
 -- hrsh7th/nvim-cmp
+vim.opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 local cmp = require('cmp')
+local cmp_mappings = {
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 'c'}),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 'c'}),
+}
 cmp.setup({
-  completion = {
-    completeopt = 'menu,menuone,preview,noselect',
-  },
-  snippet = {
-      expand = function(args)
-          vim.fn["vsnip#anonymous"](args.body)
-      end
-  },
-  sources = {
-    {name = 'buffer'}, -- hrsh7th/cmp-buffer
-    {name = 'path'}, -- hrsh7th/cmp-path
-    {name = 'nvim_lua'}, -- hrsh7th/cmp-nvim-lua
-    {name = 'omni'}, -- hrsh7th/cmp-omni
-    {name = 'calc'}, -- hrsh7th/cmp-calc
-    {name = 'nvim_lsp'}, -- hrsh7th/cmp-nvim-lsp
-    {name = 'vsnip'}, -- hrsh7th/cmp-vnsip
-    {name = 'latex_symbols'}, -- hrsh7th/cmp-latex-symbols
-  },
-  mapping = cmp.mapping.preset.insert({
-     ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = require('cmp.types').cmp.SelectBehavior.Insert }), { 'i', 'c' }),
-  }),
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end
+    },
+    sources = {
+        {name = 'nvim_lsp'}, -- hrsh7th/cmp-nvim-lsp
+        {name = 'buffer'}, -- hrsh7th/cmp-buffer
+        {name = 'path'}, -- hrsh7th/cmp-path
+        {name = 'omni'}, -- hrsh7th/cmp-omni
+        {name = 'vsnip'}, -- hrsh7th/cmp-vnsip
+        {name = 'nvim_lua'}, -- hrsh7th/cmp-nvim-lua
+        {name = 'calc'}, -- hrsh7th/cmp-calc
+        {name = 'latex_symbols'}, -- hrsh7th/cmp-latex-symbols
+    },
+    mapping = cmp_mappings,
+})
+cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+        {name = 'path'},
+        {name = 'cmdline'}
+    })
 })
 -- Integrate with windwp/nvim-autopairs
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -128,6 +137,9 @@ require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true,
         disable = {'latex'},
+    },
+    indent = {
+        enable = false
     },
     incremental_selection = {
 	enable = true
@@ -183,9 +195,6 @@ map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
 map('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
 -- nvim-telescope/telescope-ui-select.nvim
 telescope.load_extension('ui-select')
--- mfussenegger/nvim-dap-python
-require('dap-python').setup(os.getenv('HOME') .. '.venv/debugpy/bin/python')
-require('dap-python').test_runner = 'pytest'
 
 -- lewis6991/gitsigns.nvim
 require('gitsigns').setup({
@@ -211,6 +220,11 @@ dap.set_log_level('ERROR')
 vim.cmd [[
 command! DAPLog lua vim.cmd('e '.. vim.fn.stdpath('cache') .. '/dap.log')
 ]]
+-- mfussenegger/nvim-dap-python
+require('dap-python').setup(os.getenv('HOME') .. '/.venv/debugpy/bin/python')
+require('dap-python').test_runner = 'pytest'
+-- leoluz/nvim-dap-go
+require('dap-go').setup()
 
 -- Debuggers
 local dbg_path = vim.fn.stdpath('data') .. '/dapinstall'

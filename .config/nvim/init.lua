@@ -11,13 +11,12 @@ end
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
---vim.opt.smartindent = true
---vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 vim.opt.showmode = false
 vim.opt.shiftround = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 vim.opt.hidden = true
 vim.opt.termguicolors = true
 vim.opt.wrap = false
