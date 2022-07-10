@@ -15,24 +15,24 @@ export BORG_REPO="/mnt/backup"
 
 export BORG_PASSCOMMAND="gpg --decrypt $HOME/.local/bin/passphrase.txt.gpg"
 
-borg create                                      \
-        --stats --progress $2 $1                 \
-        -e 'sh:**/.*'                            \
-        -e 'sh:**/*.iso'                         \
-        -e 'sh:**/*.db'                          \
-        -e 'sh:**/*.tar'                         \
-        -e 'sh:**/*.tar.gz'                      \
-        -e 'sh:**/*.tgz'                         \
-        -e 'sh:**/*.zip'                         \
-        -e '*/downloads'                         \
-        -e '*/README.md'                         \
-        -e '*/LICENSE'                           \
-        -e '*/todo.md'                           \
-        -e '*/repos'                             \
-        -e '*/Zotero'                            \
-        -e '*/go'                                \
-        -e '*/documents/zoom'                    \
-        ::"$HOSTNAME--$(date +%+4Y-%m-%d)"       \
+borg create                                \
+        --stats --progress $2 $1           \
+        -e 'sh:**/.*'                      \
+        -e 'sh:**/*.iso'                   \
+        -e 'sh:**/*.db'                    \
+        -e 'sh:**/*.tar'                   \
+        -e 'sh:**/*.tar.gz'                \
+        -e 'sh:**/*.tgz'                   \
+        -e 'sh:**/*.zip'                   \
+        -e '*/downloads'                   \
+        -e '*/README.md'                   \
+        -e '*/LICENSE'                     \
+        -e '*/todo.md'                     \
+        -e '*/repos'                       \
+        -e '*/Zotero'                      \
+        -e '*/nextcloud'                   \
+        -e '*/documents/zoom'              \
+        ::"$HOSTNAME--$(date +%+4Y-%m-%d)" \
         "$HOME"
 
 backup_exit=$?

@@ -15,6 +15,7 @@ require('packer').startup(function(use)
         requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
     }
     use {'nvim-telescope/telescope-ui-select.nvim'}
+    use {'Tetralux/odin.vim'}
     use {'jvgrootveld/telescope-zoxide'}
     use {'lewis6991/gitsigns.nvim'}
     use {'psliwka/vim-smoothie'}
@@ -22,22 +23,19 @@ require('packer').startup(function(use)
     use {'tpope/vim-repeat'}
     use {'tpope/vim-surround'}
     use {'chaoren/vim-wordmotion'}
-    use {'windwp/nvim-autopairs'}
+    use {'rstacruz/vim-closer'}
+    use {'tpope/vim-endwise'}
+    use {'jiangmiao/auto-pairs'}
     use {'hrsh7th/nvim-cmp'}
-    use {'hrsh7th/cmp-calc'}
     use {'hrsh7th/cmp-omni'}
-    use {'hrsh7th/cmp-vsnip'}
     use {'kdheepak/cmp-latex-symbols'}
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-nvim-lsp'}
-    use {'hrsh7th/cmp-cmdline'}
-    use {'hrsh7th/cmp-nvim-lua'}
     use {'mfussenegger/nvim-jdtls'} -- Do not set to only run on ft = java
     use {'mfussenegger/nvim-dap'}
     use {'leoluz/nvim-dap-go'}
     use {'nvim-telescope/telescope-dap.nvim'}
-    use {'theHamsta/nvim-dap-virtual-text'}
     use {'mfussenegger/nvim-dap-python'}
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
     use {'williamboman/nvim-lsp-installer'}
@@ -56,6 +54,7 @@ end)
 
 local utils = require('me.utils')
 local map = utils.map
+local buf_map = utils.buf_map
 local home = utils.home
 local sanitize_binary = utils.sanitize_binary
 
@@ -86,11 +85,6 @@ map('n', '<Leader>ct', '<CMD>lua require("qf").toggle("c", true)<CR>')
 map('n', '<Leader>cj', '<CMD>lua require("qf").below("visible")<CR>')
 map('n', '<Leader>ck', '<CMD>lua require("qf").above("visible")<CR>')
 
--- windwp/nvim-autopairs
-require('nvim-autopairs').setup({
-    fast_wrap = {},
-})
-
 -- windwp/nvim-ts-autotag
 require('nvim-ts-autotag').setup()
 
@@ -111,26 +105,15 @@ cmp.setup({
         {name = 'nvim_lsp'}, -- hrsh7th/cmp-nvim-lsp
         {name = 'buffer'}, -- hrsh7th/cmp-buffer
         {name = 'path'}, -- hrsh7th/cmp-path
-        {name = 'omni'}, -- hrsh7th/cmp-omni
-        {name = 'vsnip'}, -- hrsh7th/cmp-vnsip
-        {name = 'nvim_lua'}, -- hrsh7th/cmp-nvim-lua
-        {name = 'calc'}, -- hrsh7th/cmp-calc
         {name = 'latex_symbols'}, -- hrsh7th/cmp-latex-symbols
     },
     mapping = cmp_mappings,
 })
-cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-        {name = 'path'},
-        {name = 'cmdline'}
-    })
-})
 -- Integrate with windwp/nvim-autopairs
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-    'confirm_done',
-    cmp_autopairs.on_confirm_done({map_char = { tex = '' }})
-)
+--cmp.event:on(
+--    'confirm_done',
+--    require('nvim-autopairs.completion.cmp').on_confirm_done({map_char = { tex = '' }})
+--)
 
 -- nvim-treesitter/nvim-treesitter
 require('nvim-treesitter.configs').setup({
@@ -142,7 +125,7 @@ require('nvim-treesitter.configs').setup({
         enable = false
     },
     incremental_selection = {
-	enable = true
+        enable = true
     },
     textobjects = {enable = true}
 })
@@ -184,11 +167,23 @@ map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
 map('n', '<Leader>fm', '<CMD>lua require("telescope.builtin").man_pages({sections = {"ALL"}})<CR>')
 map('n', '<Leader>fl', '<CMD>lua vim.lsp.buf.code_action()<CR>')
 map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
+map('n', '<Leader>fr', '<CMD>lua require("me.utils").find_repos()<CR>')
+map('n', '<Leader>fe', '<CMD>Telescope diagnostics<CR>')
 -- nvim-telescope/telescope-fzf-native
 telescope.load_extension('fzf')
 -- nvim-telescope/telescope-zoxide
 telescope.load_extension('zoxide')
 map('n', '<Leader>fj', '<CMD>Telescope zoxide list<CR>')
+require("telescope._extensions.zoxide.config").setup({
+    mappings = {
+        default = {
+            action = function(selection)
+                vim.cmd('lcd ' .. selection.path)
+            end
+        }
+    }
+}
+)
 -- nvim-telescope/telescope-dap.nvim
 telescope.load_extension('dap')
 map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
@@ -200,6 +195,17 @@ telescope.load_extension('ui-select')
 require('gitsigns').setup({
     signcolumn = false,
     numhl = true,
+    on_attach = function(bufnr)
+        buf_map(bufnr, 'n', '<Leader>gp', '<CMD>Gitsigns preview_hunk<CR>')
+        buf_map(bufnr, 'n', '<Leader>gr', '<CMD>Gitsigns reset_hunk<CR>')
+        buf_map(bufnr, 'n', '<Leader>g]', '<CMD>Gitsigns next_hunk<CR>')
+        buf_map(bufnr, 'n', '<Leader>g[', '<CMD>Gitsigns prev_hunk<CR>')
+        buf_map(bufnr, 'n', '<Leader>gb', '<CMD>Gitsigns toggle_current_line_blame<CR>')
+        buf_map(bufnr, 'n', '<Leader>ga', '<CMD>Gitsigns stage_hunk<CR>')
+        buf_map(bufnr, 'n', '<Leader>gA', '<CMD>Gitsigns undo_stage_hunk<CR>')
+        buf_map(bufnr, 'v', '<Leader>ga', [[<CMD>'<,'>Gitsigns stage_hunk <CR>]])
+        buf_map(bufnr, 'v', '<Leader>gA', [[<CMD>'<,'>Gitsigns undo_stage_hunk <CR>]])
+    end
 })
 
 -- mfussenegger/nvim-dap
@@ -209,8 +215,8 @@ vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', 
 vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
 map('n', '<Leader>dh', '<CMD>lua require("dap").toggle_breakpoint()<CR>')
 map('n', '<Leader>do', '<CMD>lua require("dap").step_out()<CR>')
-map('n', '<Leader>di', '<CMD>lua require("dap").step_into()<CR>')
-map('n', '<Leader>ds', '<CMD>lua require("dap").step_over()<CR>')
+map('n', '<Leader>ds', '<CMD>lua require("dap").step_into()<CR>')
+map('n', '<Leader>dn', '<CMD>lua require("dap").step_over()<CR>')
 map('n', '<Leader>db', '<CMD>lua require("dap").step_back()<CR>')
 map('n', '<Leader>dc', '<CMD>lua require("dap").continue()<CR>')
 map('n', '<Leader>dq', '<CMD>lua require("dap").disconnect({ terminateDebuggee = true });require("dap").close()<CR>')
@@ -221,7 +227,7 @@ vim.cmd [[
 command! DAPLog lua vim.cmd('e '.. vim.fn.stdpath('cache') .. '/dap.log')
 ]]
 -- mfussenegger/nvim-dap-python
-require('dap-python').setup(os.getenv('HOME') .. '/.venv/debugpy/bin/python')
+require('dap-python').setup(os.getenv('HOME') .. '/.venv/debugpy/bin/python', {})
 require('dap-python').test_runner = 'pytest'
 -- leoluz/nvim-dap-go
 require('dap-go').setup()
@@ -252,6 +258,3 @@ dap.configurations.c = {
     }
 }
 dap.configurations.cpp = dap.configurations.c
-
--- theHamsta/nvim-dap-virtual-text
-require('nvim-dap-virtual-text').setup()

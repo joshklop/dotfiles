@@ -10,8 +10,8 @@ local on_attach_jdtls = function(client, bufnr)
     on_attach(client, bufnr)
     jdtls.setup_dap({hotcodereplace = 'auto'})
     jdtls.setup.add_commands() -- Must be run after `setup_dap`
-    utils.buf_map('n', '<LocalLeader>dm', '<CMD>lua require("jdtls").test_nearest_method()<CR>')
-    utils.buf_map('n', '<LocalLeader>dC', '<CMD>lua require("jdtls").test_class()<CR>')
+    utils.map('n', '<LocalLeader>dm', '<CMD>lua require("jdtls").test_nearest_method()<CR>')
+    utils.map('n', '<LocalLeader>dC', '<CMD>lua require("jdtls").test_class()<CR>')
 end
 
 local runtimes = {

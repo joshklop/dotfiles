@@ -5,7 +5,9 @@ export PRINTER=M70
 
 export PATH="$PATH:$HOME/.local/bin:/home/user/.local/share/gem/ruby/3.0.0/bin"
 # For Chromium development
-export PATH="$PATH:$HOME/repos/depot_tools:"
+export PATH="$PATH:$HOME/repos/depot_tools"
+# Golang
+export PATH="$PATH:$(go env GOBIN):"
 
 # Editor exports
 export VISUAL=nvim
@@ -57,6 +59,7 @@ alias icat='kitty +kitten icat'
 alias gdb='gdb -q'
 alias npm='npm --color=always'
 alias sudo='sudo ' # Allow for aliases https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
+alias odin='$HOME/repos/Odin/odin'
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {

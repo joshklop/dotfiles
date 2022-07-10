@@ -19,6 +19,7 @@ borg
 brave-bin
 cabal-install
 caffeine-ng
+capnproto
 chntpw
 chrony
 clang
@@ -66,6 +67,7 @@ git
 github-cli
 gnuplot
 google-chrome
+graphviz
 groff
 grub
 gtkmm
@@ -111,6 +113,7 @@ neovim
 net-tools
 networkmanager
 nodejs
+notion-app
 noto-fonts-emoji
 npm
 nss-mdns
@@ -150,6 +153,7 @@ ruby
 rustup
 signal-desktop
 simplescreenrecorder
+slack-desktop
 s-nail
 solidity
 sqlitebrowser
@@ -189,6 +193,7 @@ wget
 which
 wireless_tools
 wpa_supplicant
+wscat
 xclip
 xf86-video-intel
 xf86-video-vesa

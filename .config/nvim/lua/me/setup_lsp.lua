@@ -122,13 +122,6 @@ lspconfig.groovyls.setup({
     on_attach = on_attach,
 })
 
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-lspconfig.html.setup({
-    capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server'), '--stdio'},
-    on_attach = on_attach,
-})
-
 lspconfig.jsonls.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server'), '--stdio'},
@@ -138,5 +131,18 @@ lspconfig.jsonls.setup({
 lspconfig.rust_analyzer.setup({
     capabilities = capabilities,
     cmd = {sanitize_binary(servers .. '/rust/rust-analyzer')},
+    on_attach = on_attach,
+})
+
+--lspconfig.ltex.setup({
+--    capabilities = capabilities,
+--    cmd = {sanitize_binary(servers .. '/ltex/ltex-ls/bin/ltex-ls')},
+--    on_attach = on_attach,
+--})
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+lspconfig.html.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server'), '--stdio'},
     on_attach = on_attach,
 })
