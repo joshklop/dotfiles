@@ -7,6 +7,8 @@
     cg = log --all --decorate --oneline --graph
     s = status -s
     d = diff
+    cb = checkout -b
+    sw = switch
 [pull]
     rebase = false
 [merge]
@@ -15,7 +17,7 @@
     cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
     trustExitCode = true
 [init]
-    defaultBranch = master
+    defaultBranch = main
 [credential "https://github.com"]
     helper =
     helper = !/usr/bin/gh auth git-credential
@@ -26,3 +28,5 @@
 [difftool "nvimdiff2"]
     cmd = nvim -d $LOCAL $REMOTE
     trustExitCode = true
+[commit]
+	gpgsign = true

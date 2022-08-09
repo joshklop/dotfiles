@@ -134,6 +134,12 @@ lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
 })
 
+lspconfig.eslint.setup({
+    capabilities = capabilities,
+    cmd = {sanitize_binary(servers .. '/vscode-eslint/node_modules/vscode-langservers-extracted/bin/vscode-eslint-language-server'), '--stdio'},
+    on_attach = on_attach,
+})
+
 --lspconfig.ltex.setup({
 --    capabilities = capabilities,
 --    cmd = {sanitize_binary(servers .. '/ltex/ltex-ls/bin/ltex-ls')},

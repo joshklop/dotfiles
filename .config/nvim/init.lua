@@ -58,6 +58,7 @@ au BufNew,BufNewFile,BufRead,BufEnter *.snippets setfiletype snippets
 au BufNew,BufNewFile,BufRead,BufEnter *.sol setfiletype solidity
 au BufNewFile,BufRead *.rasi setfiletype css
 au BufNew,BufNewFile,BufRead,BufEnter *.tex :setfiletype tex
+au BufNew,BufNewFile,BufRead,BufEnter *.mdx :setfiletype markdown
 augroup end
 ]]
 

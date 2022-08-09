@@ -4,6 +4,9 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
 
 # Todo
 
+* [ ] Look into Tshaka's bat program and its compatibility with MSI
+* [ ] automate nethermind invoice creation (use Notion and then export to PDF)
+* [ ] set up [powertop](https://wiki.archlinux.org/title/Powertop)
 * [ ] use systemd-timer so `batchecker.sh` will run after putting computer to sleep
 * [ ] figure out dunst context menu
 * [ ] Bluetooth on linux/windows
@@ -20,7 +23,8 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
   + [ ] prompt for git fanciness
   + [ ] completions, plus you want to use compinit in turbo mode (no `autoload -Uz compinit; compinit`)
 * neovim
-  * [ ] make `find_dotfiles` a telescope extension
+  + [ ] get github permalink for line at current commit
+  + [ ] gofumpt on command
   + [ ] toggle ltex
   + [ ] refresh sidebar (e.g. removing dap breakpoints doesn't collapse the sidebar)
   + [ ] prettier plugin or something. eslint?

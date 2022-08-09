@@ -15,16 +15,16 @@ require('packer').startup(function(use)
         requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
     }
     use {'nvim-telescope/telescope-ui-select.nvim'}
+    use {'tpope/vim-eunuch'}
     use {'Tetralux/odin.vim'}
     use {'jvgrootveld/telescope-zoxide'}
     use {'lewis6991/gitsigns.nvim'}
+    use {'tpope/vim-fugitive'}
     use {'psliwka/vim-smoothie'}
     use {'neovim/nvim-lspconfig'}
     use {'tpope/vim-repeat'}
     use {'tpope/vim-surround'}
     use {'chaoren/vim-wordmotion'}
-    use {'rstacruz/vim-closer'}
-    use {'tpope/vim-endwise'}
     use {'jiangmiao/auto-pairs'}
     use {'hrsh7th/nvim-cmp'}
     use {'hrsh7th/cmp-omni'}
@@ -32,7 +32,7 @@ require('packer').startup(function(use)
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-path'}
     use {'hrsh7th/cmp-nvim-lsp'}
-    use {'mfussenegger/nvim-jdtls'} -- Do not set to only run on ft = java
+    use {'mfussenegger/nvim-jdtls'}
     use {'mfussenegger/nvim-dap'}
     use {'leoluz/nvim-dap-go'}
     use {'nvim-telescope/telescope-dap.nvim'}
