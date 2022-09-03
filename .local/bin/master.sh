@@ -27,6 +27,7 @@ function ready(){
 }
 
 ready "${GREEN}==>${RESET} ${BOLD}Have you deleted unnecessary files?${RESET}" 
+ready "${GREEN}==>${RESET} ${BOLD}Rank mirrors?${RESET}" reflector --sort age --save mirror.list --fastest 10
 ready "${GREEN}==>${RESET} ${BOLD}Update packages and neovim plugins?${RESET}" cleanup.sh
 ready "${GREEN}==>${RESET} ${BOLD}Run 'zinit self-update' and 'zinit update --parallel'.${RESET}"
 ready "${GREEN}==>${RESET} ${BOLD}Backup bitwarden?${RESET}" bwbackup.sh
