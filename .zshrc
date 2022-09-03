@@ -59,6 +59,7 @@ alias gdb='gdb -q'
 alias npm='npm --color=always'
 alias sudo='sudo ' # Allow for aliases https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias odin='$HOME/repos/Odin/odin'
+alias z='zathura --fork'
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
