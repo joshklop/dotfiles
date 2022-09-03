@@ -7,8 +7,6 @@ end
 require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
     use {'windwp/nvim-ts-autotag'}
-    use {'hrsh7th/vim-vsnip'}
-    use {'hrsh7th/vim-vsnip-integ'}
     use {'projekt0n/github-nvim-theme'}
     use {
         'nvim-telescope/telescope.nvim',
@@ -96,11 +94,6 @@ local cmp_mappings = {
     ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 'c'}),
 }
 cmp.setup({
-    snippet = {
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end
-    },
     sources = {
         {name = 'nvim_lsp'}, -- hrsh7th/cmp-nvim-lsp
         {name = 'buffer'}, -- hrsh7th/cmp-buffer
@@ -134,26 +127,6 @@ require('nvim-treesitter.configs').setup({
 vim.lsp.set_log_level('ERROR')
 vim.cmd [[
 command! LspLog lua vim.cmd('e '.. vim.lsp.get_log_path())
-]]
-
--- hrsh7th/vim-vnsip and hrsh7th/vim-vsnip-integ
-vim.g.vsnip_snippet_dir = vim.fn.stdpath('config') .. '/snippets'
--- Expand
-vim.cmd [[
-imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-]]
--- Expand or jump
-vim.cmd [[
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-]]
--- Jump forward or backward
-vim.cmd [[
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 ]]
 
 -- nvim-telescope/telescope.nvim

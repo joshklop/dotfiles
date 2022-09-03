@@ -1,7 +1,7 @@
 alsa-firmware
 alsa-tools
 alsa-utils
-anki
+anki-official-binary-bundle
 apulse
 arandr
 autoconf
@@ -41,8 +41,6 @@ dosfstools
 dotnet-runtime
 dotnet-sdk
 dunst
-eclipse-java
-edid-decode-git
 efibootmgr
 etckeeper
 evdi
@@ -55,6 +53,7 @@ firefox
 flake8
 flameshot
 flex
+freerdp
 fzf
 ganache-bin
 gcc
@@ -102,6 +101,7 @@ m4
 make
 man-db
 man-pages
+mariadb
 mdadm
 mesa-utils
 most
@@ -112,7 +112,9 @@ ncurses5-compat-libs
 neovim
 net-tools
 networkmanager
-nodejs
+networkmanager-openvpn
+nextcloud-client
+nm-connection-editor
 notion-app
 noto-fonts-emoji
 npm
@@ -122,7 +124,9 @@ nvidia
 nvidia-settings
 nvidia-utils
 nvm
+okular
 openssh
+openvpn
 os-prober
 pacman-contrib
 pacmanfile
@@ -135,6 +139,7 @@ physlock
 picom
 pkgconf
 playerctl
+plocate
 pulseaudio
 pulseaudio-alsa
 pyenv
@@ -146,12 +151,13 @@ python-pip
 qalculate-gtk
 qutebrowser
 r
+reflector
 reiserfsprogs
+remmina
 ripgrep
 rofi
 ruby
 rustup
-signal-desktop
 simplescreenrecorder
 slack-desktop
 s-nail
@@ -162,7 +168,6 @@ strace
 stress
 sudo
 sysfsutils
-telegram-desktop
 texinfo
 texlive-bibtexextra
 texlive-core
@@ -242,7 +247,6 @@ xorg-xwayland
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
-yarn
 youtube-dl
 zathura
 zathura-pdf-mupdf
