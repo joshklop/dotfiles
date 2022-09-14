@@ -25,6 +25,8 @@ borg create                                \
         -e 'sh:**/*.tgz'                   \
         -e 'sh:**/*.zip'                   \
         -e '*/downloads'                   \
+        -e '*/Downloads'                   \
+        -e '*/go'                          \
         -e '*/README.md'                   \
         -e '*/LICENSE'                     \
         -e '*/todo.md'                     \

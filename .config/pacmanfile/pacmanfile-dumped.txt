@@ -149,6 +149,7 @@ python-llfuse
 python-pillow
 python-pip
 qalculate-gtk
+qemu-full
 qutebrowser
 r
 reflector
@@ -156,6 +157,7 @@ reiserfsprogs
 remmina
 ripgrep
 rofi
+rr
 ruby
 rustup
 simplescreenrecorder

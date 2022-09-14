@@ -15,6 +15,8 @@ require('packer').startup(function(use)
     use {'nvim-telescope/telescope-ui-select.nvim'}
     use {'tpope/vim-eunuch'}
     use {'Tetralux/odin.vim'}
+    use {'L3MON4D3/LuaSnip', tag = "v<CurrentMajor>.*"}
+    use {'saadparwaiz1/cmp_luasnip'}
     use {'jvgrootveld/telescope-zoxide'}
     use {'lewis6991/gitsigns.nvim'}
     use {'tpope/vim-fugitive'}
@@ -55,6 +57,9 @@ local map = utils.map
 local buf_map = utils.buf_map
 local home = utils.home
 local sanitize_binary = utils.sanitize_binary
+
+-- williamboman/nvim-lsp-installer
+require('nvim-lsp-installer').setup({})
 
 -- projekt0n/github-nvim-theme
 vim.opt.background = 'light'
@@ -98,15 +103,16 @@ cmp.setup({
         {name = 'nvim_lsp'}, -- hrsh7th/cmp-nvim-lsp
         {name = 'buffer'}, -- hrsh7th/cmp-buffer
         {name = 'path'}, -- hrsh7th/cmp-path
+        {name = 'luasnip'}, -- saadparwaiz1/cmp_luasnip
         {name = 'latex_symbols'}, -- hrsh7th/cmp-latex-symbols
     },
     mapping = cmp_mappings,
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end
+    },
 })
--- Integrate with windwp/nvim-autopairs
---cmp.event:on(
---    'confirm_done',
---    require('nvim-autopairs.completion.cmp').on_confirm_done({map_char = { tex = '' }})
---)
 
 -- nvim-treesitter/nvim-treesitter
 require('nvim-treesitter.configs').setup({
