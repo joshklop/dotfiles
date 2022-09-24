@@ -2,17 +2,12 @@ local lspconfig = require('lspconfig')
 local utils = require('me.utils')
 local map = utils.map
 local on_attach = utils.on_attach
-local sanitize_binary = utils.sanitize_binary
 local capabilities = utils.capabilities
-local servers = vim.fn.stdpath('data') .. '/lsp_servers'
 
-local sumneko_root_path = servers .. '/sumneko_lua/extension/server'
-local sumneko_binary_path = sanitize_binary(sumneko_root_path .. '/bin/lua-language-server')
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 lspconfig.sumneko_lua.setup({
-    cmd = {sumneko_binary_path, '-E', sumneko_root_path .. '/main.lua'},
     capabilities = capabilities,
     on_attach = on_attach,
     filetypes = {'lua'},
@@ -41,7 +36,6 @@ local function latex_on_attach(client, bufnr)
 end
 lspconfig.texlab.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/latex/texlab')},
     on_attach = latex_on_attach,
 })
 
@@ -51,7 +45,6 @@ if vim.fn.has('win32') ~= 0 then
 end
 lspconfig.clangd.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/clangd/clangd/bin/clangd')},
     init_options = {
         fallbackFlags = {target, '-Wall'},
     },
@@ -60,26 +53,11 @@ lspconfig.clangd.setup({
 
 lspconfig.pylsp.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/pylsp/venv/bin/pylsp')},
-    on_attach = on_attach,
-})
-
--- FIXME
---lspconfig.hls.setup({
---    capabilities = capabilities,
---    cmd = {sanitize_binary(servers .. '/haskell/haskell-language-server-wrapper'), '--lsp'},
---    on_attach = on_attach,
---})
-
-lspconfig.powershell_es.setup({
-    capabilities = capabilities,
-    bundle_path = servers .. '/powershell_es',
     on_attach = on_attach,
 })
 
 lspconfig.gopls.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/go/gopls'), 'serve'},
     on_attach = on_attach,
     settings = {
         gopls = {
@@ -93,62 +71,47 @@ lspconfig.gopls.setup({
 
 lspconfig.solc.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/solc/solc'), '--lsp'},
     on_attach = on_attach,
 })
 
 lspconfig.bashls.setup({
     capabilities = capabilities,
-    cmd = {servers .. '/bash/node_modules/bash-language-server/bin/main.js', 'start'},
     on_attach = on_attach,
     filetypes = {'sh', 'bash', 'zsh'},
 })
 
 lspconfig.tsserver.setup({
     capabilities = capabilities,
-    cmd = {servers .. '/tsserver/node_modules/typescript-language-server/lib/cli.js', '--stdio'},
     on_attach = on_attach,
 })
 
 lspconfig.awk_ls.setup({
     capabilities, capabilities,
-    cmd = {servers .. '/awk_ls/node_modules/node_modules/awk-language-server/out/cli.js'},
     on_attach = on_attach,
 })
 
 lspconfig.groovyls.setup({
     capabilities = capabilities,
-    cmd = {'java', '-jar', servers .. '/groovyls/build/libs/groovyls-all.jar'},
     on_attach = on_attach,
 })
 
 lspconfig.jsonls.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server'), '--stdio'},
     on_attach = on_attach,
 })
 
 lspconfig.rust_analyzer.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/rust/rust-analyzer')},
     on_attach = on_attach,
 })
 
 lspconfig.eslint.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/vscode-eslint/node_modules/vscode-langservers-extracted/bin/vscode-eslint-language-server'), '--stdio'},
     on_attach = on_attach,
 })
-
---lspconfig.ltex.setup({
---    capabilities = capabilities,
---    cmd = {sanitize_binary(servers .. '/ltex/ltex-ls/bin/ltex-ls')},
---    on_attach = on_attach,
---})
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.html.setup({
     capabilities = capabilities,
-    cmd = {sanitize_binary(servers .. '/html/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server'), '--stdio'},
     on_attach = on_attach,
 })

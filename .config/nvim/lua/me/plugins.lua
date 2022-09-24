@@ -21,7 +21,6 @@ require('packer').startup(function(use)
     use {'lewis6991/gitsigns.nvim'}
     use {'tpope/vim-fugitive'}
     use {'psliwka/vim-smoothie'}
-    use {'neovim/nvim-lspconfig'}
     use {'tpope/vim-repeat'}
     use {'tpope/vim-surround'}
     use {'chaoren/vim-wordmotion'}
@@ -38,7 +37,11 @@ require('packer').startup(function(use)
     use {'nvim-telescope/telescope-dap.nvim'}
     use {'mfussenegger/nvim-dap-python'}
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-    use {'williamboman/nvim-lsp-installer'}
+    use {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+    }
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'chrisbra/csv.vim', ft = {'csv'}}
     use {'thesis/vim-solidity'} -- TODO replace with tree-sitter when available
@@ -55,11 +58,7 @@ end)
 local utils = require('me.utils')
 local map = utils.map
 local buf_map = utils.buf_map
-local home = utils.home
 local sanitize_binary = utils.sanitize_binary
-
--- williamboman/nvim-lsp-installer
-require('nvim-lsp-installer').setup({})
 
 -- projekt0n/github-nvim-theme
 vim.opt.background = 'light'
@@ -129,6 +128,10 @@ require('nvim-treesitter.configs').setup({
     textobjects = {enable = true}
 })
 
+-- williamboman/mason.nvim
+require("mason").setup()
+-- williamboman/mason-lspconfig.nvim
+require("mason-lspconfig").setup()
 -- nvim/nvim-lspconfig
 vim.lsp.set_log_level('ERROR')
 vim.cmd [[
@@ -137,7 +140,7 @@ command! LspLog lua vim.cmd('e '.. vim.lsp.get_log_path())
 
 -- nvim-telescope/telescope.nvim
 local telescope = require('telescope')
-telescope.setup()
+telescope.setup({})
 map('n', '<Leader>ff', '<CMD>Telescope find_files<CR>')
 map('n', '<Leader>fk', '<CMD>Telescope keymaps<CR>')
 map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
@@ -212,16 +215,8 @@ require('dap-python').test_runner = 'pytest'
 require('dap-go').setup()
 
 -- Debuggers
-local dbg_path = vim.fn.stdpath('data') .. '/dapinstall'
-dap.adapters.cpptools = {
-    type = 'executable',
-    command = sanitize_binary(dbg_path .. '/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7'),
-}
-local mi_debugger_path = '/usr/bin/gdb'
-if vim.fn.has('win32') ~= 0 then
-    mi_debugger_path = home .. '/scoop/apps/mingw-winlibs/current/bin/gdb.exe'
-end
 
+local mi_debugger_path = sanitize_binary('gdb')
 dap.configurations.c = {
     {
         name = 'Launch file',

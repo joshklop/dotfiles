@@ -82,6 +82,7 @@ jdtls
 jfsutils
 jupyter-notebook
 kitty
+ledger-live-bin
 libcsv
 libnotify
 libqalculate
@@ -157,7 +158,6 @@ reiserfsprogs
 remmina
 ripgrep
 rofi
-rr
 ruby
 rustup
 simplescreenrecorder
