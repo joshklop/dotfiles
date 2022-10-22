@@ -53,28 +53,4 @@ function M.sanitize_binary(path)
     return path
 end
 
-function M.on_attach(_, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    M.map('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>')
-    M.map('n', 'gr', '<CMD>lua vim.lsp.buf.references()<CR>')
-    M.map('n', 'K', '<CMD>lua vim.lsp.buf.hover()<CR>')
-    M.map('n', 'gi', '<CMD>lua vim.lsp.buf.implementation()<CR>')
-    M.map('n', '<Leader>D', '<CMD>lua vim.lsp.buf.type_definition()<CR>')
-    M.map('n', '<Leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>')
-    M.map('n', '<Leader>e', '<CMD>lua vim.diagnostic.open_float(nil, {scope = "line"})<CR>')
-    M.map('n', ']d', '<CMD>lua vim.diagnostic.goto_next()<CR>')
-    M.map('n', '[d', '<CMD>lua vim.diagnostic.goto_prev()<CR>')
-    M.map('n', '<Leader>q', '<CMD>lua vim.diagnostic.set_loclist()<CR>')
-    vim.cmd [[
-    hi LspDiagnosticsVirtualTextError guifg=red
-    hi LspDiagnosticsVirtualTextWarning guifg=orange
-    hi LspDiagnosticsVirtualTextInformation guifg=gray
-    hi LspDiagnosticsVirtualTextHint guifg=green
-    ]]
-    require('lsp_signature').on_attach()
-end
-
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities = require('cmp_nvim_lsp').default_capabilities(M.capabilities)
-
 return M

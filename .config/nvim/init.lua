@@ -73,7 +73,7 @@ vim.diagnostic.config({
         },
     },
 })
-require('me.setup_lsp')
+require('me.lsp').setup()
 
 -- Make Powershell the default shell on Windows
 if vim.fn.has('win32') ~= 0 then

@@ -23,7 +23,7 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
   + [ ] prompt for git fanciness
   + [ ] completions, plus you want to use compinit in turbo mode (no `autoload -Uz compinit; compinit`)
 * neovim
-  + [ ] mason.nvim, etc. + formatters (clangformat, eslint, gofumpt, etc. with null_ls?! seems amazing)
+  + [ ] formatters (clangformat, eslint, gofumpt, etc. with null_ls?! seems amazing--some lsps provide formatting also)
   + [ ] project-specific configuration
   + [ ] get github permalink for line at current commit
   + [ ] gofumpt on command

@@ -1,18 +1,8 @@
 local utils = require('me.utils')
 local home = utils.home
-local on_attach = utils.on_attach
-local capabilities = utils.capabilities
 local jdtls = require('jdtls')
 
 vim.opt_local.colorcolumn = '100'
-
-local on_attach_jdtls = function(client, bufnr)
-    on_attach(client, bufnr)
-    jdtls.setup_dap({hotcodereplace = 'auto'})
-    jdtls.setup.add_commands() -- Must be run after `setup_dap`
-    utils.map('n', '<LocalLeader>dm', '<CMD>lua require("jdtls").test_nearest_method()<CR>')
-    utils.map('n', '<LocalLeader>dC', '<CMD>lua require("jdtls").test_class()<CR>')
-end
 
 local runtimes = {
     {
@@ -46,8 +36,12 @@ if vim.fn.has('win32') ~= 0 then
 end
 
 local config = {
-    capabilities = capabilities,
-    on_attach = on_attach_jdtls,
+    on_attach = function(_, bufnr)
+        jdtls.setup_dap({hotcodereplace = 'auto'})
+        jdtls.setup.add_commands() -- Must be run after `setup_dap`
+        vim.keymap.set('n',  '<LocalLeader>dm', jdtls.test_nearest_method(), {buffer = bufnr})
+        vim.keymap.set('n',  '<LocalLeader>dC', jdtls.test_class(), {buffer = bufnr})
+    end,
     settings = {
         java = {
             signatureHelp = {enabled = true};
