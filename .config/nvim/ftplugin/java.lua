@@ -33,16 +33,16 @@ if vim.fn.exists('win32') ~= 0 then
     }
 end
 
-local jdtls_root = home .. '/repos/jdtls'
+local jdtls_root = vim.fn.stdpath('data') .. '/mason/packages'
 
-local bundles = {vim.fn.glob(jdtls_root .. '/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar')}
-vim.list_extend(bundles, vim.split(vim.fn.glob(jdtls_root .. '/vscode-java-test/server/*.jar'), '\n'))
+local bundles = {vim.fn.glob(jdtls_root .. '/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar')}
+vim.list_extend(bundles, vim.split(vim.fn.glob(jdtls_root .. '/java-test/extension/server/*.jar'), '\n'))
 
 local root_dir = jdtls.setup.find_root({'.git', 'mvnw', 'gradlew'})
 
-local configuration = jdtls_root .. '/server/config_linux'
+local configuration = jdtls_root .. '/jdtls/config_linux'
 if vim.fn.has('win32') ~= 0 then
-    configuration = jdtls_root .. '/server/config_win'
+    configuration = jdtls_root .. '/jdtls/config_win'
 end
 
 local config = {
@@ -91,9 +91,9 @@ local config = {
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        '-jar', jdtls_root .. '/server/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+        '-jar', jdtls_root .. '/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
         '-configuration', configuration,
-        '-data', jdtls_root .. '/.workspace' .. vim.fn.fnamemodify(root_dir, ':p:t')
+        '-data', home .. '/.workspace' .. vim.fn.fnamemodify(root_dir, ':p:t')
     }
 }
 

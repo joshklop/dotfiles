@@ -205,9 +205,6 @@ map('n', '<Leader>dq', '<CMD>lua require("dap").disconnect({ terminateDebuggee =
 map('n', '<Leader>dr', '<CMD>lua require("dap").repl.toggle({}, "vsplit")<CR><C-w>l')
 map('n', '<Leader>d?', '<CMD>lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
 dap.set_log_level('ERROR')
-vim.cmd [[
-command! DAPLog lua vim.cmd('e '.. vim.fn.stdpath('cache') .. '/dap.log')
-]]
 -- mfussenegger/nvim-dap-python
 require('dap-python').setup(os.getenv('HOME') .. '/.venv/debugpy/bin/python', {})
 require('dap-python').test_runner = 'pytest'
