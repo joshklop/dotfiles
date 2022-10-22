@@ -49,7 +49,6 @@ expect
 f5vpn
 fakeroot
 fd
-firefox
 flake8
 flameshot
 flex
@@ -86,7 +85,6 @@ ledger-live-bin
 libcsv
 libnotify
 libqalculate
-libsignal-client
 libtool
 libzkgroup
 linux
@@ -145,12 +143,10 @@ pulseaudio
 pulseaudio-alsa
 pyenv
 python
-python2
 python-llfuse
 python-pillow
 python-pip
 qalculate-gtk
-qemu-full
 qutebrowser
 r
 reflector
@@ -160,6 +156,7 @@ ripgrep
 rofi
 ruby
 rustup
+signal-desktop-beta-bin
 simplescreenrecorder
 slack-desktop
 s-nail

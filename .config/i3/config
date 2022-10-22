@@ -12,7 +12,6 @@ focus_follows_mouse  yes
 floating_modifier $mod
 
 for_window [class="flameshot"] floating enable
-for_window [class="mpv"] floating enable
 for_window [class="Qalculate-gtk"] floating enable
 
 popup_during_fullscreen leave_fullscreen
