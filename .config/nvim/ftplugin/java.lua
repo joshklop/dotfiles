@@ -1,5 +1,5 @@
+local mason_registry = require('mason-registry')
 local utils = require('me.utils')
-local home = utils.home
 local jdtls = require('jdtls')
 
 vim.opt_local.colorcolumn = '100'
@@ -14,25 +14,27 @@ if vim.fn.exists('win32') ~= 0 then
     runtimes = {
         {
             name = 'JavaSE-11',
-            path = home .. '/scoop/apps/openjdk11/current'
+            path = utils.home .. '/scoop/apps/openjdk11/current'
         },
         {
             name = 'JavaSE-17',
-            path = home .. '/scoop/apps/openjdk17/current'
+            path = utils.home .. '/scoop/apps/openjdk17/current'
         }
     }
 end
 
-local jdtls_root = vim.fn.stdpath('data') .. '/mason/packages'
+local jdtls_path = mason_registry.get_package('jdtls'):get_install_path()
+local java_debug_adapter_path = mason_registry.get_package('java-debug-adapter'):get_install_path()
+local java_test_path = mason_registry.get_package('java-test'):get_install_path()
 
-local bundles = {vim.fn.glob(jdtls_root .. '/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar')}
-vim.list_extend(bundles, vim.split(vim.fn.glob(jdtls_root .. '/java-test/extension/server/*.jar'), '\n'))
+local bundles = {vim.fn.glob(java_debug_adapter_path .. '/extension/server/com.microsoft.java.debug.plugin-*.jar')}
+vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. '/extension/server/*.jar'), '\n'))
 
 local root_dir = jdtls.setup.find_root({'.git', 'mvnw', 'gradlew'})
 
-local configuration = jdtls_root .. '/jdtls/config_linux'
+local configuration = jdtls_path .. '/config_linux'
 if vim.fn.has('win32') ~= 0 then
-    configuration = jdtls_root .. '/jdtls/config_win'
+    configuration = jdtls_path .. '/config_win'
 end
 
 local config = {
@@ -85,9 +87,9 @@ local config = {
         '--add-modules=ALL-SYSTEM',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        '-jar', jdtls_root .. '/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+        '-jar', jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
         '-configuration', configuration,
-        '-data', home .. '/.workspace' .. vim.fn.fnamemodify(root_dir, ':p:t')
+        '-data', utils.home .. '/.workspace' .. vim.fn.fnamemodify(root_dir, ':p:t')
     }
 }
 

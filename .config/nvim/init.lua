@@ -8,6 +8,7 @@ else
     vim.g.python3_host_prog = '/usr/bin/python'
 end
 
+vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -52,7 +53,7 @@ map('', '<C-l>', '<C-w>l')
 map('', '<C-w>t', '<CMD>tabnew<CR>')
 
 -- TODO move to ftdetect
-vim.cmd [[
+vim.cmd([[
 augroup omnifuncs
 au BufNew,BufNewFile,BufRead,BufEnter *.snippets setfiletype snippets
 au BufNew,BufNewFile,BufRead,BufEnter *.sol setfiletype solidity
@@ -60,7 +61,7 @@ au BufNewFile,BufRead *.rasi setfiletype css
 au BufNew,BufNewFile,BufRead,BufEnter *.tex :setfiletype tex
 au BufNew,BufNewFile,BufRead,BufEnter *.mdx :setfiletype markdown
 augroup end
-]]
+]])
 
 -- Plugins
 require('me.plugins')
@@ -69,18 +70,24 @@ require('me.plugins')
 vim.diagnostic.config({
     signs = {
         severity = {
-            min=vim.diagnostic.severity.WARN,
+            min = vim.diagnostic.severity.WARN,
         },
     },
 })
-require('me.lsp').setup()
+vim.keymap.set('n', '<Leader>e', function()
+    vim.diagnostic.open_float(nil, { scope = 'line' })
+end)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+require('me.lsp')
 
 -- Make Powershell the default shell on Windows
 if vim.fn.has('win32') ~= 0 then
     vim.opt.shell = 'pwsh' -- Assume we have Powershell Core
-    vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    vim.opt.shellcmdflag =
+        '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
     vim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
     vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-    vim.opt.shellquote = ""
+    vim.opt.shellquote = ''
     vim.opt.shellxquote = '"'
 end
