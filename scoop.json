@@ -1,0 +1,233 @@
+{
+    "apps": [
+        {
+            "Updated": "2022-11-02T11:31:47.2546157-07:00",
+            "Version": "22.01",
+            "Source": "main",
+            "Name": "7zip",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-01-07T17:41:35.8571318-08:00",
+            "Version": "1.1.33.10",
+            "Source": "extras",
+            "Name": "autohotkey",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T11:31:51.8562481-07:00",
+            "Version": "2022-10-11",
+            "Source": "main",
+            "Name": "cacert",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T11:32:17.5127248-07:00",
+            "Version": "3.24.3",
+            "Source": "main",
+            "Name": "cmake",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-01-11T04:37:02.7711222-08:00",
+            "Version": "3.11.2",
+            "Source": "main",
+            "Name": "dark",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:32:53.4910233-07:00",
+            "Version": "1.0.9006-13",
+            "Source": "extras",
+            "Name": "discord",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:32:54.5488916-07:00",
+            "Version": "0.34.0",
+            "Source": "main",
+            "Name": "fzf",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:33:00.2973346-07:00",
+            "Version": "2.18.1",
+            "Source": "main",
+            "Name": "gh",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:33:30.0273111-07:00",
+            "Version": "2.38.1.windows.1",
+            "Source": "main",
+            "Name": "git",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:35:00.3438902-07:00",
+            "Version": "1.19.3",
+            "Source": "main",
+            "Name": "go",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:38:14.8042786-07:00",
+            "Version": "9.4.1",
+            "Source": "main",
+            "Name": "haskell",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-01-11T04:37:02.2552683-08:00",
+            "Version": "1.10.0",
+            "Source": "main",
+            "Name": "lessmsi",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:40:53.5133957-07:00",
+            "Version": "15.0.3",
+            "Source": "main",
+            "Name": "llvm",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-01-07T17:41:40.6011387-08:00",
+            "Version": "5.4.2",
+            "Source": "main",
+            "Name": "lua",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:40:54.9272589-07:00",
+            "Version": "4.4",
+            "Source": "main",
+            "Name": "make",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:41:57.6787275-07:00",
+            "Version": "12.2.0-14.0.6-10.0.0-r2",
+            "Source": "main",
+            "Name": "mingw-winlibs",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:42:25.4362435-07:00",
+            "Version": "0.8.0",
+            "Source": "main",
+            "Name": "neovim",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:42:36.3114126-07:00",
+            "Version": "19.0.0",
+            "Source": "main",
+            "Name": "nodejs",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T14:12:30.686929-07:00",
+            "Version": "2.0.34",
+            "Source": "extras",
+            "Name": "notion",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-01-12T13:26:36.7763283-08:00",
+            "Version": "11.0.2-9",
+            "Source": "java",
+            "Name": "openjdk11",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:43:57.2627639-07:00",
+            "Version": "17.0.2-8",
+            "Source": "java",
+            "Name": "openjdk17",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:44:34.4574057-07:00",
+            "Version": "3.11.0",
+            "Source": "main",
+            "Name": "python",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-01-12T15:59:19.0486923-08:00",
+            "Version": "13.0.0",
+            "Source": "main",
+            "Name": "ripgrep",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:44:39.095244-07:00",
+            "Version": "0.8.17",
+            "Source": "main",
+            "Name": "solidity",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:44:57.0179537-07:00",
+            "Version": "2.2.2",
+            "Source": "nerd-fonts",
+            "Name": "SourceCodePro-NF",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-01-12T17:46:58.1949319-08:00",
+            "Version": "0.2020.01.26",
+            "Source": "main",
+            "Name": "sudo",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-01-12T17:23:34.4240564-08:00",
+            "Version": "6.00",
+            "Source": "main",
+            "Name": "unzip",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:45:03.8710453-07:00",
+            "Version": "1.21.3",
+            "Source": "main",
+            "Name": "wget",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-11-02T13:45:32.1364795-07:00",
+            "Version": "5.12.3.9638",
+            "Source": "extras",
+            "Name": "zoom",
+            "Info": ""
+        }
+    ],
+    "buckets": [
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2022-11-02T09:34:09-07:00",
+            "Manifests": 1722
+        },
+        {
+            "Name": "java",
+            "Source": "https://github.com/ScoopInstaller/Java",
+            "Updated": "2022-11-02T05:42:49-07:00",
+            "Manifests": 245
+        },
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main",
+            "Updated": "2022-11-02T09:31:56-07:00",
+            "Manifests": 1108
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2022-10-24T07:03:46-07:00",
+            "Manifests": 204
+        }
+    ]
+}
