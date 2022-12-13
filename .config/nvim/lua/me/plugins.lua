@@ -54,13 +54,13 @@ require('packer').startup({
             require('packer').sync()
         end
     end,
-    config = {
-        display = {
-            open_fn = function()
-                require('packer.util').float({ border = 'single' })
-            end,
-        },
-    },
+    --    config = {
+    --        display = {
+    --            open_fn = function()
+    --                require('packer.util').float({ border = 'single' })
+    --            end,
+    --        },
+    --    },
 })
 
 local utils = require('me.utils')
@@ -160,9 +160,8 @@ null_ls.setup({
 })
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
 local notify = vim.notify
-local notify = vim.notify
 vim.notify = function(msg, ...)
-    if msg:match("warning: multiple different client offset_encodings") then
+    if msg:match('warning: multiple different client offset_encodings') then
         return
     end
 
@@ -185,16 +184,26 @@ command! LspLog lua vim.cmd('e '.. vim.lsp.get_log_path())
 -- nvim-telescope/telescope.nvim
 local telescope = require('telescope')
 telescope.setup({})
-map('n', '<Leader>ff', '<CMD>Telescope find_files<CR>')
-map('n', '<Leader>fk', '<CMD>Telescope keymaps<CR>')
-map('n', '<Leader>fg', '<CMD>Telescope live_grep<CR>')
-map('n', '<Leader>fb', '<CMD>Telescope buffers<CR>')
-map('n', '<Leader>fh', '<CMD>Telescope help_tags<CR>')
-map('n', '<Leader>fm', '<CMD>lua require("telescope.builtin").man_pages({sections = {"ALL"}})<CR>')
-map('n', '<Leader>fl', '<CMD>lua vim.lsp.buf.code_action()<CR>')
-map('n', '<Leader>fd', '<CMD>lua require("me.utils").find_dotfiles()<CR>')
-map('n', '<Leader>fr', '<CMD>lua require("me.utils").find_repos()<CR>')
-map('n', '<Leader>fe', '<CMD>Telescope diagnostics<CR>')
+local telescope_builtin = require('telescope.builtin')
+local find_prefix = '<Leader>f'
+local find_keymaps = {
+    { 'b', telescope_builtin.buffers, {} },
+    { 'd', utils.find_dotfiles, {} },
+    { 'e', telescope_builtin.diagnostics, {} },
+    { 'f', telescope_builtin.find_files, { hidden = true } },
+    { 'g', telescope_builtin.live_grep, {} },
+    { 'h', telescope_builtin.help_tags, {} },
+    { 'k', telescope_builtin.keymaps, {} },
+    { 'l', vim.lsp.buf.code_action, {} }, -- TODO should this be here or in lsp.lua?
+    { 'm', telescope_builtin.man_pages, { sections = { 'ALL' } } },
+    { 'p', telescope_builtin.git_branches, {} },
+    { 'u', telescope_builtin.git_bcommits, {} },
+}
+for _, keymap in ipairs(find_keymaps) do
+    vim.keymap.set('n', find_prefix .. keymap[1], function()
+        keymap[2](keymap[3])
+    end)
+end
 -- nvim-telescope/telescope-fzf-native
 telescope.load_extension('fzf')
 -- nvim-telescope/telescope-zoxide
