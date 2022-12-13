@@ -33,7 +33,7 @@ ready "${GREEN}==>${RESET} ${BOLD}Rank mirrors?${RESET}" 'sudo reflector --count
 
 ready "${GREEN}==>${RESET} ${BOLD}Update packages?${RESET}" 'sudo pacman -Syu; paru -Syu --aur; pacmanfile dump; python3 -m pip install --upgrade pip'
 
-ready "${GREEN}==>${RESET} ${BOLD}Update neovim plugins and treesitter parsers?${RESET}" 'nvim -c PackerUpdate; sudo nvim -c PackerUpdate'
+ready "${GREEN}==>${RESET} ${BOLD}Update neovim plugins and treesitter parsers?${RESET}" 'nvim -c PackerSync; sudo nvim -c PackerSync'
 
 ready "${GREEN}==>${RESET} ${BOLD}Update zinit and plugins?${RESET}" 'source "$HOME/.local/share/zinit/zinit.git/zinit.zsh" && zinit self-update && zinit update --parallel'
 
