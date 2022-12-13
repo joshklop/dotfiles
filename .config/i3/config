@@ -31,7 +31,7 @@ default_border none
 # KEYBINDS #
 ############
 
-# Set mod key
+# set mod key
 set $mod Mod4
 
 # kill focused window
@@ -40,6 +40,10 @@ bindsym $mod+shift+q kill
 # start rofi
 bindsym $mod+d exec rofi -show run
 bindsym $mod+a exec rofi -show window exec rofi -show window
+
+# jump to applications
+bindsym $mod+b [class="Brave-browser"] focus
+bindsym $mod+t [class="kitty"] focus
 
 # change focus
 bindsym $mod+h focus left
@@ -75,7 +79,7 @@ bindsym $mod+shift+space floating toggle
 
 bindsym $mod+shift+s sticky toggle
 
-# Define names for default workspaces for which we configure key bindings later on.
+# define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
