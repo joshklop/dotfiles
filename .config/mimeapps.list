@@ -1,7 +1,7 @@
 [Added Associations]
 text/html=brave-browser.desktop
 application/pdf=org.pwmt.zathura.desktop;
-x-scheme-handler/tg=userapp-Telegram Desktop-LWALA1.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-LWALA1.desktop;org.telegram.desktop.desktop;
 
 [Default Applications]
 x-scheme-handler/webcal=brave-browser.desktop
@@ -11,7 +11,7 @@ x-scheme-handler/about=brave-browser.desktop
 x-scheme-handler/unknown=brave-browser.desktop
 application/pdf=org.pwmt.zathura.desktop
 x-scheme-handler/mailto=brave-browser.desktop
-x-scheme-handler/tg=userapp-Telegram Desktop-LWALA1.desktop
+x-scheme-handler/tg=org.telegram.desktop.desktop
 x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop
 text/html=brave-browser.desktop
 x-scheme-handler/notion=notion-app.desktop
@@ -22,3 +22,4 @@ x-scheme-handler/remmina=org.remmina.Remmina.desktop
 application/x-remmina=org.remmina.Remmina.desktop
 x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/tel=brave-browser.desktop
+x-scheme-handler/web+cardano=brave-browser.desktop

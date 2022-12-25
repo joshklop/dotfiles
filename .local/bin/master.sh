@@ -26,25 +26,29 @@ function ready(){
   done
 }
 
-ready "${GREEN}==>${RESET} ${BOLD}Have you deleted unnecessary files?${RESET}" 
+function embellished-ready() {
+    ready "${GREEN}==>${RESET}${BOLD} $1${RESET}" $2
+}
+
+embellished-ready 'Have you deleted unnecessary files?'
 
 # TODO nohup + & may be useful for blindly running this in the background to speed things up
-ready "${GREEN}==>${RESET} ${BOLD}Rank mirrors?${RESET}" 'sudo reflector --country us --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+embellished-ready 'Rank mirrors?' 'sudo reflector --country us --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
-ready "${GREEN}==>${RESET} ${BOLD}Update packages?${RESET}" 'sudo pacman -Syu; paru -Syu --aur; pacmanfile dump; python3 -m pip install --upgrade pip'
+embellished-ready 'Update packages?' 'sudo pacman -Syu; paru -Syu --aur; pacmanfile dump'
 
-ready "${GREEN}==>${RESET} ${BOLD}Update neovim plugins and treesitter parsers?${RESET}" 'nvim -c PackerSync; sudo nvim -c PackerSync'
+embellished-ready 'Update neovim plugins and treesitter parsers?' 'nvim -c PackerSync; sudo nvim -c PackerSync'
 
-ready "${GREEN}==>${RESET} ${BOLD}Update zinit and plugins?${RESET}" 'source "$HOME/.local/share/zinit/zinit.git/zinit.zsh" && zinit self-update && zinit update --parallel'
+embellished-ready 'Update zinit and plugins?' 'source "$HOME/.local/share/zinit/zinit.git/zinit.zsh" && zinit self-update && zinit update --parallel'
 
-ready "${GREEN}==>${RESET} ${BOLD}Backup bitwarden?${RESET}" bwbackup.sh
+embellished-ready 'Backup bitwarden?' bwbackup.sh
 
-ready "${GREEN}==>${RESET} ${BOLD}Backup ${HOME}?${RESET}" borgbackup.sh
+embellished-ready "Backup ${HOME}?" borgbackup.sh
 
-ready "${GREEN}==>${RESET} ${BOLD}Backup /etc?${RESET}" 'cd /etc && sudo git push && cd -'
+embellished-ready 'Backup /etc?' 'cd /etc && sudo git push && cd -'
 
 echo
 echo -e "${GREEN}* ${BOLD}Make sure you umount!${RESET}"
 echo
 
-ready "${GREEN}==>${RESET} ${BOLD}Commit and push your dotfiles.${RESET}"
+embellished-ready 'Commit and push your dotfiles.'

@@ -30,3 +30,5 @@
     trustExitCode = true
 [commit]
 	gpgsign = true
+[fetch]
+	prune = true
