@@ -9,7 +9,6 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
 - [ ] use systemd-timer so `batchecker.sh` will run after putting computer to sleep
 - [ ] figure out dunst context menu
 - [ ] Bluetooth on linux/windows
-- [ ] Really understand how git works
 - [ ] Switch from i3 to xmonad (haskell all the things!)
 - [ ] Rice zathura
 - [ ] Rice rofi
@@ -18,9 +17,9 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
   - [ ] https://github.com/ianthehenry/sd
   - [ ] plugin to manage python virtualenvs
   - [ ] see brokenbyte's configs
-  - [ ] prompt for git fanciness
   - [ ] completions, plus you want to use compinit in turbo mode (no `autoload -Uz compinit; compinit`)
 - neovim
+  - [ ] find better way to navigate quickfix list and locationlist (what do they even represent?)
   - [ ] disable formatting for all lsp servers (we use null_ls anyway)
   - [ ] de-clutter keymaps
   - [ ] signature_help vs lspsignature plugin?
@@ -59,3 +58,5 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
 - [x] Enable `awk_ls` once neovim 0.7 is released
 - [x] migrate to new diagnostic api
 - [x] formatters (clangformat, eslint, gofumpt, etc. with null_ls?! seems amazing--some lsps provide formatting also)
+- [x] Really understand how git works
+- [x] prompt for git fanciness

@@ -65,6 +65,7 @@ ghex
 git
 github-cli
 gnuplot
+golangci-lint-bin
 graphviz
 groff
 grub
@@ -72,7 +73,7 @@ gtkmm
 highlight
 hsetroot
 htop
-i3-gaps
+i3-wm
 intel-media-driver
 intel-ucode
 javafx-scenebuilder
