@@ -1,9 +1,7 @@
 local utils = require('me.utils')
-local map = utils.map
-local home = utils.home
 
 if vim.fn.has('win32') ~= 0 then
-    vim.g.python3_host_prog = home .. '/scoop/apps/python/current/python.exe'
+    vim.g.python3_host_prog = utils.home .. '/scoop/apps/python/current/python.exe'
 else
     vim.g.python3_host_prog = '/usr/bin/python'
 end
@@ -32,36 +30,46 @@ vim.opt.guifont = 'SauceCodePro NF:h12'
 
 -- Keymaps
 -- Remap leader keys
-map('n', '<SPACE>', '<NOP>')
+utils.map('n', '<SPACE>', '<NOP>')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 -- Transpose lines and characters
-map('n', '<Up>', 'ddkP')
-map('n', '<Down>', 'ddp')
-map('n', '<Left>', 'xhP')
-map('n', '<Right>', 'xp')
+utils.map('n', '<Up>', 'ddkP')
+utils.map('n', '<Down>', 'ddp')
+utils.map('n', '<Left>', 'xhP')
+utils.map('n', '<Right>', 'xp')
 -- Easier navigation on broken lines
-map('n', 'j', 'gj')
-map('n', 'k', 'gk')
+utils.map('n', 'j', 'gj')
+utils.map('n', 'k', 'gk')
 -- Redraw screen
-map('n', '<ESC>', '<CMD>nohlsearch<CR>')
+utils.map('n', '<ESC>', '<CMD>nohlsearch<CR>')
 -- Easier Window Navigation
-map('', '<C-h>', '<C-w>h')
-map('n', '<C-j>', '<C-w>j', {})
-map('', '<C-k>', '<C-w>k')
-map('', '<C-l>', '<C-w>l')
-map('', '<C-w>t', '<CMD>tabnew<CR>')
+utils.map('', '<C-h>', '<C-w>h')
+utils.map('n', '<C-j>', '<C-w>j', {})
+utils.map('', '<C-k>', '<C-w>k')
+utils.map('', '<C-l>', '<C-w>l')
+utils.map('', '<C-w>t', '<CMD>tabnew<CR>')
 
 -- TODO move to ftdetect
 vim.cmd([[
 augroup omnifuncs
 au BufNew,BufNewFile,BufRead,BufEnter *.snippets setfiletype snippets
 au BufNew,BufNewFile,BufRead,BufEnter *.sol setfiletype solidity
+au BufNew,BufNewFile,BufRead,BufEnter *.sls setfiletype scheme
 au BufNewFile,BufRead *.rasi setfiletype css
 au BufNew,BufNewFile,BufRead,BufEnter *.tex :setfiletype tex
 au BufNew,BufNewFile,BufRead,BufEnter *.mdx :setfiletype markdown
 augroup end
 ]])
+
+vim.api.nvim_create_autocmd({"BufNew", "BufNewFile", "BufRead", "BufEnter"}, {
+    pattern = {utils.home .. '/repos/joshklop.github.io/*.md'},
+    callback = function()
+        vim.opt_local.textwidth = 80
+        vim.opt_local.linebreak = true
+        vim.opt_local.colorcolumn = "80"
+    end,
+})
 
 -- Plugins
 require('me.plugins')

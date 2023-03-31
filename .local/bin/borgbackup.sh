@@ -27,12 +27,14 @@ borg create                                \
         -e '*/downloads'                   \
         -e '*/Downloads'                   \
         -e '*/go'                          \
+        -e '*/sdk'                         \
         -e '*/README.md'                   \
         -e '*/LICENSE'                     \
         -e '*/todo.md'                     \
         -e '*/repos'                       \
         -e '*/Zotero'                      \
         -e '*/nextcloud'                   \
+        -e '*/snap'                        \
         -e '*/documents/zoom'              \
         ::"$HOSTNAME--$(date +%+4Y-%m-%d)" \
         "$HOME"

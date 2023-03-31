@@ -7,7 +7,7 @@ export PATH="$PATH:$HOME/.local/bin:/home/user/.local/share/gem/ruby/3.0.0/bin"
 # For Chromium development
 export PATH="$PATH:$HOME/repos/depot_tools"
 # Golang
-export PATH="$PATH:$(go env GOBIN):"
+export PATH="$PATH:$($HOME/.go/bin/go1.20 env GOBIN):"
 
 # Editor exports
 export VISUAL=nvim
@@ -60,16 +60,13 @@ alias npm='npm --color=always'
 alias sudo='sudo ' # Allow for aliases https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias odin='$HOME/repos/Odin/odin'
 alias z='zathura --fork'
+alias wasi-clang='/opt/wasi-sdk/bin/clang --sysroot /opt/wasi-sdk/share/wasi-sysroot'
 
 # https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
 function mergepdf() {
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default \
     -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true \
     -r150 -sOutputFile="$1" "${@:1}"
-}
-
-function activate() {
-  source "$HOME/.venv/$1/bin/activate"
 }
 
 # Prompt fanciness
@@ -106,8 +103,6 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-autoload -Uz compinit; compinit
-
 zinit wait lucid blockf for \
     atinit"zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
@@ -117,6 +112,8 @@ zinit wait lucid blockf for \
     Aloxaf/fzf-tab \
     MichaelAquilina/zsh-auto-notify \
     hlissner/zsh-autopair
+
+autoload -Uz compinit; compinit
 
 # fzf-tab config TODO -- see brokenbyte's
 
@@ -164,3 +161,6 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 eval "$(direnv hook zsh)"
+
+# rbenv
+eval "$(rbenv init - zsh)"

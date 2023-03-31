@@ -38,8 +38,7 @@ set $mod Mod4
 bindsym $mod+shift+q kill
 
 # start rofi
-bindsym $mod+d exec rofi -show run
-bindsym $mod+a exec rofi -show window exec rofi -show window
+bindsym $mod+d exec rofi -show combi
 
 # jump to applications
 bindsym $mod+b [class="Brave-browser"] focus

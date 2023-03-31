@@ -1,3 +1,7 @@
+local utils = require('me.utils')
+local map = utils.map
+local buf_map = utils.buf_map
+
 -- Bootstrap packer
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -7,6 +11,7 @@ end
 
 require('packer').startup({
     function(use)
+        use({ 'nvim-lualine/lualine.nvim' })
         use({ 'wbthomason/packer.nvim' })
         use({ 'windwp/nvim-ts-autotag' })
         use({ 'projekt0n/github-nvim-theme' })
@@ -48,24 +53,11 @@ require('packer').startup({
         use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
         use({ 'jalvesaq/nvim-r', ft = { 'r', 'Rmd' } })
         use({ 'ray-x/lsp_signature.nvim' })
-        use({ 'ten3roberts/qf.nvim' })
-        use({ 'winston0410/commented.nvim' })
         if PACKER_BOOTSTRAP then
             require('packer').sync()
         end
     end,
-    --    config = {
-    --        display = {
-    --            open_fn = function()
-    --                require('packer.util').float({ border = 'single' })
-    --            end,
-    --        },
-    --    },
 })
-
-local utils = require('me.utils')
-local map = utils.map
-local buf_map = utils.buf_map
 
 -- simrat39/symbols-outline.nvim
 require('symbols-outline').setup({
@@ -109,24 +101,6 @@ require('github-theme').setup({
     keyword_style = 'NONE',
     dark_float = true,
 })
-
--- winston0410/commented.nvim
-require('commented').setup({
-    keybindings = {
-        n = '<Leader>oo',
-        v = '<Leader>oo',
-        nl = '<Leader>od',
-    },
-})
-
--- ten3roberts/qf.nvim
-require('qf').setup({})
-map('n', '<Leader>lt', '<CMD>lua require("qf").toggle("l", true)<CR>')
-map('n', '<Leader>lj', '<CMD>lua require("qf").below("visible")<CR>')
-map('n', '<Leader>lk', '<CMD>lua require("qf").above("visible")<CR>')
-map('n', '<Leader>ct', '<CMD>lua require("qf").toggle("c", true)<CR>')
-map('n', '<Leader>cj', '<CMD>lua require("qf").below("visible")<CR>')
-map('n', '<Leader>ck', '<CMD>lua require("qf").above("visible")<CR>')
 
 -- windwp/nvim-ts-autotag
 require('nvim-ts-autotag').setup()
@@ -310,10 +284,10 @@ require('dap-python').test_runner = 'pytest'
 -- leoluz/nvim-dap-go
 require('dap-go').setup()
 -- mxsdev/nvim-dap-vscode-js
-require('dap-vscode-js').setup({
-    debugger_path = mason_registry.get_package('js-debug-adapter'):get_install_path(),
-    adapters = { 'pwa-node' },
-})
+-- require('dap-vscode-js').setup({
+--     debugger_path = mason_registry.get_package('js-debug-adapter'):get_install_path(),
+--     adapters = { 'pwa-node' },
+-- })
 --local plenary_async = require('plenary.async')
 --dap.adapters['pwa_node_pre_launch'] = function(_, config)
 --    if config.preLaunchTask then
@@ -342,3 +316,42 @@ dap.configurations.c = {
     },
 }
 dap.configurations.cpp = dap.configurations.c
+
+-- nvim-lualine/lualine.nvim
+local function diff_source()
+    local gitsigns = vim.b.gitsigns_status_dict
+    if gitsigns then
+        return {
+            added = gitsigns.added,
+            modified = gitsigns.changed,
+            removed = gitsigns.removed,
+        }
+    end
+end
+-- TODO: full filepaths and dont change color on mode switch
+require('lualine').setup({
+    options = {
+        icons_enabled = false,
+        theme = 'auto',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+    },
+    sections = {
+        lualine_a = { '' },
+        lualine_b = { 'b:gitsigns_head', { 'diff', source = diff_source }, 'diagnostics' },
+        lualine_c = { '%f' },
+        lualine_x = { 'progress', 'location' },
+        lualine_y = { '' },
+        lualine_z = { 'searchcount' },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
+        lualine_y = {},
+        lualine_z = {},
+    },
+    -- https://github.com/nvim-lualine/lualine.nvim/issues/904
+    tabline = {},
+})

@@ -76,19 +76,20 @@ mason_lspconfig.setup_handlers({
             },
         })
     end,
-    ['texlab'] = function()
-        lspconfig.texlab.setup({
-            on_attach = function(_, buf)
-                -- TODO I think there is a better way to do this. Use the actual function instead of '<CMD>...<CR>'
-                vim.keymap.set('n', '<Leader>lb', '<CMD>TexlabBuild<CR>', { buffer = buf })
-            end,
-        })
-    end,
-    ['sumneko_lua'] = function()
+    --['texlab'] = function()
+    --    lspconfig.texlab.setup()
+    --    -- {
+    --    --     on_attach = function(_, buf)
+    --    --         -- TODO I think there is a better way to do this. Use the actual function instead of '<CMD>...<CR>'
+    --    --         -- vim.keymap.set('n', '<Leader>lb', '<CMD>TexlabBuild<CR>', { buffer = buf })
+    --    --     end,
+    --    -- })
+    --end,
+    ['lua_ls'] = function()
         local runtime_path = vim.split(package.path, ';')
         table.insert(runtime_path, 'lua/?.lua')
         table.insert(runtime_path, 'lua/?/init.lua')
-        lspconfig.sumneko_lua.setup({
+        lspconfig.lua_ls.setup({
             filetypes = { 'lua' },
             settings = {
                 Lua = {
