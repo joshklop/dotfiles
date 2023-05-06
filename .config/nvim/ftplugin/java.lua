@@ -24,11 +24,6 @@ if vim.fn.exists('win32') ~= 0 then
 end
 
 local jdtls_path = mason_registry.get_package('jdtls'):get_install_path()
-local java_debug_adapter_path = mason_registry.get_package('java-debug-adapter'):get_install_path()
-local java_test_path = mason_registry.get_package('java-test'):get_install_path()
-
-local bundles = {vim.fn.glob(java_debug_adapter_path .. '/extension/server/com.microsoft.java.debug.plugin-*.jar')}
-vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. '/extension/server/*.jar'), '\n'))
 
 local root_dir = jdtls.setup.find_root({'.git', 'mvnw', 'gradlew'})
 
@@ -39,8 +34,7 @@ end
 
 local config = {
     on_attach = function(_, bufnr)
-        jdtls.setup_dap({hotcodereplace = 'auto'})
-        jdtls.setup.add_commands() -- Must be run after `setup_dap`
+        jdtls.setup.add_commands()
         vim.keymap.set('n',  '<LocalLeader>dm', jdtls.test_nearest_method(), {buffer = bufnr})
         vim.keymap.set('n',  '<LocalLeader>dC', jdtls.test_class(), {buffer = bufnr})
     end,
@@ -70,7 +64,6 @@ local config = {
             configuration = {runtimes = runtimes}
         }
     },
-    init_options = {bundles = bundles},
     flags = {
         allow_incremental_sync = true,
         server_side_fuzzy_completion = true

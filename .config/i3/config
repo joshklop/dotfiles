@@ -40,10 +40,6 @@ bindsym $mod+shift+q kill
 # start rofi
 bindsym $mod+d exec rofi -show combi
 
-# jump to applications
-bindsym $mod+b [class="Brave-browser"] focus
-bindsym $mod+t [class="kitty"] focus
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -183,9 +179,9 @@ bindsym $mod+grave exec "dunstctl history-pop"
 # START APPLICATIONS #
 ######################
 
-exec --no-startup-id "dunst"
-exec "batchecker.sh &"
-exec "flameshot"
-exec "volnoti"
+exec --no-startup-id dunst
+exec --no-startup-id "batchecker.sh &"
+exec --no-startup-id flameshot
+exec --no-startup-id volnoti
 exec --no-startup-id picom
 exec --no-startup-id hsetroot -solid '#000000'

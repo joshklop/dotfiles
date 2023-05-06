@@ -4,6 +4,7 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
 
 # Todo
 
+- [ ] update anki automatically
 - [ ] Look into Tshaka's bat program and its compatibility with MSI
 - [ ] set up [powertop](https://wiki.archlinux.org/title/Powertop)
 - [ ] use systemd-timer so `batchecker.sh` will run after putting computer to sleep
@@ -24,8 +25,6 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
   - [ ] de-clutter keymaps
   - [ ] signature_help vs lspsignature plugin?
   - [ ] make an update function that contains lsp updates, packer updates, etc. so you can call from command line or from within neovim
-  - [ ] better ui for nvim-dap
-  - [ ] toggle ltex
   - [ ] luasnips (especially latex)
   - [ ] write ts parser and grammar for wat filetype
   - [ ] write ts parser and grammar for cairo filetype

@@ -13,8 +13,9 @@ require('packer').startup({
     function(use)
         use({ 'nvim-lualine/lualine.nvim' })
         use({ 'wbthomason/packer.nvim' })
+        use({ 'lalitmee/browse.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
         use({ 'windwp/nvim-ts-autotag' })
-        use({ 'projekt0n/github-nvim-theme' })
+        use({ 'projekt0n/github-nvim-theme', tag = '*' })
         use({
             'nvim-telescope/telescope.nvim',
             requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
@@ -26,7 +27,6 @@ require('packer').startup({
         use({ 'saadparwaiz1/cmp_luasnip' })
         use({ 'jvgrootveld/telescope-zoxide' })
         use({ 'lewis6991/gitsigns.nvim' })
-        use({ 'mxsdev/nvim-dap-vscode-js', requires = { 'mfussenegger/nvim-dap' } })
         use({ 'tpope/vim-fugitive' })
         use({ 'tpope/vim-repeat' })
         use({ 'tpope/vim-surround' })
@@ -39,11 +39,7 @@ require('packer').startup({
         use({ 'hrsh7th/cmp-path' })
         use({ 'hrsh7th/cmp-nvim-lsp' })
         use({ 'mfussenegger/nvim-jdtls' })
-        use({ 'mfussenegger/nvim-dap' })
         use({ 'jose-elias-alvarez/null-ls.nvim' })
-        use({ 'leoluz/nvim-dap-go' })
-        use({ 'nvim-telescope/telescope-dap.nvim' })
-        use({ 'mfussenegger/nvim-dap-python' })
         use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
         use({
             'williamboman/mason.nvim',
@@ -100,6 +96,13 @@ require('github-theme').setup({
     comment_style = 'NONE',
     keyword_style = 'NONE',
     dark_float = true,
+})
+
+-- lalitmee/browse.nvim
+local browse = require('browse')
+browse.setup({
+  provider = "duckduckgo",
+  bookmarks = {},
 })
 
 -- windwp/nvim-ts-autotag
@@ -181,7 +184,7 @@ require('mason').setup()
 
 -- williamboman/mason-lspconfig.nvim
 require('mason-lspconfig').setup()
-local mason_registry = require('mason-registry')
+require('mason-registry')
 
 -- nvim/nvim-lspconfig
 vim.lsp.set_log_level('ERROR')
@@ -202,9 +205,10 @@ local find_keymaps = {
     { 'g', telescope_builtin.live_grep, {} },
     { 'h', telescope_builtin.help_tags, {} },
     { 'k', telescope_builtin.keymaps, {} },
-    { 'l', vim.lsp.buf.code_action, {} }, -- TODO should this be here or in lsp.lua?
+    { 'l', vim.lsp.buf.code_action, nil }, -- TODO should this be here or in lsp.lua?
     { 'm', telescope_builtin.man_pages, { sections = { 'ALL' } } },
     { 'p', telescope_builtin.git_branches, {} },
+    { 's', browse.input_search, nil },
     { 'u', telescope_builtin.git_bcommits, {} },
 }
 for _, keymap in ipairs(find_keymaps) do
@@ -226,12 +230,6 @@ require('telescope._extensions.zoxide.config').setup({
         },
     },
 })
--- nvim-telescope/telescope-dap.nvim
-telescope.load_extension('dap')
-map('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
-map('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
--- nvim-telescope/telescope-ui-select.nvim
-telescope.load_extension('ui-select')
 
 -- lewis6991/gitsigns.nvim
 require('gitsigns').setup({
@@ -242,80 +240,8 @@ require('gitsigns').setup({
         buf_map(bufnr, 'n', '<Leader>gr', '<CMD>Gitsigns reset_hunk<CR>')
         buf_map(bufnr, 'n', '<Leader>g]', '<CMD>Gitsigns next_hunk<CR>')
         buf_map(bufnr, 'n', '<Leader>g[', '<CMD>Gitsigns prev_hunk<CR>')
-        buf_map(bufnr, 'n', '<Leader>gb', '<CMD>Gitsigns toggle_current_line_blame<CR>')
-        buf_map(bufnr, 'n', '<Leader>ga', '<CMD>Gitsigns stage_hunk<CR>')
-        buf_map(bufnr, 'n', '<Leader>gA', '<CMD>Gitsigns undo_stage_hunk<CR>')
-        buf_map(bufnr, 'v', '<Leader>ga', [[<CMD>'<,'>Gitsigns stage_hunk <CR>]])
-        buf_map(bufnr, 'v', '<Leader>gA', [[<CMD>'<,'>Gitsigns undo_stage_hunk <CR>]])
     end,
 })
-
--- mfussenegger/nvim-dap
-local dap = require('dap') -- Need to load the plugin in order for signs to work
-vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointRejected', { text = '🟦', texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '⭐️', texthl = '', linehl = '', numhl = '' })
-map('n', '<Leader>dh', '<CMD>lua require("dap").toggle_breakpoint()<CR>')
-map('n', '<Leader>do', '<CMD>lua require("dap").step_out()<CR>')
-map('n', '<Leader>ds', '<CMD>lua require("dap").step_into()<CR>')
-map('n', '<Leader>dn', '<CMD>lua require("dap").step_over()<CR>')
-map('n', '<Leader>db', '<CMD>lua require("dap").step_back()<CR>')
-map('n', '<Leader>dc', '<CMD>lua require("dap").continue()<CR>')
-map('n', '<Leader>dq', '<CMD>lua require("dap").disconnect({ terminateDebuggee = true });require("dap").close()<CR>')
-map('n', '<Leader>dr', '<CMD>lua require("dap").repl.toggle({}, "vsplit")<CR><C-w>l')
-map('n', '<Leader>d?', '<CMD>lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
-dap.set_log_level('ERROR')
---vim.api.nvim_create_autocmd({'DirChanged', 'UIEnter'}, {
---    callback = function()
---        local vscode_dir = '.vscode'
---        local root_finder = require('lspconfig.util').root_pattern(vscode_dir)
---        local root_path = root_finder(vim.api.nvim_buf_get_name(0))
---        if root_path then
---            require('dap.ext.vscode').load_launchjs(root_path .. '/' .. vscode_dir .. '/launch.json', {
---                pwa_node_pre_launch = {'typescript', 'javascript'},
---            })
---        end
---    end,
---    pattern = {'*.ts'},
---})
--- mfussenegger/nvim-dap-python
-require('dap-python').setup(os.getenv('HOME') .. '/.venv/debugpy/bin/python', {})
-require('dap-python').test_runner = 'pytest'
--- leoluz/nvim-dap-go
-require('dap-go').setup()
--- mxsdev/nvim-dap-vscode-js
--- require('dap-vscode-js').setup({
---     debugger_path = mason_registry.get_package('js-debug-adapter'):get_install_path(),
---     adapters = { 'pwa-node' },
--- })
---local plenary_async = require('plenary.async')
---dap.adapters['pwa_node_pre_launch'] = function(_, config)
---    if config.preLaunchTask then
---        plenary_async.run(function()
---            vim.notify('Running [' .. config.preLaunchTask .. ']')
---        end,
---        function()
---            vim.fn.system(config.preLaunchTask)
---            config.type = 'pwa-node'
---            dap.run(config)
---        end)
---    end
---end
-dap.configurations.c = {
-    {
-        name = 'Launch file',
-        type = 'cpptools',
-        request = 'launch',
-        miMode = 'gdb',
-        miDebuggerPath = mason_registry.get_package('cpptools'):get_install_path(),
-        program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = true,
-    },
-}
-dap.configurations.cpp = dap.configurations.c
 
 -- nvim-lualine/lualine.nvim
 local function diff_source()
@@ -328,7 +254,7 @@ local function diff_source()
         }
     end
 end
--- TODO: full filepaths and dont change color on mode switch
+-- TODO: don't change color on mode switch
 require('lualine').setup({
     options = {
         icons_enabled = false,

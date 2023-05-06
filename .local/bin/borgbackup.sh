@@ -29,7 +29,6 @@ borg create                                \
         -e '*/go'                          \
         -e '*/sdk'                         \
         -e '*/README.md'                   \
-        -e '*/LICENSE'                     \
         -e '*/todo.md'                     \
         -e '*/repos'                       \
         -e '*/Zotero'                      \
