@@ -28,6 +28,7 @@ borg create                                \
         -e '*/Downloads'                   \
         -e '*/go'                          \
         -e '*/sdk'                         \
+        -e '*/sd'                          \
         -e '*/README.md'                   \
         -e '*/todo.md'                     \
         -e '*/repos'                       \
