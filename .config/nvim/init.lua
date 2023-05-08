@@ -50,7 +50,6 @@ utils.map('', '<C-k>', '<C-w>k')
 utils.map('', '<C-l>', '<C-w>l')
 utils.map('', '<C-w>t', '<CMD>tabnew<CR>')
 
--- TODO move to ftdetect
 vim.cmd([[
 augroup omnifuncs
 au BufNew,BufNewFile,BufRead,BufEnter *.snippets setfiletype snippets

@@ -20,9 +20,7 @@ require('packer').startup({
             'nvim-telescope/telescope.nvim',
             requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
         })
-        use({ 'simrat39/symbols-outline.nvim' })
         use({ 'nvim-telescope/telescope-ui-select.nvim' })
-        use({ 'tpope/vim-eunuch' })
         use({ 'L3MON4D3/LuaSnip', tag = 'v<CurrentMajor>.*' })
         use({ 'saadparwaiz1/cmp_luasnip' })
         use({ 'jvgrootveld/telescope-zoxide' })
@@ -45,6 +43,7 @@ require('packer').startup({
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'neovim/nvim-lspconfig',
+            run = ':MasonUpdate',
         })
         use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
         use({ 'jalvesaq/nvim-r', ft = { 'r', 'Rmd' } })
@@ -53,40 +52,6 @@ require('packer').startup({
             require('packer').sync()
         end
     end,
-})
-
--- simrat39/symbols-outline.nvim
-require('symbols-outline').setup({
-    fold_markers = { '|', '-' },
-    autofold_depth = 0,
-    symbols = {
-        File = { icon = 'F', hl = 'TSURI' },
-        Module = { icon = 'n', hl = 'TSNamespace' },
-        Namespace = { icon = 'n', hl = 'TSNamespace' },
-        Package = { icon = 'n', hl = 'TSNamespace' },
-        Class = { icon = '𝓒', hl = 'TSType' },
-        Method = { icon = 'ƒ', hl = 'TSMethod' },
-        Property = { icon = '', hl = 'TSMethod' },
-        Field = { icon = 'f', hl = 'TSField' },
-        Constructor = { icon = '', hl = 'TSConstructor' },
-        Enum = { icon = 'ℰ', hl = 'TSType' },
-        Interface = { icon = 'I', hl = 'TSType' },
-        Function = { icon = 'ƒ', hl = 'TSFunction' },
-        Variable = { icon = '', hl = 'TSConstant' },
-        Constant = { icon = '', hl = 'TSConstant' },
-        String = { icon = '𝓐', hl = 'TSString' },
-        Number = { icon = '#', hl = 'TSNumber' },
-        Boolean = { icon = '⊨', hl = 'TSBoolean' },
-        Array = { icon = 'a', hl = 'TSConstant' },
-        Object = { icon = '⦿', hl = 'TSType' },
-        Key = { icon = '🔐', hl = 'TSType' },
-        Null = { icon = 'NULL', hl = 'TSType' },
-        EnumMember = { icon = 'f', hl = 'TSField' },
-        Struct = { icon = '𝓢', hl = 'TSType' },
-        Event = { icon = 'e', hl = 'TSType' },
-        Operator = { icon = '+', hl = 'TSOperator' },
-        TypeParameter = { icon = '𝙏', hl = 'TSParameter' },
-    },
 })
 
 -- projekt0n/github-nvim-theme
@@ -101,8 +66,8 @@ require('github-theme').setup({
 -- lalitmee/browse.nvim
 local browse = require('browse')
 browse.setup({
-  provider = "duckduckgo",
-  bookmarks = {},
+    provider = 'duckduckgo',
+    bookmarks = {},
 })
 
 -- windwp/nvim-ts-autotag
@@ -254,7 +219,7 @@ local function diff_source()
         }
     end
 end
--- TODO: don't change color on mode switch
+
 require('lualine').setup({
     options = {
         icons_enabled = false,

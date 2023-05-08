@@ -51,6 +51,18 @@ function M.map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+function M.update()
+    require('packer').sync()
+    local packages = require('mason-registry').get_installed_packages()
+    for _, package in ipairs(packages) do
+        package:check_new_version(function(out_of_date)
+            if out_of_date then
+                package:install()
+            end
+        end)
+    end
+end
+
 function M.buf_map(bufnr, mode, lhs, rhs, opts)
     local options = { noremap = true }
     if opts then
