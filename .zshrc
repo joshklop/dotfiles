@@ -58,11 +58,10 @@ alias icat='kitty +kitten icat'
 alias gdb='gdb -q'
 alias npm='npm --color=always'
 alias sudo='sudo ' # Allow for aliases https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
-alias odin='$HOME/repos/Odin/odin'
 alias z='zathura --fork'
 alias wasi-clang='/opt/wasi-sdk/bin/clang --sysroot /opt/wasi-sdk/share/wasi-sysroot'
 
-# https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf
+# https://stackoverflow.com/a/19358402
 function mergepdf() {
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default \
     -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true \
