@@ -62,13 +62,11 @@ def backup_home():
         '*/Downloads',
         '*/go',
         '*/sdk',
-        '*/sd',
         '*/README.md',
         '*/todo.md',
         '*/repos',
         '*/Zotero',
         '*/nextcloud',
-        '*/snap',
         '*/documents/zoom',
     ]
 

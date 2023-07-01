@@ -183,5 +183,5 @@ exec --no-startup-id dunst
 exec --no-startup-id "batchecker.sh &"
 exec --no-startup-id flameshot
 exec --no-startup-id volnoti
-exec --no-startup-id picom
+# exec --no-startup-id picom
 exec --no-startup-id hsetroot -solid '#000000'

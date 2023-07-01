@@ -4,6 +4,11 @@ Fine-Grained Sandboxing with V8 Isolates - youtube infoq channel
 
 # Todo
 
+- [ ] a neovim plugin to get a github link for the specific line at specific commit
+- [ ] a neovim plugin that makes reviewing PRs with multiple commits a breeze
+  - probably rely on `:Telescope git_commits` and `:G d HEAD~`
+- [ ] win+arrow keys should control volume
+- [ ] udev rule to set up keybinds for every connected keyboard
 - [ ] update anki automatically
 - [ ] Look into Tshaka's bat program and its compatibility with MSI
 - [ ] set up [powertop](https://wiki.archlinux.org/title/Powertop)
