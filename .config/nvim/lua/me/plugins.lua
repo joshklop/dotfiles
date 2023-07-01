@@ -13,9 +13,8 @@ require('packer').startup({
     function(use)
         use({ 'nvim-lualine/lualine.nvim' })
         use({ 'wbthomason/packer.nvim' })
-        use({ 'lalitmee/browse.nvim', requires = { 'nvim-telescope/telescope.nvim' } })
         use({ 'windwp/nvim-ts-autotag' })
-        use({ 'projekt0n/github-nvim-theme', tag = '*' })
+        use({ 'folke/tokyonight.nvim' })
         use({
             'nvim-telescope/telescope.nvim',
             requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
@@ -54,21 +53,16 @@ require('packer').startup({
     end,
 })
 
--- projekt0n/github-nvim-theme
-vim.opt.background = 'light'
-require('github-theme').setup({
-    theme_style = 'light',
-    comment_style = 'NONE',
-    keyword_style = 'NONE',
-    dark_float = true,
+-- folke/tokyonight.nvim
+vim.o.background = 'light'
+require('tokyonight').setup({
+    style = 'day',
+    styles = {
+        comments = { italic = false },
+        keywords = { italic = false },
+    },
 })
-
--- lalitmee/browse.nvim
-local browse = require('browse')
-browse.setup({
-    provider = 'duckduckgo',
-    bookmarks = {},
-})
+vim.cmd.colorscheme('tokyonight')
 
 -- windwp/nvim-ts-autotag
 require('nvim-ts-autotag').setup()
@@ -172,9 +166,6 @@ local find_keymaps = {
     { 'k', telescope_builtin.keymaps, {} },
     { 'l', vim.lsp.buf.code_action, nil }, -- TODO should this be here or in lsp.lua?
     { 'm', telescope_builtin.man_pages, { sections = { 'ALL' } } },
-    { 'p', telescope_builtin.git_branches, {} },
-    { 's', browse.input_search, nil },
-    { 'u', telescope_builtin.git_bcommits, {} },
 }
 for _, keymap in ipairs(find_keymaps) do
     vim.keymap.set('n', find_prefix .. keymap[1], function()
@@ -201,6 +192,7 @@ require('gitsigns').setup({
     signcolumn = false,
     numhl = true,
     on_attach = function(bufnr)
+        buf_map(bufnr, 'n', '<Leader>gb', '<CMD>Gitsigns blame_line<CR>')
         buf_map(bufnr, 'n', '<Leader>gp', '<CMD>Gitsigns preview_hunk<CR>')
         buf_map(bufnr, 'n', '<Leader>gr', '<CMD>Gitsigns reset_hunk<CR>')
         buf_map(bufnr, 'n', '<Leader>g]', '<CMD>Gitsigns next_hunk<CR>')
@@ -222,8 +214,8 @@ end
 
 require('lualine').setup({
     options = {
-        icons_enabled = false,
         theme = 'auto',
+        icons_enabled = false,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
     },
