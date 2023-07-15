@@ -25,7 +25,7 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-export BAT_THEME="GitHub"
+export BAT_THEME="ansi"
 
 # History options
 HISTFILE=~/.histfile
@@ -80,7 +80,7 @@ bindkey -e
 
 # fzf
 source $HOME/.config/fzf/fzf.zsh
-export FZF_DEFAULT_OPTS="-m --color='light,fg:#586069,bg:#ffffff,preview-fg:#586069,preview-bg:#ffffff,bg+:#dbe9f9,pointer:#cd3131,spinner:#dbe9f9,hl:#14ce14,hl+:#14ce14' --preview 'bat --style=numbers --color=github {} 2>/dev/null'"
+export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=github {} 2>/dev/null'"
 
 # Keybinds
 bindkey "^[[3~" delete-char     # Make 'delete' actually delete

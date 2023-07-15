@@ -14,11 +14,12 @@ require('packer').startup({
         use({ 'nvim-lualine/lualine.nvim' })
         use({ 'wbthomason/packer.nvim' })
         use({ 'windwp/nvim-ts-autotag' })
-        use({ 'folke/tokyonight.nvim' })
         use({
             'nvim-telescope/telescope.nvim',
             requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
         })
+        use({ 'nvim-tree/nvim-tree.lua' })
+        use({ 'olivertaylor/vacme' })
         use({ 'nvim-telescope/telescope-ui-select.nvim' })
         use({ 'L3MON4D3/LuaSnip', tag = 'v<CurrentMajor>.*' })
         use({ 'saadparwaiz1/cmp_luasnip' })
@@ -36,7 +37,6 @@ require('packer').startup({
         use({ 'hrsh7th/cmp-path' })
         use({ 'hrsh7th/cmp-nvim-lsp' })
         use({ 'mfussenegger/nvim-jdtls' })
-        use({ 'jose-elias-alvarez/null-ls.nvim' })
         use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
         use({
             'williamboman/mason.nvim',
@@ -44,6 +44,7 @@ require('packer').startup({
             'neovim/nvim-lspconfig',
             run = ':MasonUpdate',
         })
+        use({ 'jose-elias-alvarez/null-ls.nvim' })
         use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
         use({ 'jalvesaq/nvim-r', ft = { 'r', 'Rmd' } })
         use({ 'ray-x/lsp_signature.nvim' })
@@ -53,16 +54,11 @@ require('packer').startup({
     end,
 })
 
--- folke/tokyonight.nvim
 vim.o.background = 'light'
-require('tokyonight').setup({
-    style = 'day',
-    styles = {
-        comments = { italic = false },
-        keywords = { italic = false },
-    },
-})
-vim.cmd.colorscheme('tokyonight')
+vim.cmd.colorscheme('vacme')
+
+-- nvim-tree/nvim-tree.lua
+require("nvim-tree").setup()
 
 -- windwp/nvim-ts-autotag
 require('nvim-ts-autotag').setup()
@@ -90,31 +86,16 @@ cmp.setup({
     },
 })
 
--- nvim-treesitter/nvim-treesitter
-require('nvim-treesitter.configs').setup({
-    highlight = {
-        enable = true,
-        disable = { 'latex' },
-    },
-    indent = {
-        enable = false,
-    },
-    incremental_selection = {
-        enable = true,
-    },
-    textobjects = { enable = true },
-})
-
 -- jose-elias-alvarez/null-ls.nvim
 local null_ls = require('null-ls')
 null_ls.setup({
     sources = {
-        null_ls.builtins.code_actions.gitsigns,
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.black,
+        -- null_ls.builtins.code_actions.gitsigns,
+        -- null_ls.builtins.diagnostics.eslint_d,
+        -- null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.gofumpt,
-        null_ls.builtins.formatting.prettierd,
+        -- null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.stylua,
     },
     on_attach = function(_, bufnr)
@@ -137,6 +118,21 @@ vim.notify = function(msg, ...)
 
     notify(msg, ...)
 end
+
+-- nvim-treesitter/nvim-treesitter
+require('nvim-treesitter.configs').setup({
+    highlight = {
+        enable = true,
+        disable = { 'latex' },
+    },
+    indent = {
+        enable = false,
+    },
+    incremental_selection = {
+        enable = true,
+    },
+    textobjects = { enable = true },
+})
 
 -- williamboman/mason.nvim
 require('mason').setup()
