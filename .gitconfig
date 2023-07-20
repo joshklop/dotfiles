@@ -9,6 +9,7 @@
     d = diff
     cb = checkout -b
     sw = switch
+	prebase = !git hook run pre-commit && git rebase --continue
 [pull]
     rebase = false
 [merge]

@@ -73,7 +73,8 @@ autoload -Uz vcs_info add-zsh-hook
 setopt PROMPT_SUBST
 add-zsh-hook precmd vcs_info
 zstyle ':vcs_info:git:*' formats '(%b) '
-PROMPT='%F{blue}%~ %F{red}${vcs_info_msg_0_}%f%F{blue}%#%f '
+PROMPT='%F{blue}%~ %F{red}${vcs_info_msg_0_}%f%F{blue}
+%#%f '
 
 # Use emacs-like keybinds at the command line
 bindkey -e
