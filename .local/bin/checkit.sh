@@ -12,7 +12,7 @@ fi
 
 original_commit=$(git rev-parse HEAD)
 
-git rev-list --reverse "$1".."$2" | while read -r commit; do
+git rev-list --reverse "$1" | while read -r commit; do
     echo $commit
     git checkout $commit
     git hook run pre-commit

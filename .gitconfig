@@ -10,6 +10,7 @@
     cb = checkout -b
     sw = switch
 	prebase = !git hook run pre-commit && git rebase --continue
+	l = log
 [pull]
     rebase = false
 [merge]
