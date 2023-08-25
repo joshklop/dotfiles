@@ -164,3 +164,7 @@ eval "$(direnv hook zsh)"
 
 # rbenv
 eval "$(rbenv init - zsh)"
+export CARGO_MANIFEST_DIR="/usr/bin/corelib/"
+
+# opam configuration
+[[ ! -r /home/user/.opam/opam-init/init.zsh ]] || source /home/user/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
