@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-if [ $PERSONAL_GOVERSION ]; then
-    "/home/user/.go/bin/go$PERSONAL_GOVERSION" "$@"
-else
-    "/home/user/.go/bin/go1.20" "$@"
-fi

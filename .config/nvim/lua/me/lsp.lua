@@ -61,6 +61,10 @@ mason_lspconfig.setup_handlers({
                         unusedparams = true,
                     },
                     staticcheck = true,
+                    -- https://github.com/golang/go/issues/29202
+                    -- env = {
+                    --     GOFLAGS = '-tags=integration',
+                    -- },
                 },
             },
         })

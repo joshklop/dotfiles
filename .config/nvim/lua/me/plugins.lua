@@ -11,6 +11,7 @@ end
 
 require('packer').startup({
     function(use)
+        use({ 'willothy/flatten.nvim' })
         use({ 'nvim-lualine/lualine.nvim' })
         use({ 'wbthomason/packer.nvim' })
         use({ 'windwp/nvim-ts-autotag' })
@@ -57,8 +58,10 @@ require('packer').startup({
 vim.o.background = 'light'
 vim.cmd.colorscheme('vacme')
 
+require('flatten').setup()
+
 -- nvim-tree/nvim-tree.lua
-require("nvim-tree").setup()
+require('nvim-tree').setup()
 
 -- windwp/nvim-ts-autotag
 require('nvim-ts-autotag').setup()
@@ -95,7 +98,7 @@ null_ls.setup({
         -- null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.gofumpt,
-        -- null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.stylua,
     },
     on_attach = function(_, bufnr)
@@ -121,10 +124,6 @@ end
 
 -- nvim-treesitter/nvim-treesitter
 require('nvim-treesitter.configs').setup({
-    highlight = {
-        enable = true,
-        disable = { 'latex' },
-    },
     indent = {
         enable = false,
     },
@@ -156,7 +155,7 @@ local find_keymaps = {
     { 'b', telescope_builtin.buffers, {} },
     { 'd', utils.find_dotfiles, {} },
     { 'e', telescope_builtin.diagnostics, {} },
-    { 'f', telescope_builtin.find_files, { hidden = true } },
+    { 'f', telescope_builtin.find_files, {} },
     { 'g', telescope_builtin.live_grep, {} },
     { 'h', telescope_builtin.help_tags, {} },
     { 'k', telescope_builtin.keymaps, {} },
@@ -217,7 +216,7 @@ require('lualine').setup({
     },
     sections = {
         lualine_a = { '' },
-        lualine_b = { 'b:gitsigns_head', { 'diff', source = diff_source }, 'diagnostics' },
+        lualine_b = { 'b:gitsigns_head', 'diagnostics' },
         lualine_c = { '%f' },
         lualine_x = { 'progress', 'location' },
         lualine_y = { '' },
