@@ -28,3 +28,4 @@ alias R='R --quiet'
 # the following is from [this](https://stackoverflow.com/questions/2507766/merge-convert-multiple-pdf-files-into-one-pdf) Stack Overflow answer.
 # add '-sOutputFile=output.pdf input1.pdf input2.pdf' to make it work.
 alias mergepdf='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/default -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages -dCompressFonts=true -r150'
+. "/home/user/.starkli/env"

@@ -1,0 +1,9 @@
+default.command=l
+data.location=~/.local/share/task
+hooks.location=~/.config/task/hooks
+include light-256.theme
+news.version=2.6.0
+
+report.l.columns=id,project,due,description
+report.l.sort=project+\/,due+
+report.l.filter=status:pending

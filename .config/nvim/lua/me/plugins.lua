@@ -11,7 +11,6 @@ end
 
 require('packer').startup({
     function(use)
-        use({ 'willothy/flatten.nvim' })
         use({ 'nvim-lualine/lualine.nvim' })
         use({ 'wbthomason/packer.nvim' })
         use({ 'windwp/nvim-ts-autotag' })
@@ -57,8 +56,6 @@ require('packer').startup({
 
 vim.o.background = 'light'
 vim.cmd.colorscheme('vacme')
-
-require('flatten').setup()
 
 -- nvim-tree/nvim-tree.lua
 require('nvim-tree').setup()
