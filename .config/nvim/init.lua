@@ -78,7 +78,6 @@ vim.api.nvim_create_autocmd({ 'BufNew', 'BufNewFile', 'BufRead', 'BufEnter' }, {
 -- Plugins
 require('me.plugins')
 
--- LSP
 vim.diagnostic.config({
     signs = {
         severity = {
@@ -91,7 +90,6 @@ vim.keymap.set('n', '<Leader>e', function()
 end)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-require('me.lsp')
 
 -- Make Powershell the default shell on Windows
 if vim.fn.has('win32') ~= 0 then
