@@ -66,12 +66,12 @@ au BufNew,BufNewFile,BufRead,BufEnter *.mdx :setfiletype markdown
 augroup end
 ]])
 
-vim.api.nvim_create_autocmd({"BufNew", "BufNewFile", "BufRead", "BufEnter"}, {
-    pattern = {utils.home .. '/repos/joshklop.github.io/*.md'},
+vim.api.nvim_create_autocmd({ 'BufNew', 'BufNewFile', 'BufRead', 'BufEnter' }, {
+    pattern = { utils.home .. '/repos/joshklop.github.io/*.md' },
     callback = function()
         vim.opt_local.textwidth = 80
         vim.opt_local.linebreak = true
-        vim.opt_local.colorcolumn = "80"
+        vim.opt_local.colorcolumn = '80'
     end,
 })
 

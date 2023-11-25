@@ -1,6 +1,5 @@
 local lspconfig = require('lspconfig')
 local mason_lspconfig = require('mason-lspconfig')
-local lsp_signature = require('lsp_signature')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
 lspconfig.util.on_setup = lspconfig.util.add_hook_after(lspconfig.util.on_setup, function(config)
@@ -23,7 +22,6 @@ lspconfig.util.on_setup = lspconfig.util.add_hook_after(lspconfig.util.on_setup,
         end
 
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-        lsp_signature.on_attach()
     end)
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -61,10 +59,6 @@ mason_lspconfig.setup_handlers({
                         unusedparams = true,
                     },
                     staticcheck = true,
-                    -- https://github.com/golang/go/issues/29202
-                    -- env = {
-                    --     GOFLAGS = '-tags=integration',
-                    -- },
                 },
             },
         })
@@ -80,15 +74,6 @@ mason_lspconfig.setup_handlers({
             },
         })
     end,
-    --['texlab'] = function()
-    --    lspconfig.texlab.setup()
-    --    -- {
-    --    --     on_attach = function(_, buf)
-    --    --         -- TODO I think there is a better way to do this. Use the actual function instead of '<CMD>...<CR>'
-    --    --         -- vim.keymap.set('n', '<Leader>lb', '<CMD>TexlabBuild<CR>', { buffer = buf })
-    --    --     end,
-    --    -- })
-    --end,
     ['lua_ls'] = function()
         local runtime_path = vim.split(package.path, ';')
         table.insert(runtime_path, 'lua/?.lua')
