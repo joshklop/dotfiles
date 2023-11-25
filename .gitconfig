@@ -11,6 +11,7 @@
     sw = switch
 	prebase = !git hook run pre-commit && git rebase --continue
 	l = log
+    lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10
 [pull]
     rebase = false
 [merge]
