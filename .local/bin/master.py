@@ -31,7 +31,7 @@ def run(cmd, env=None):
 def update_zinit_and_plugins():
     home = os.getenv('HOME')
     run(f'source {home}/.local/share/zinit/zinit.git/zinit.zsh '
-        '&& zinit self-update && zinit update --parallel')
+        '&& zinit self-update && zinit update --parallel && zinit cclear')
 
 
 def backup_bw():
