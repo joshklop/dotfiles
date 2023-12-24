@@ -9,6 +9,8 @@ export PATH="$PATH:$HOME/repos/depot_tools"
 # Golang
 export PATH="$PATH:$($HOME/.go/bin/go1.20 env GOBIN):"
 
+export BROWSER=brave
+
 # Editor exports
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -60,6 +62,7 @@ alias npm='npm --color=always'
 alias sudo='sudo ' # Allow for aliases https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias z='zathura --fork'
 alias wasi-clang='/opt/wasi-sdk/bin/clang --sysroot /opt/wasi-sdk/share/wasi-sysroot'
+alias rankmirrors='sudo reflector --country us --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
 # https://stackoverflow.com/a/19358402
 function mergepdf() {
@@ -81,7 +84,7 @@ bindkey -e
 
 # fzf
 source $HOME/.config/fzf/fzf.zsh
-export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers --color=github {} 2>/dev/null'"
+export FZF_DEFAULT_OPTS="-m --preview 'bat --style=numbers {} 2>/dev/null'"
 
 # Keybinds
 bindkey "^[[3~" delete-char     # Make 'delete' actually delete

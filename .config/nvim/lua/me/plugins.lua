@@ -124,23 +124,17 @@ require('lazy').setup({
         config = function()
             vim.opt.completeopt = { 'menuone', 'noinsert', 'noselect' }
             local cmp = require('cmp')
-            local cmp_mappings = {
-                ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-                ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-            }
             cmp.setup({
+                preselect = cmp.PreselectMode.None,
                 sources = {
                     { name = 'nvim_lsp' }, -- hrsh7th/cmp-nvim-lsp
                     { name = 'buffer' }, -- hrsh7th/cmp-buffer
                     { name = 'path' }, -- hrsh7th/cmp-path
-                    { name = 'luasnip' }, -- saadparwaiz1/cmp_luasnip
                     { name = 'latex_symbols' }, -- hrsh7th/cmp-latex-symbols
                 },
-                mapping = cmp_mappings,
-                snippet = {
-                    expand = function(args)
-                        require('luasnip').lsp_expand(args.body)
-                    end,
+                mapping = {
+                    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+                    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
                 },
             })
         end,
@@ -317,6 +311,9 @@ require('lazy').setup({
                         require('formatter.filetypes.go').gofumpt,
                     },
                     rust = {
+                        vim.lsp.buf.format,
+                    },
+                    json = {
                         vim.lsp.buf.format,
                     },
                     ['*'] = {

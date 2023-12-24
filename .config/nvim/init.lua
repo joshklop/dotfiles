@@ -6,11 +6,6 @@ else
     vim.g.python3_host_prog = '/usr/bin/python'
 end
 
--- disable netrw
--- using nvim-tree/nvim-tree.lua, see plugins.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 vim.opt.cmdheight = 0
 vim.opt.expandtab = true
 vim.opt.softtabstop = 4
