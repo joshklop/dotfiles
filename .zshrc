@@ -3,7 +3,7 @@
 
 export PRINTER=M70
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.go/bin"
 
 export BROWSER=brave
 
