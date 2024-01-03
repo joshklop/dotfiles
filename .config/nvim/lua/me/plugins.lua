@@ -323,4 +323,10 @@ require('lazy').setup({
             })
         end,
     },
+    'folke/zen-mode.nvim',
+    'preservim/vim-pencil',
 })
+
+vim.cmd([[
+command! WriteMode ZenMode | SoftPencil
+]])
